@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -131,9 +132,23 @@ body {
 
     bottom: -62%;
 
-    background: #fffaf5;
+    /*
+       A carta já nasce com o mesmo
+       fundo listrado suave que ela
+       terá quando ocupar a tela.
+    */
 
-    border: 2px solid #d6bdb4;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,.055) 0px,
+            rgba(255,255,255,.055) 35px,
+            rgba(120,0,15,.025) 35px,
+            rgba(120,0,15,.025) 70px
+        ),
+        #d95763;
+
+    border: 2px solid rgba(110,0,15,.22);
 
     border-radius: 5px;
 
@@ -342,7 +357,7 @@ body {
 
 
 /* =========================
-   PRIMEIRA SAÍDA
+   CARTA SAI DEVAGAR
 ========================= */
 
 .envelope.aberto .carta {
@@ -381,6 +396,22 @@ body {
 
     z-index: 20;
 
+    /*
+       Mantém exatamente o mesmo
+       fundo listrado durante toda
+       a saída.
+    */
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,.055) 0px,
+            rgba(255,255,255,.055) 35px,
+            rgba(120,0,15,.025) 35px,
+            rgba(120,0,15,.025) 70px
+        ),
+        #d95763;
+
     transition:
         bottom 3.5s cubic-bezier(.2,.8,.2,1),
         width 3.5s cubic-bezier(.2,.8,.2,1),
@@ -411,7 +442,20 @@ body {
 
     border-radius: 0;
 
-    background: #d94b59;
+    /*
+       Fundo final exatamente igual
+       ao fundo usado durante a saída.
+    */
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,.055) 0px,
+            rgba(255,255,255,.055) 35px,
+            rgba(120,0,15,.025) 35px,
+            rgba(120,0,15,.025) 70px
+        ),
+        #d95763;
 
     z-index: 100;
 
@@ -482,9 +526,14 @@ body {
 }
 
 
+/*
+   ESPAÇO GRANDE ENTRE PARÁGRAFOS
+   para colocar os Snoopys depois.
+*/
+
 .texto-carta p {
 
-    margin-bottom: 34px;
+    margin-bottom: 95px;
 }
 
 
@@ -494,7 +543,7 @@ body {
 
 .significados {
 
-    margin-top: 55px;
+    margin-top: 70px;
 
     padding: 28px 25px;
 
@@ -656,7 +705,7 @@ body {
 
     .texto-carta p {
 
-        margin-bottom: 30px;
+        margin-bottom: 95px;
     }
 
     .significados {
@@ -772,7 +821,7 @@ body {
 
 
                         <!-- =========================
-                             SIGNIFICADO
+                             SIGNIFICADOS
                         ========================= -->
 
                         <div class="significados">
@@ -911,3 +960,4 @@ envelope.addEventListener(
 
 </body>
 </html>
+```
