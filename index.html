@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Cartinha ❤️</title>
 
 <style>
@@ -12,54 +13,59 @@
     padding: 0;
 }
 
+html,
 body {
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background: #8f171e;
-    font-family: Arial, sans-serif;
+    height: 100%;
 }
 
-/* FUNDO */
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #921820;
+}
+
+/* =========================
+   FUNDO
+========================= */
 
 .inicio {
     width: 100%;
     height: 100vh;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
     background:
         repeating-linear-gradient(
             45deg,
-            rgba(255,255,255,.035) 0px,
-            rgba(255,255,255,.035) 35px,
-            rgba(0,0,0,.025) 35px,
-            rgba(0,0,0,.025) 70px
+            rgba(255,255,255,0.035) 0px,
+            rgba(255,255,255,0.035) 35px,
+            rgba(0,0,0,0.025) 35px,
+            rgba(0,0,0,0.025) 70px
         ),
-        #8f171e;
+        #921820;
 }
 
-/* ENVELOPE */
+/* =========================
+   ENVELOPE
+========================= */
 
 .envelope {
     position: relative;
 
-    width: min(86vw, 520px);
-    height: min(58vw, 330px);
+    width: min(88vw, 540px);
+    height: min(60vw, 350px);
 
     cursor: pointer;
 
-    filter: drop-shadow(0 18px 18px rgba(0,0,0,.30));
-
-    transform: translateY(0);
+    filter: drop-shadow(0 18px 16px rgba(0,0,0,0.3));
 
     animation: flutuar 2.5s ease-in-out infinite;
 }
 
 @keyframes flutuar {
-
     0%, 100% {
         transform: translateY(0) rotate(-1deg);
     }
@@ -69,9 +75,59 @@ body {
     }
 }
 
-/* CORPO DO ENVELOPE */
+/* =========================
+   FOLHA
+   FICA TOTALMENTE ESCONDIDA
+========================= */
 
-.envelope-base {
+.folha {
+    position: absolute;
+
+    width: 82%;
+    height: 82%;
+
+    left: 9%;
+
+    /*
+      A folha começa BEM para baixo.
+      Assim nenhuma parte branca aparece
+      quando o envelope está fechado.
+    */
+
+    bottom: -28%;
+
+    background: #fffaf5;
+
+    border: 2px solid #d8c1b7;
+
+    border-radius: 5px;
+
+    box-shadow: 0 5px 12px rgba(0,0,0,0.18);
+
+    z-index: 2;
+
+    opacity: 0;
+
+    transition:
+        bottom 1.35s cubic-bezier(.2,.8,.2,1),
+        opacity .2s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.folha::after {
+    content: "💌";
+
+    font-size: 42px;
+}
+
+/* =========================
+   CORPO DO ENVELOPE
+========================= */
+
+.envelope-corpo {
     position: absolute;
 
     left: 0;
@@ -82,54 +138,16 @@ body {
 
     background: #c92832;
 
-    border: 4px solid #791017;
+    border: 4px solid #781017;
 
-    border-radius: 8px;
-
-    z-index: 2;
-}
-
-/* PAPEL */
-
-.papel {
-    position: absolute;
-
-    left: 8%;
-    bottom: 7%;
-
-    width: 84%;
-    height: 78%;
-
-    background: #fffaf5;
-
-    border: 2px solid #d7c0b7;
-
-    border-radius: 4px;
+    border-radius: 9px;
 
     z-index: 3;
-
-    transform: translateY(0);
-
-    transition:
-        transform 1.3s cubic-bezier(.18,.82,.25,1);
-
-    box-shadow: 0 4px 12px rgba(0,0,0,.18);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    opacity: 0;
 }
 
-/* PAPEL SÓ APARECE DEPOIS DO CLIQUE */
-
-.envelope.aberto .papel {
-    opacity: 1;
-    transform: translateY(-145px);
-}
-
-/* FRENTE DO ENVELOPE */
+/* =========================
+   FRENTE DO ENVELOPE
+========================= */
 
 .envelope-frente {
     position: absolute;
@@ -140,69 +158,144 @@ body {
     width: 100%;
     height: 76%;
 
-    background: #d52f38;
+    background: #d8323b;
+
+    /*
+      As pontas laterais e a ponta
+      central formam a frente do envelope.
+    */
 
     clip-path: polygon(
-        0 0,
-        50% 62%,
-        100% 0,
+        0% 0%,
+        50% 58%,
+        100% 0%,
         100% 100%,
-        0 100%
+        0% 100%
     );
 
-    border: 4px solid #791017;
-
-    z-index: 5;
+    z-index: 6;
 }
 
-/* ABA SUPERIOR */
+/* =========================
+   ABA SUPERIOR
+========================= */
 
 .aba {
     position: absolute;
 
-    top: 2%;
-
     left: 0;
+    top: 0;
 
     width: 100%;
-    height: 61%;
+    height: 62%;
 
-    background: #df353e;
+    background: #e13a43;
+
+    /*
+      Triângulo superior.
+      A ponta fica para baixo,
+      fechando completamente o envelope.
+    */
 
     clip-path: polygon(
-        0 0,
+        0% 0%,
         50% 100%,
-        100% 0
+        100% 0%
     );
 
-    border: 4px solid #791017;
+    z-index: 8;
 
     transform-origin: top center;
-
-    transform: rotateX(0deg);
-
-    z-index: 7;
 
     transition:
         transform 1s cubic-bezier(.2,.8,.2,1);
 }
 
-/* ABERTURA */
+/* borda visual da aba */
+
+.aba-borda {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 62%;
+
+    clip-path: polygon(
+        0% 0%,
+        50% 100%,
+        100% 0%
+    );
+
+    background: #781017;
+
+    z-index: 7;
+
+    transform-origin: top center;
+
+    transition:
+        transform 1s cubic-bezier(.2,.8,.2,1);
+}
+
+.aba-borda::after {
+    content: "";
+
+    position: absolute;
+
+    left: 4px;
+    top: 4px;
+
+    width: calc(100% - 8px);
+    height: calc(100% - 4px);
+
+    background: #e13a43;
+
+    clip-path: polygon(
+        0% 0%,
+        50% 100%,
+        100% 0%
+    );
+}
+
+/* =========================
+   ABERTURA
+========================= */
 
 .envelope.aberto {
     animation: none;
 }
 
-.envelope.aberto .aba {
+/*
+   Primeiro a aba abre.
+*/
+
+.envelope.aberto .aba,
+.envelope.aberto .aba-borda {
     transform: rotateX(180deg);
 }
 
-/* TEXTO TEMPORÁRIO */
+/*
+   A folha sobe somente depois
+   que a aba começa a abrir.
+*/
+
+.envelope.aberto .folha {
+    opacity: 1;
+
+    bottom: 55%;
+
+    transition-delay: .45s;
+}
+
+/* =========================
+   TEXTO
+========================= */
 
 .instrucao {
     position: absolute;
 
-    bottom: 9%;
+    bottom: 8%;
 
     left: 50%;
 
@@ -210,22 +303,30 @@ body {
 
     color: white;
 
-    font-size: 24px;
+    font-size: 25px;
 
     font-style: italic;
+
+    white-space: nowrap;
 }
 
-/* CELULAR */
+/* =========================
+   CELULAR
+========================= */
 
 @media (max-width: 600px) {
 
     .envelope {
-        width: 88vw;
-        height: 59vw;
+        width: 90vw;
+        height: 60vw;
     }
 
-    .envelope.aberto .papel {
-        transform: translateY(-110px);
+    .instrucao {
+        font-size: 23px;
+    }
+
+    .envelope.aberto .folha {
+        bottom: 55%;
     }
 }
 </style>
@@ -237,18 +338,29 @@ body {
 
     <div class="envelope" id="envelope">
 
-        <!-- papel escondido dentro -->
-        <div class="papel"></div>
+        <!--
+            FOLHA:
+            começa completamente escondida
+            atrás do envelope
+        -->
+        <div class="folha"></div>
 
-        <!-- corpo -->
-        <div class="envelope-base"></div>
+        <!-- corpo do envelope -->
+        <div class="envelope-corpo"></div>
 
-        <!-- frente -->
+        <!-- frente do envelope -->
         <div class="envelope-frente"></div>
 
-        <!-- aba que abre -->
+        <!-- aba superior -->
         <div class="aba"></div>
 
+        <!-- borda da aba -->
+        <div class="aba-borda"></div>
+
+    </div>
+
+    <div class="instrucao">
+        clica aqui soph
     </div>
 
 </section>
@@ -257,7 +369,7 @@ body {
 
 const envelope = document.getElementById("envelope");
 
-envelope.addEventListener("click", function() {
+envelope.addEventListener("click", function () {
 
     envelope.classList.add("aberto");
 
