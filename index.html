@@ -119,15 +119,20 @@ body {
 
     box-shadow: 0 5px 12px rgba(0,0,0,.18);
 
-    z-index: 2;
-
     /*
-      Totalmente invisível enquanto fechado.
+       A folha fica atrás das partes
+       vermelhas do envelope.
     */
+
+    z-index: 2;
 
     opacity: 0;
 
-    transform: translateY(20px);
+    /*
+       Ela começa dentro do envelope.
+    */
+
+    transform: translateY(0);
 
     transition:
         transform 1.35s cubic-bezier(.2,.8,.2,1),
@@ -142,7 +147,6 @@ body {
 
 /* =========================
    PARTE INTERNA VERMELHA
-   FECHA TODA A ABERTURA
 ========================= */
 
 .interno {
@@ -244,11 +248,6 @@ body {
 .aba {
     position: absolute;
 
-    /*
-      A aba ocupa praticamente toda
-      a parte superior do envelope.
-    */
-
     left: 2px;
     top: 2px;
 
@@ -257,12 +256,6 @@ body {
     height: 82%;
 
     background: #e13a43;
-
-    /*
-      O triângulo é MUITO mais baixo.
-      A ponta chega ao centro da frente,
-      fechando os dois lados.
-    */
 
     clip-path: polygon(
         0 0,
@@ -280,7 +273,7 @@ body {
         transform 1.05s cubic-bezier(.2,.8,.2,1);
 }
 
-/* Borda da aba */
+/* BORDA DA ABA */
 
 .aba::before {
     content: "";
@@ -304,7 +297,7 @@ body {
     z-index: -1;
 }
 
-/* Parte interna da aba */
+/* PARTE INTERNA DA ABA */
 
 .aba::after {
     content: "";
@@ -327,7 +320,7 @@ body {
 }
 
 /* =========================
-   ABRIR
+   ABERTURA
 ========================= */
 
 .envelope.aberto {
@@ -335,7 +328,7 @@ body {
 }
 
 /*
-   A aba sobe.
+   A aba abre para cima.
 */
 
 .envelope.aberto .aba {
@@ -343,8 +336,8 @@ body {
 }
 
 /*
-   A folha só aparece depois
-   que a aba começou a abrir.
+   A folha começa a sair
+   DE DENTRO do envelope.
 */
 
 .envelope.aberto .folha {
@@ -352,7 +345,7 @@ body {
 
     transform: translateY(-155px);
 
-    transition-delay: .35s;
+    transition-delay: .4s;
 }
 
 /* =========================
@@ -404,7 +397,7 @@ body {
 
     <div class="envelope" id="envelope">
 
-        <!-- FOLHA ESCONDIDA DENTRO -->
+        <!-- FOLHA DENTRO DO ENVELOPE -->
         <div class="folha"></div>
 
         <!-- CORPO -->
