@@ -27,7 +27,6 @@ body {
 .inicio {
     width: 100%;
     height: 100vh;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,10 +49,8 @@ body {
 
 .envelope {
     position: relative;
-
     width: min(88vw, 540px);
     height: min(60vw, 350px);
-
     cursor: pointer;
 
     filter: drop-shadow(0 18px 16px rgba(0,0,0,.30));
@@ -62,7 +59,6 @@ body {
 }
 
 @keyframes flutuar {
-
     0%, 100% {
         transform: translateY(0) rotate(-1deg);
     }
@@ -79,13 +75,11 @@ body {
 
 .corpo {
     position: absolute;
-
     inset: 0;
 
     background: #cf3039;
 
     border: 5px solid #741017;
-
     border-radius: 11px;
 
     z-index: 1;
@@ -121,7 +115,6 @@ body {
     left: 10%;
 
     width: 80%;
-
     height: 78%;
 
     bottom: -62%;
@@ -155,7 +148,6 @@ body {
 ========================= */
 
 .snoopy-envelope {
-
     position: absolute;
 
     left: 50%;
@@ -180,14 +172,12 @@ body {
 ========================= */
 
 .esquerda {
-
     position: absolute;
 
     left: 5px;
     bottom: 5px;
 
     width: calc(50% - 5px);
-
     height: 68%;
 
     background: #d9343d;
@@ -205,14 +195,12 @@ body {
 
 
 .direita {
-
     position: absolute;
 
     right: 5px;
     bottom: 5px;
 
     width: calc(50% - 5px);
-
     height: 68%;
 
     background: #d9343d;
@@ -234,14 +222,12 @@ body {
 ========================= */
 
 .frente {
-
     position: absolute;
 
     left: 5px;
     bottom: 5px;
 
     width: calc(100% - 10px);
-
     height: 58%;
 
     background: #d9343d;
@@ -266,14 +252,12 @@ body {
 ========================= */
 
 .aba {
-
     position: absolute;
 
     left: 2px;
     top: 2px;
 
     width: calc(100% - 4px);
-
     height: 82%;
 
     background: #e13a43;
@@ -298,11 +282,9 @@ body {
 }
 
 .aba::before {
-
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     background: #741017;
@@ -318,7 +300,6 @@ body {
 }
 
 .aba::after {
-
     content: "";
 
     position: absolute;
@@ -327,7 +308,6 @@ body {
     top: 5px;
 
     width: calc(100% - 10px);
-
     height: calc(100% - 5px);
 
     background: #e13a43;
@@ -350,7 +330,6 @@ body {
 }
 
 .envelope.aberto .aba {
-
     transform:
         rotateX(180deg);
 }
@@ -361,7 +340,6 @@ body {
 ========================= */
 
 .envelope.aberto .carta {
-
     bottom: 22%;
 
     transition:
@@ -378,15 +356,12 @@ body {
 }
 
 .envelope.carta-saindo .carta {
-
     position: fixed;
 
     left: 50%;
-
     bottom: 22%;
 
     width: 80%;
-
     height: 78%;
 
     transform:
@@ -406,7 +381,6 @@ body {
 ========================= */
 
 .envelope.carta-tela .carta {
-
     position: fixed;
 
     left: 50%;
@@ -421,7 +395,6 @@ body {
         translate(-50%, -50%);
 
     border: none;
-
     border-radius: 0;
 
     z-index: 100;
@@ -440,7 +413,6 @@ body {
 ========================= */
 
 .conteudo-carta {
-
     width: 100%;
     height: 100%;
 
@@ -461,7 +433,6 @@ body {
 
 
 .texto-carta {
-
     max-width: 700px;
 
     margin: 0 auto;
@@ -488,11 +459,10 @@ body {
 
 
 /* =========================
-   ESPAÇO DO SNOOPY
+   ESPAÇOS DOS SNOOPYS
 ========================= */
 
 .snoopy-box {
-
     width: 100%;
 
     height: 480px;
@@ -500,7 +470,6 @@ body {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     margin: 0 auto;
@@ -509,9 +478,7 @@ body {
 }
 
 .snoopy-box img {
-
     width: 330px;
-
     height: 330px;
 
     object-fit: contain;
@@ -525,7 +492,6 @@ body {
 ========================= */
 
 .significados {
-
     margin-top: 70px;
 
     padding: 28px 25px;
@@ -543,7 +509,6 @@ body {
 }
 
 .significados h2 {
-
     font-family:
         "Segoe Print",
         "Bradley Hand",
@@ -562,7 +527,6 @@ body {
 }
 
 .significados p {
-
     margin-bottom: 20px;
 
     font-size: 17px;
@@ -587,7 +551,6 @@ body {
 .envelope.carta-tela .frente,
 .envelope.carta-tela .aba,
 .envelope.carta-tela .snoopy-envelope {
-
     opacity: 0;
 
     transition:
@@ -600,7 +563,6 @@ body {
 ========================= */
 
 .instrucao {
-
     position: absolute;
 
     left: 50%;
@@ -633,7 +595,6 @@ body {
 @media (max-width: 600px) {
 
     .envelope {
-
         width: 90vw;
         height: 61vw;
     }
@@ -643,11 +604,9 @@ body {
     }
 
     .envelope.carta-saindo .carta {
-
         left: 50%;
 
         width: 80%;
-
         height: 78%;
 
         transform:
@@ -655,7 +614,6 @@ body {
     }
 
     .envelope.carta-tela .carta {
-
         left: 50%;
         top: 50%;
 
@@ -669,27 +627,21 @@ body {
     }
 
     .conteudo-carta {
-
         padding:
             40px 24px 75px;
     }
 
     .texto-carta {
-
         font-size: 21px;
-
         line-height: 1.8;
     }
 
     .snoopy-box {
-
         height: 480px;
     }
 
     .snoopy-box img {
-
         width: 300px;
-
         height: 300px;
     }
 
@@ -703,9 +655,7 @@ body {
     }
 
     .significados p {
-
         font-size: 17px;
-
         line-height: 1.65;
     }
 
@@ -735,18 +685,22 @@ body {
 
                     <div class="texto-carta">
 
-                        <div class="snoopy-box">
-                            <img src="snoopy1.png" alt="Snoopy mostrando a língua">
-                        </div>
-
+                        <!-- PRIMEIRO TEXTO -->
                         <p>
                             é uma coisinha besta mas q eu qria dizer pra vcc
                         </p>
 
+
+                        <!-- SNOOPY 1 -->
                         <div class="snoopy-box">
-                            <img src="snoopy2.png" alt="Snoopy com uma rosa">
+                            <img
+                                src="snoopy1.png"
+                                alt="Snoopy mostrando a língua"
+                            >
                         </div>
 
+
+                        <!-- SEGUNDO TEXTO -->
                         <p>
                             amor a gnt não ta a tanto tempo assim juntos,
                             mas acho q nunca compartilhei tanto algo como
@@ -757,10 +711,17 @@ body {
                             isso acabe nunca.
                         </p>
 
+
+                        <!-- SNOOPY 2 -->
                         <div class="snoopy-box">
-                            <img src="snoopy3.png" alt="Snoopy abraçando um coração">
+                            <img
+                                src="snoopy2.png"
+                                alt="Snoopy com uma rosa"
+                            >
                         </div>
 
+
+                        <!-- TERCEIRO TEXTO -->
                         <p>
                             desde q conversamos a primeira vez, ja me
                             apaixonei totalmente.. cada palavra que saia
@@ -768,10 +729,17 @@ body {
                             querer me aproximar cada vez mais.
                         </p>
 
+
+                        <!-- SNOOPY 3 -->
                         <div class="snoopy-box">
-                            <img src="snoopy4.png" alt="Snoopy entregando flores">
+                            <img
+                                src="snoopy3.png"
+                                alt="Snoopy abraçando um coração"
+                            >
                         </div>
 
+
+                        <!-- QUARTO TEXTO -->
                         <p>
                             Hoje poder te chamar se amor, te abraçar,
                             receber seu carinho, é quase inacreditável,
@@ -782,10 +750,17 @@ body {
                             ouviu e me abençoou.
                         </p>
 
+
+                        <!-- SNOOPY 4 -->
                         <div class="snoopy-box">
-                            <img src="snoopy5.png" alt="Snoopy dormindo">
+                            <img
+                                src="snoopy4.png"
+                                alt="Snoopy entregando flores"
+                            >
                         </div>
 
+
+                        <!-- QUINTO TEXTO -->
                         <p>
                             não tenho palavras pra dizer o quanto eu te
                             amo e o quanto admiro a pessoa que você é.
@@ -795,10 +770,17 @@ body {
                             fossem um pouco mais a fundoo, bomm...
                         </p>
 
+
+                        <!-- SNOOPY 5 -->
                         <div class="snoopy-box">
-                            <img src="snoopy6.png" alt="Snoopy mandando beijo">
+                            <img
+                                src="snoopy5.png"
+                                alt="Snoopy dormindo"
+                            >
                         </div>
 
+
+                        <!-- SEXTO TEXTO -->
                         <p>
                             falar que "eu te amo" ficou pequeno demais
                             pro tamanho do amor q tenho, o que eu sinto
@@ -809,16 +791,33 @@ body {
                             sempiterno..
                         </p>
 
+
+                        <!-- SNOOPY 6 -->
                         <div class="snoopy-box">
-                            <img src="snoopy7.png" alt="Snoopy fazendo uma pose carinhosa">
+                            <img
+                                src="snoopy6.png"
+                                alt="Snoopy mandando beijo"
+                            >
                         </div>
 
+
+                        <!-- ÚLTIMO TEXTO -->
                         <p>
                             acho q é isso amor, to com muita sdd de vc,
                             e te amo mto, bjao❤️
                         </p>
 
 
+                        <!-- SNOOPY 7 -->
+                        <div class="snoopy-box">
+                            <img
+                                src="snoopy7.png"
+                                alt="Snoopy fazendo uma pose carinhosa"
+                            >
+                        </div>
+
+
+                        <!-- SIGNIFICADOS -->
                         <div class="significados">
 
                             <h2>
