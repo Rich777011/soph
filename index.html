@@ -12,29 +12,26 @@
     padding: 0;
 }
 
-html,
-body {
+html, body {
     width: 100%;
     height: 100%;
 }
 
 body {
     overflow: hidden;
-    background: #921820;
     font-family: Arial, sans-serif;
+    background: #921820;
 }
 
-/* =========================
-   FUNDO
-========================= */
+/* FUNDO */
 
 .inicio {
     width: 100%;
     height: 100vh;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
     background:
         repeating-linear-gradient(
@@ -47,9 +44,7 @@ body {
         #921820;
 }
 
-/* =========================
-   ENVELOPE
-========================= */
+/* ENVELOPE */
 
 .envelope {
     position: relative;
@@ -65,7 +60,6 @@ body {
 }
 
 @keyframes flutuar {
-
     0%, 100% {
         transform: translateY(0) rotate(-1deg);
     }
@@ -75,18 +69,12 @@ body {
     }
 }
 
-/* =========================
-   CORPO EXTERNO
-========================= */
+/* CORPO DO ENVELOPE */
 
 .corpo {
     position: absolute;
 
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 100%;
+    inset: 0;
 
     background: #cf3039;
 
@@ -97,19 +85,25 @@ body {
     z-index: 1;
 }
 
-/* =========================
-   FOLHA
-   ESCONDIDA DENTRO
-========================= */
+/* =================================
+   CARTA
+   ELA COMEÇA DENTRO DO ENVELOPE
+================================= */
 
 .folha {
     position: absolute;
 
-    left: 8%;
-    bottom: 8%;
+    left: 9%;
+    width: 82%;
 
-    width: 84%;
-    height: 78%;
+    height: 80%;
+
+    /*
+       A carta começa BEM DENTRO
+       do envelope.
+    */
+
+    top: 25%;
 
     background: #fffaf5;
 
@@ -120,34 +114,39 @@ body {
     box-shadow: 0 5px 12px rgba(0,0,0,.18);
 
     /*
-       A folha fica atrás das partes
-       vermelhas do envelope.
+       Fica atrás das partes vermelhas
+       do envelope.
     */
 
     z-index: 2;
 
-    opacity: 0;
-
     /*
-       Ela começa dentro do envelope.
+       Escondida inicialmente.
     */
+
+    opacity: 0;
 
     transform: translateY(0);
 
     transition:
         transform 1.35s cubic-bezier(.2,.8,.2,1),
-        opacity .15s ease;
+        opacity .2s ease;
 }
 
 .folha::after {
     content: "💌";
 
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
     font-size: 42px;
 }
 
-/* =========================
-   PARTE INTERNA VERMELHA
-========================= */
+/* PARTE INTERNA */
 
 .interno {
     position: absolute;
@@ -165,9 +164,7 @@ body {
     z-index: 3;
 }
 
-/* =========================
-   DOBRA ESQUERDA
-========================= */
+/* LADO ESQUERDO */
 
 .esquerda {
     position: absolute;
@@ -190,9 +187,7 @@ body {
     z-index: 5;
 }
 
-/* =========================
-   DOBRA DIREITA
-========================= */
+/* LADO DIREITO */
 
 .direita {
     position: absolute;
@@ -215,9 +210,7 @@ body {
     z-index: 5;
 }
 
-/* =========================
-   FRENTE
-========================= */
+/* FRENTE DO ENVELOPE */
 
 .frente {
     position: absolute;
@@ -241,9 +234,9 @@ body {
     z-index: 6;
 }
 
-/* =========================
+/* =================================
    ABA SUPERIOR
-========================= */
+================================= */
 
 .aba {
     position: absolute;
@@ -252,6 +245,11 @@ body {
     top: 2px;
 
     width: calc(100% - 4px);
+
+    /*
+       Aba grande o suficiente para
+       fechar completamente o envelope.
+    */
 
     height: 82%;
 
@@ -280,11 +278,7 @@ body {
 
     position: absolute;
 
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 100%;
+    inset: 0;
 
     background: #741017;
 
@@ -297,7 +291,7 @@ body {
     z-index: -1;
 }
 
-/* PARTE INTERNA DA ABA */
+/* INTERIOR DA ABA */
 
 .aba::after {
     content: "";
@@ -319,38 +313,33 @@ body {
     );
 }
 
-/* =========================
+/* =================================
    ABERTURA
-========================= */
+================================= */
 
 .envelope.aberto {
     animation: none;
 }
 
-/*
-   A aba abre para cima.
-*/
+/* ABA SOBE */
 
 .envelope.aberto .aba {
     transform: rotateX(180deg);
 }
 
 /*
-   A folha começa a sair
-   DE DENTRO do envelope.
+   A CARTA SOBE DE DENTRO DO ENVELOPE.
 */
 
 .envelope.aberto .folha {
     opacity: 1;
 
-    transform: translateY(-155px);
+    transform: translateY(-115px);
 
-    transition-delay: .4s;
+    transition-delay: .3s;
 }
 
-/* =========================
-   TEXTO
-========================= */
+/* TEXTO */
 
 .instrucao {
     position: absolute;
@@ -360,7 +349,7 @@ body {
 
     transform: translateX(-50%);
 
-    color: #fff;
+    color: white;
 
     font-size: 24px;
 
@@ -369,9 +358,7 @@ body {
     white-space: nowrap;
 }
 
-/* =========================
-   CELULAR
-========================= */
+/* CELULAR */
 
 @media (max-width: 600px) {
 
@@ -381,7 +368,7 @@ body {
     }
 
     .envelope.aberto .folha {
-        transform: translateY(-110px);
+        transform: translateY(-90px);
     }
 
     .instrucao {
@@ -397,23 +384,23 @@ body {
 
     <div class="envelope" id="envelope">
 
-        <!-- FOLHA DENTRO DO ENVELOPE -->
+        <!-- CARTA DENTRO DO ENVELOPE -->
         <div class="folha"></div>
 
         <!-- CORPO -->
         <div class="corpo"></div>
 
-        <!-- PARTE INTERNA -->
+        <!-- INTERIOR -->
         <div class="interno"></div>
 
-        <!-- DOBRAS -->
+        <!-- LATERAIS -->
         <div class="esquerda"></div>
         <div class="direita"></div>
 
         <!-- FRENTE -->
         <div class="frente"></div>
 
-        <!-- ABA SUPERIOR -->
+        <!-- ABA -->
         <div class="aba"></div>
 
     </div>
@@ -429,9 +416,7 @@ body {
 const envelope = document.getElementById("envelope");
 
 envelope.addEventListener("click", function() {
-
     envelope.classList.add("aberto");
-
 });
 
 </script>
