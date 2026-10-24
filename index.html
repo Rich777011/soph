@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Uma cartinha pra você ❤️</title>
 
 <style>
@@ -14,12 +13,15 @@
 }
 
 body {
-    width: 100%;
     min-height: 100vh;
     overflow: hidden;
     font-family: "Comic Sans MS", "Segoe Print", cursive;
-    background: #8f171d;
+    background: #92191f;
 }
+
+/* =========================
+   TELA INICIAL
+========================= */
 
 .tela-inicial {
     width: 100%;
@@ -28,79 +30,260 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     background:
         repeating-linear-gradient(
             45deg,
-            rgba(255,255,255,0.04) 0px,
-            rgba(255,255,255,0.04) 40px,
-            rgba(80,0,0,0.04) 40px,
-            rgba(80,0,0,0.04) 80px
+            rgba(255,255,255,.035) 0px,
+            rgba(255,255,255,.035) 35px,
+            rgba(60,0,0,.035) 35px,
+            rgba(60,0,0,.035) 70px
         ),
-        #94191f;
+        #92191f;
 }
 
-.cartinha {
-    width: min(82vw, 430px);
+/* envelope */
+
+.envelope {
+    position: relative;
+    width: min(88vw, 500px);
+    height: min(65vw, 350px);
     cursor: pointer;
-    animation: balancar 2s ease-in-out infinite;
-    filter: drop-shadow(0 12px 12px rgba(0,0,0,0.25));
-    transition: transform 0.3s;
+    animation: balanco 2.2s ease-in-out infinite;
+    filter: drop-shadow(0 15px 15px rgba(0,0,0,.25));
 }
 
-.cartinha:hover {
-    transform: scale(1.03);
+.envelope:hover {
+    transform: scale(1.025);
 }
 
-@keyframes balancar {
+@keyframes balanco {
     0%, 100% {
         transform: rotate(-2deg) translateY(0);
     }
 
     50% {
-        transform: rotate(2deg) translateY(-10px);
+        transform: rotate(2deg) translateY(-8px);
     }
 }
 
+/* corpo vermelho do envelope */
+
+.envelope-fundo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 72%;
+
+    background: #c52b32;
+    border: 4px solid #8e1118;
+    border-radius: 10px;
+
+    z-index: 1;
+}
+
+/* aba superior */
+
+.envelope-aba {
+    position: absolute;
+    top: 5%;
+    left: 0;
+
+    width: 100%;
+    height: 55%;
+
+    background: #d7353c;
+    border: 4px solid #8e1118;
+
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+
+    transform-origin: top center;
+
+    z-index: 5;
+
+    transition:
+        transform 1s cubic-bezier(.2,.8,.2,1),
+        z-index .1s linear 1s;
+}
+
+/* papel */
+
+.papel {
+    position: absolute;
+
+    left: 8%;
+    bottom: 8%;
+
+    width: 84%;
+    height: 72%;
+
+    padding: 25px 22px;
+
+    background: #fffaf4;
+    border: 2px solid #d7bdb3;
+    border-radius: 5px;
+
+    z-index: 2;
+
+    transform: translateY(0);
+
+    transition:
+        transform 1.4s cubic-bezier(.2,.8,.2,1),
+        opacity .4s;
+
+    box-shadow: 0 5px 10px rgba(0,0,0,.12);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+/* Snoopy */
+
+.snoopy {
+    position: absolute;
+
+    width: 72%;
+    max-width: 350px;
+
+    left: 50%;
+    bottom: 4%;
+
+    transform: translateX(-50%);
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    filter: drop-shadow(0 5px 4px rgba(0,0,0,.15));
+
+    transition:
+        transform 1s ease,
+        opacity .6s;
+}
+
+/* coração */
+
+.coracao {
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    background: #e83a42;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%) rotate(-45deg);
+
+    z-index: 3;
+
+    border-radius: 8px;
+}
+
+.coracao::before,
+.coracao::after {
+    content: "";
+
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    background: #e83a42;
+
+    border-radius: 50%;
+}
+
+.coracao::before {
+    top: -32px;
+    left: 0;
+}
+
+.coracao::after {
+    left: 32px;
+    top: 0;
+}
+
+/* texto de entrada */
+
 .instrucao {
-    margin-top: 45px;
+    margin-top: 42px;
+
     color: #fff4ef;
+
     font-size: clamp(25px, 6vw, 40px);
+
     text-align: center;
+
     font-style: italic;
 }
 
-/* CARTA ABERTA */
+/* =========================
+   ENVELOPE ABERTO
+========================= */
 
-.carta-aberta {
+.envelope.aberto {
+    animation: nenhuma;
+}
+
+.envelope.aberto .envelope-aba {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope.aberto .papel {
+    transform: translateY(-145px);
+}
+
+.envelope.aberto .snoopy {
+    transform: translateX(-50%) translateY(5px);
+}
+
+/* =========================
+   CARTA
+========================= */
+
+.carta {
+    position: fixed;
+
+    inset: 0;
+
     display: none;
-    width: 100%;
-    min-height: 100vh;
+
     overflow-y: auto;
-    padding: 45px 20px 70px;
+
+    padding: 35px 18px 60px;
 
     background:
         repeating-linear-gradient(
             45deg,
-            rgba(255,255,255,0.18) 0px,
-            rgba(255,255,255,0.18) 35px,
-            rgba(255,120,120,0.08) 35px,
-            rgba(255,120,120,0.08) 70px
+            rgba(255,255,255,.16) 0px,
+            rgba(255,255,255,.16) 35px,
+            rgba(255,100,100,.06) 35px,
+            rgba(255,100,100,.06) 70px
         ),
-        #f4aaa8;
+        #f2aaa7;
 
     color: #702126;
+
     text-align: center;
 }
 
-.carta-aberta.mostrar {
+.carta.mostrar {
     display: block;
-    animation: aparecer 0.8s ease;
+    animation: aparecer .8s ease;
 }
 
 @keyframes aparecer {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(25px);
     }
 
     to {
@@ -116,27 +299,35 @@ body {
 
 .titulo {
     display: inline-block;
+
+    margin-bottom: 35px;
     padding: 10px 25px;
-    margin-bottom: 40px;
 
     background: #fff1ed;
+
     border: 2px solid #d38c8d;
     border-radius: 40px;
 
     font-size: clamp(22px, 5vw, 32px);
-    box-shadow: 0 5px 12px rgba(80,20,20,0.12);
+
+    box-shadow: 0 5px 12px rgba(80,20,20,.12);
 }
 
 .texto-inicial {
     font-size: clamp(25px, 6vw, 40px);
+
     line-height: 1.45;
+
     font-weight: bold;
+
     margin-bottom: 35px;
 }
 
 .texto {
     font-size: clamp(20px, 5vw, 30px);
+
     line-height: 1.65;
+
     font-weight: bold;
 }
 
@@ -144,79 +335,10 @@ body {
     margin-bottom: 25px;
 }
 
-/* animação da carta */
+.voltar {
+    margin-top: 25px;
 
-.envelope {
-    width: min(85vw, 500px);
-    height: 330px;
-    margin: 20px auto 45px;
-    position: relative;
-    perspective: 1000px;
-}
-
-.envelope-fundo {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: 100%;
-    height: 70%;
-
-    background: #f5d4c8;
-    border: 3px solid #c88c82;
-    border-radius: 8px;
-}
-
-.folha {
-    position: absolute;
-    z-index: 2;
-
-    left: 7%;
-    bottom: 8%;
-
-    width: 86%;
-    height: 75%;
-
-    background: #fffaf5;
-    border: 2px solid #d9b5a9;
-    border-radius: 6px;
-
-    padding: 25px;
-
-    transform: translateY(0);
-    transition: transform 1.4s ease;
-}
-
-.folha.subir {
-    transform: translateY(-125px);
-}
-
-.tampa {
-    position: absolute;
-    z-index: 4;
-
-    top: 28%;
-    left: 0;
-
-    width: 100%;
-    height: 45%;
-
-    background: #edc5ba;
-
-    clip-path: polygon(0 0, 50% 100%, 100% 0);
-
-    transform-origin: top center;
-    transition: transform 1s ease;
-}
-
-.tampa.abrir {
-    transform: rotateX(180deg);
-}
-
-.botao-voltar {
-    margin-top: 30px;
-    padding: 10px 20px;
+    padding: 10px 22px;
 
     border: none;
     border-radius: 25px;
@@ -225,31 +347,67 @@ body {
     color: #702126;
 
     font-family: inherit;
+
     font-size: 18px;
 
     cursor: pointer;
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .envelope {
+        width: 88vw;
+        height: 58vw;
+        max-height: 330px;
+    }
+
+    .snoopy {
+        width: 70%;
+    }
+
+    .instrucao {
+        margin-top: 30px;
+        font-size: 27px;
+    }
+
+    .envelope.aberto .papel {
+        transform: translateY(-105px);
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- TELA INICIAL -->
+<!-- =========================
+     ENTRADA
+========================= -->
 
 <section class="tela-inicial" id="inicio">
 
-    <!--
-    IMPORTANTE:
-    Depois vamos colocar aqui a imagem do Snoopy/cartinha
-    que aparece no seu vídeo.
-    -->
+    <div class="envelope" id="envelope">
 
-    <img
-        src="Snoopy abraçando um coração vermelho.png"
-        class="cartinha"
-        id="botaoCarta"
-        alt="Snoopy segurando uma cartinha"
-    >
+        <div class="envelope-fundo"></div>
+
+        <div class="papel">
+            <span>💌</span>
+        </div>
+
+        <div class="coracao"></div>
+
+        <img
+            src="Snoop abraçando um coração vermelho .png"
+            class="snoopy"
+            alt="Snoopy"
+        >
+
+        <div class="envelope-aba"></div>
+
+    </div>
 
     <div class="instrucao">
         clica aqui soph
@@ -258,9 +416,11 @@ body {
 </section>
 
 
-<!-- CARTA ABERTA -->
+<!-- =========================
+     CARTA
+========================= -->
 
-<section class="carta-aberta" id="carta">
+<section class="carta" id="carta">
 
     <div class="conteudo">
 
@@ -273,24 +433,6 @@ body {
             <br>
             queria dizer pra vcc
         </div>
-
-
-        <!-- ENVELOPE -->
-
-        <div class="envelope">
-
-            <div class="envelope-fundo"></div>
-
-            <div class="folha" id="folha">
-                💌
-            </div>
-
-            <div class="tampa" id="tampa"></div>
-
-        </div>
-
-
-        <!-- TEXTO DA CARTA -->
 
         <div class="texto">
 
@@ -308,12 +450,12 @@ body {
 
             <p>
                 sou muito grato por vc fazer parte da minha
-                vida e não quero q isso acabe nunca.
+                vida e não quero q isso acabe.
             </p>
 
         </div>
 
-        <button class="botao-voltar" id="voltar">
+        <button class="voltar" id="voltar">
             voltar
         </button>
 
@@ -322,50 +464,47 @@ body {
 </section>
 
 
-<!-- MÚSICA -->
+<!-- =========================
+     MÚSICA
+========================= -->
 
 <audio
     id="musica"
     src="musica-5s.mp3"
-    loop
-    preload="auto">
+    loop>
 </audio>
 
 
 <script>
 
-const botaoCarta = document.getElementById("botaoCarta");
+const envelope = document.getElementById("envelope");
 const inicio = document.getElementById("inicio");
 const carta = document.getElementById("carta");
 const musica = document.getElementById("musica");
 
-const tampa = document.getElementById("tampa");
-const folha = document.getElementById("folha");
+envelope.addEventListener("click", function() {
 
-botaoCarta.addEventListener("click", function() {
-
-    inicio.style.display = "none";
-
-    carta.classList.add("mostrar");
-
-    setTimeout(function() {
-        tampa.classList.add("abrir");
-    }, 300);
-
-    setTimeout(function() {
-        folha.classList.add("subir");
-    }, 800);
+    envelope.classList.add("aberto");
 
     /*
-    A música começa quando a cartinha é aberta.
-    O arquivo será colocado em loop.
+      O envelope abre primeiro.
+      Depois o papel sobe.
+      Depois mostramos a carta completa.
     */
 
-    musica.currentTime = 0;
+    setTimeout(function() {
 
-    musica.play().catch(function() {
-        console.log("O navegador bloqueou a reprodução automática.");
-    });
+        inicio.style.display = "none";
+
+        carta.classList.add("mostrar");
+
+        musica.currentTime = 0;
+
+        musica.play().catch(function() {
+            console.log("Reprodução aguardando interação do usuário.");
+        });
+
+    }, 1500);
 
 });
 
@@ -375,10 +514,9 @@ document.getElementById("voltar").addEventListener("click", function() {
     musica.pause();
     musica.currentTime = 0;
 
-    tampa.classList.remove("abrir");
-    folha.classList.remove("subir");
-
     carta.classList.remove("mostrar");
+
+    envelope.classList.remove("aberto");
 
     setTimeout(function() {
         inicio.style.display = "flex";
