@@ -24,13 +24,17 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* =========================
+   FUNDO
+========================= */
+
 .inicio {
     width: 100%;
     height: 100vh;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     background:
         repeating-linear-gradient(
@@ -61,6 +65,7 @@ body {
 }
 
 @keyframes flutuar {
+
     0%, 100% {
         transform: translateY(0) rotate(-1deg);
     }
@@ -71,57 +76,40 @@ body {
 }
 
 /* =========================
-   BASE INTEIRA
+   CORPO EXTERNO
 ========================= */
 
-.base {
-    position: absolute;
-
-    inset: 0;
-
-    background: #cf3039;
-
-    border: 5px solid #741017;
-
-    border-radius: 10px;
-
-    z-index: 1;
-}
-
-/*
-   Esta camada fecha completamente
-   a abertura do envelope.
-*/
-
-.fechamento {
+.corpo {
     position: absolute;
 
     left: 0;
     top: 0;
 
     width: 100%;
-    height: 72%;
+    height: 100%;
 
-    background: #d9343d;
+    background: #cf3039;
 
-    border-radius: 6px 6px 0 0;
+    border: 5px solid #741017;
 
-    z-index: 4;
+    border-radius: 11px;
+
+    z-index: 1;
 }
 
 /* =========================
-   FOLHA ESCONDIDA
+   FOLHA
+   ESCONDIDA DENTRO
 ========================= */
 
 .folha {
     position: absolute;
 
     left: 8%;
+    bottom: 8%;
 
     width: 84%;
     height: 78%;
-
-    bottom: 10%;
 
     background: #fffaf5;
 
@@ -131,15 +119,19 @@ body {
 
     box-shadow: 0 5px 12px rgba(0,0,0,.18);
 
-    z-index: 3;
+    z-index: 2;
+
+    /*
+      Totalmente invisível enquanto fechado.
+    */
 
     opacity: 0;
 
     transform: translateY(20px);
 
     transition:
-        transform 1.4s cubic-bezier(.2,.8,.2,1),
-        opacity .2s ease;
+        transform 1.35s cubic-bezier(.2,.8,.2,1),
+        opacity .15s ease;
 }
 
 .folha::after {
@@ -149,23 +141,94 @@ body {
 }
 
 /* =========================
-   FRENTE DO ENVELOPE
+   PARTE INTERNA VERMELHA
+   FECHA TODA A ABERTURA
 ========================= */
 
-.frente {
+.interno {
     position: absolute;
 
-    left: 0;
-    bottom: 0;
+    left: 5px;
+    top: 5px;
 
-    width: 100%;
-    height: 67%;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+
+    background: #d9343d;
+
+    border-radius: 6px;
+
+    z-index: 3;
+}
+
+/* =========================
+   DOBRA ESQUERDA
+========================= */
+
+.esquerda {
+    position: absolute;
+
+    left: 5px;
+    bottom: 5px;
+
+    width: calc(50% - 5px);
+    height: 68%;
 
     background: #d9343d;
 
     clip-path: polygon(
         0 0,
-        50% 58%,
+        100% 50%,
+        100% 100%,
+        0 100%
+    );
+
+    z-index: 5;
+}
+
+/* =========================
+   DOBRA DIREITA
+========================= */
+
+.direita {
+    position: absolute;
+
+    right: 5px;
+    bottom: 5px;
+
+    width: calc(50% - 5px);
+    height: 68%;
+
+    background: #d9343d;
+
+    clip-path: polygon(
+        0 50%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+
+    z-index: 5;
+}
+
+/* =========================
+   FRENTE
+========================= */
+
+.frente {
+    position: absolute;
+
+    left: 5px;
+    bottom: 5px;
+
+    width: calc(100% - 10px);
+    height: 58%;
+
+    background: #d9343d;
+
+    clip-path: polygon(
+        0 0,
+        50% 62%,
         100% 0,
         100% 100%,
         0 100%
@@ -181,19 +244,25 @@ body {
 .aba {
     position: absolute;
 
-    left: -1%;
-    top: 0;
-
-    width: 102%;
-
     /*
-      Mais baixa para fechar
-      completamente as laterais.
+      A aba ocupa praticamente toda
+      a parte superior do envelope.
     */
 
-    height: 72%;
+    left: 2px;
+    top: 2px;
+
+    width: calc(100% - 4px);
+
+    height: 82%;
 
     background: #e13a43;
+
+    /*
+      O triângulo é MUITO mais baixo.
+      A ponta chega ao centro da frente,
+      fechando os dois lados.
+    */
 
     clip-path: polygon(
         0 0,
@@ -201,17 +270,17 @@ body {
         50% 100%
     );
 
-    z-index: 8;
+    border-radius: 7px 7px 0 0;
+
+    z-index: 10;
 
     transform-origin: top center;
 
     transition:
-        transform 1s cubic-bezier(.2,.8,.2,1);
+        transform 1.05s cubic-bezier(.2,.8,.2,1);
 }
 
-/*
-   Borda da aba.
-*/
+/* Borda da aba */
 
 .aba::before {
     content: "";
@@ -234,6 +303,8 @@ body {
 
     z-index: -1;
 }
+
+/* Parte interna da aba */
 
 .aba::after {
     content: "";
@@ -263,20 +334,29 @@ body {
     animation: none;
 }
 
+/*
+   A aba sobe.
+*/
+
 .envelope.aberto .aba {
     transform: rotateX(180deg);
 }
+
+/*
+   A folha só aparece depois
+   que a aba começou a abrir.
+*/
 
 .envelope.aberto .folha {
     opacity: 1;
 
     transform: translateY(-155px);
 
-    transition-delay: .4s;
+    transition-delay: .35s;
 }
 
 /* =========================
-   INSTRUÇÃO
+   TEXTO
 ========================= */
 
 .instrucao {
@@ -287,7 +367,7 @@ body {
 
     transform: translateX(-50%);
 
-    color: white;
+    color: #fff;
 
     font-size: 24px;
 
@@ -324,19 +404,23 @@ body {
 
     <div class="envelope" id="envelope">
 
-        <!-- folha que está dentro -->
+        <!-- FOLHA ESCONDIDA DENTRO -->
         <div class="folha"></div>
 
-        <!-- base fechada -->
-        <div class="base"></div>
+        <!-- CORPO -->
+        <div class="corpo"></div>
 
-        <!-- fechamento vermelho -->
-        <div class="fechamento"></div>
+        <!-- PARTE INTERNA -->
+        <div class="interno"></div>
 
-        <!-- frente -->
+        <!-- DOBRAS -->
+        <div class="esquerda"></div>
+        <div class="direita"></div>
+
+        <!-- FRENTE -->
         <div class="frente"></div>
 
-        <!-- aba superior -->
+        <!-- ABA SUPERIOR -->
         <div class="aba"></div>
 
     </div>
