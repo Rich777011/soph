@@ -129,14 +129,6 @@ body {
 
     height: 78%;
 
-    /*
-       A carta começa BEM DENTRO
-       do envelope.
-
-       Não existe parte visível
-       antes do clique.
-    */
-
     bottom: -62%;
 
     background: #fffaf5;
@@ -352,7 +344,6 @@ body {
 ========================= */
 
 .envelope.aberto {
-
     animation: none;
 }
 
@@ -372,13 +363,6 @@ body {
 
 .envelope.aberto .carta {
 
-    /*
-       PRIMEIRA ETAPA:
-       exatamente como estava.
-       A carta começa dentro
-       e aparece somente a pontinha.
-    */
-
     bottom: 22%;
 
     transition:
@@ -396,16 +380,6 @@ body {
     overflow: visible;
 }
 
-
-/*
-   A carta continua exatamente
-   no centro do envelope.
-
-   NÃO vai para a direita.
-   NÃO vai para a esquerda.
-
-   Ela sobe reta.
-*/
 
 .envelope.carta-saindo .carta {
 
@@ -430,39 +404,46 @@ body {
 }
 
 
-/*
-   AGORA ELA CONTINUA SUBINDO
-   E CRESCE ATÉ OCUPAR A TELA.
-*/
+/* ==================================================
+   CARTA FINAL
+   CENTRALIZADA NA TELA
+================================================== */
 
 .envelope.carta-tela .carta {
 
     left: 50%;
 
-    bottom: 0;
+    /*
+       Desce um pouco em relação
+       à versão anterior para ficar
+       bem centralizada.
+    */
+
+    top: 50%;
+
+    bottom: auto;
 
     width: 100vw;
 
-    height: 100vh;
+    height: 90vh;
 
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
 
     border-radius: 0;
 
     z-index: 100;
 
     transition:
-        bottom 3.5s cubic-bezier(.2,.8,.2,1),
+        top 3.5s cubic-bezier(.2,.8,.2,1),
         width 3.5s cubic-bezier(.2,.8,.2,1),
         height 3.5s cubic-bezier(.2,.8,.2,1),
         border-radius 1s ease;
 }
 
 
-/*
+/* =========================
    ENVELOPE DESAPARECE
-   QUANDO A CARTA CHEGA.
-*/
+========================= */
 
 .envelope.carta-tela .corpo,
 .envelope.carta-tela .esquerda,
@@ -542,13 +523,15 @@ body {
 
         left: 50%;
 
-        bottom: 0;
+        top: 50%;
+
+        bottom: auto;
 
         width: 100vw;
 
-        height: 100vh;
+        height: 90vh;
 
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
     }
 
     .instrucao {
@@ -633,8 +616,8 @@ envelope.addEventListener(
 
         /*
            PRIMEIRA ETAPA:
-           espera a pontinha terminar
-           de sair.
+           a pontinha sai exatamente
+           como antes.
         */
 
         setTimeout(function() {
@@ -646,8 +629,8 @@ envelope.addEventListener(
 
             /*
                SEGUNDA ETAPA:
-               a carta sobe reta e
-               cresce até ocupar a tela.
+               a carta continua subindo
+               reta e crescendo.
             */
 
             setTimeout(function() {
