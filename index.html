@@ -98,7 +98,6 @@ body {
 
 /* =========================
    ÁREA INTERNA
-   ESCONDE A CARTA
 ========================= */
 
 .interno {
@@ -144,22 +143,6 @@ body {
 
     transition:
         bottom 2.8s cubic-bezier(.25,.75,.2,1);
-}
-
-
-.carta::after {
-
-    content: "💌";
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    font-size: 42px;
 }
 
 
@@ -358,7 +341,7 @@ body {
 
 
 /* =========================
-   CARTA SAI DEVAGAR
+   PRIMEIRA SAÍDA DA CARTA
 ========================= */
 
 .envelope.aberto .carta {
@@ -372,7 +355,7 @@ body {
 
 /* ==================================================
    SEGUNDA ETAPA
-   CARTA SAI RETA PARA CIMA E CRESCE
+   CARTA SAI RETA
 ================================================== */
 
 .envelope.carta-saindo .interno {
@@ -406,38 +389,159 @@ body {
 
 /* ==================================================
    CARTA FINAL
-   CENTRALIZADA NA TELA
+   OCUPA A TELA INTEIRA
 ================================================== */
 
 .envelope.carta-tela .carta {
 
+    position: fixed;
+
     left: 50%;
-
-    /*
-       Desce um pouco em relação
-       à versão anterior para ficar
-       bem centralizada.
-    */
-
     top: 50%;
 
     bottom: auto;
 
     width: 100vw;
-
-    height: 90vh;
+    height: 100vh;
 
     transform: translate(-50%, -50%);
 
+    border: none;
+
     border-radius: 0;
 
+    background: #f58a91;
+
     z-index: 100;
+
+    box-shadow: none;
 
     transition:
         top 3.5s cubic-bezier(.2,.8,.2,1),
         width 3.5s cubic-bezier(.2,.8,.2,1),
         height 3.5s cubic-bezier(.2,.8,.2,1),
         border-radius 1s ease;
+}
+
+
+/* =========================
+   CONTEÚDO DA CARTA
+========================= */
+
+.conteudo-carta {
+
+    width: 100%;
+    height: 100%;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding:
+        45px 28px 80px;
+
+    -webkit-overflow-scrolling: touch;
+
+    overscroll-behavior-y: contain;
+
+    scrollbar-width: none;
+}
+
+.conteudo-carta::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================
+   TEXTO
+========================= */
+
+.texto-carta {
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: #68131b;
+
+    font-family:
+        "Georgia",
+        "Times New Roman",
+        serif;
+
+    font-size: 20px;
+
+    line-height: 1.75;
+
+    text-align: left;
+}
+
+
+.texto-carta p {
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+.titulo-carta {
+
+    text-align: center;
+
+    font-family:
+        "Georgia",
+        "Times New Roman",
+        serif;
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    color: #68131b;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   SIGNIFICADOS
+========================= */
+
+.significados {
+
+    margin-top: 45px;
+
+    padding-top: 30px;
+
+    border-top:
+        2px solid rgba(104,19,27,.25);
+}
+
+
+.significados h2 {
+
+    font-family:
+        "Georgia",
+        "Times New Roman",
+        serif;
+
+    font-size: 25px;
+
+    margin-bottom: 25px;
+
+    color: #68131b;
+}
+
+
+.significados p {
+
+    margin-bottom: 18px;
+
+    font-size: 17px;
+
+    line-height: 1.6;
 }
 
 
@@ -459,7 +563,7 @@ body {
 
 
 /* =========================
-   TEXTO
+   INSTRUÇÃO
 ========================= */
 
 .instrucao {
@@ -516,22 +620,50 @@ body {
 
         height: 78%;
 
-        transform: translateX(-50%);
+        transform:
+            translateX(-50%);
     }
 
     .envelope.carta-tela .carta {
 
         left: 50%;
-
         top: 50%;
 
         bottom: auto;
 
         width: 100vw;
+        height: 100vh;
 
-        height: 90vh;
+        transform:
+            translate(-50%, -50%);
+    }
 
-        transform: translate(-50%, -50%);
+    .conteudo-carta {
+
+        padding:
+            35px 23px 70px;
+    }
+
+    .texto-carta {
+
+        font-size: 19px;
+
+        line-height: 1.7;
+    }
+
+    .titulo-carta {
+
+        font-size: 27px;
+    }
+
+    .significados h2 {
+
+        font-size: 23px;
+    }
+
+    .significados p {
+
+        font-size: 16px;
     }
 
     .instrucao {
@@ -559,9 +691,144 @@ body {
 
         <div class="interno">
 
-            <!-- CARTA DENTRO DO ENVELOPE -->
+            <!-- CARTA -->
 
-            <div class="carta"></div>
+            <div class="carta">
+
+                <div class="conteudo-carta">
+
+                    <div class="texto-carta">
+
+                        <div class="titulo-carta">
+                            Para você, meu amor ❤️
+                        </div>
+
+
+                        <p>
+                            é uma coisinha besta mas q eu qria dizer pra vcc
+                        </p>
+
+
+                        <p>
+                            amor a gnt não ta a tanto tempo assim juntos,
+                            mas acho q nunca compartilhei tanto algo como
+                            compartilho com você, ja faz pelo menos 6 meses
+                            q vc faz parte da minha vida, e q não deixo de
+                            reparar em você 1 dia sequer, sou muito grato
+                            por vc fazer parte da minha vida e não quero q
+                            isso acabe nunca.
+                        </p>
+
+
+                        <p>
+                            desde q conversamos a primeira vez, ja me
+                            apaixonei totalmente.. cada palavra que saia
+                            da sua boca, cada gesto, olhar, ja fazia eu
+                            querer me aproximar cada vez mais.
+                        </p>
+
+
+                        <p>
+                            Hoje poder te chamar se amor, te abraçar,
+                            receber seu carinho, é quase inacreditável,
+                            pedi por muito tempo pra Deus algo que
+                            iluminasse minha vida e me fizesse uma pessoa
+                            melhor, e hoje tendo você ao meu lado fazendo
+                            meus dias mais felizes, precebo que Deus me
+                            ouviu e me abençoou.
+                        </p>
+
+
+                        <p>
+                            não tenho palavras pra dizer o quanto eu te
+                            amo e o quanto admiro a pessoa que você é.
+                            comentei esses dias com você q o "eu te amo"
+                            estava muito pequeno para oque eu realmente
+                            sinto, ent acabei procurando palavras que
+                            fossem um pouco mais a fundoo, bomm...
+                        </p>
+
+
+                        <p>
+                            falar que "eu te amo" ficou pequeno demais
+                            pro tamanho do amor q tenho, o que eu sinto
+                            por você é uma coisa inefável e imorredouro,
+                            como uma amálgama perfeita que grudou nossas
+                            vidas de um jeito indissolúvel. Nosso laço não
+                            tem tanto tempo, mas já virou algo eviterno e
+                            sempiterno..
+                        </p>
+
+
+                        <p>
+                            acho q é isso amor, to com muita sdd de vc,
+                            e te amo mto, bjao❤️
+                        </p>
+
+
+                        <!-- SIGNIFICADOS -->
+
+                        <div class="significados">
+
+                            <h2>
+                                Algumas palavras que usei ❤️
+                            </h2>
+
+
+                            <p>
+                                <strong>Imorredouro:</strong>
+                                Que não morre; imortal, eterno, que dura
+                                para sempre.
+                            </p>
+
+
+                            <p>
+                                <strong>Eviterno:</strong>
+                                Tem um significado muito bonito na filosofia:
+                                refere-se a algo que teve um início mas que
+                                nunca terá um fim.
+                            </p>
+
+
+                            <p>
+                                <strong>Sempiterno:</strong>
+                                É aquilo que é eterno tanto para o passado
+                                quanto para o futuro, algo que parece que
+                                sempre existiu e que vai durar para sempre,
+                                sem interrupção.
+                            </p>
+
+
+                            <p>
+                                <strong>Inefável:</strong>
+                                Algo que é tão grandioso, belo ou intenso
+                                que não pode ser expresso em palavras.
+                                É um sentimento que ultrapassa a capacidade
+                                da linguagem humana.
+                            </p>
+
+
+                            <p>
+                                <strong>Amálgama:</strong>
+                                é uma mistura perfeita, fusão ou união
+                                completa de elementos diferentes que se
+                                tornam uma coisa só.
+                            </p>
+
+
+                            <p>
+                                <strong>Indissolúvel:</strong>
+                                Que não se pode dissolver, separar ou
+                                destruir. É um vínculo inquebrável.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -616,8 +883,7 @@ envelope.addEventListener(
 
         /*
            PRIMEIRA ETAPA:
-           a pontinha sai exatamente
-           como antes.
+           a pontinha sai.
         */
 
         setTimeout(function() {
@@ -629,7 +895,7 @@ envelope.addEventListener(
 
             /*
                SEGUNDA ETAPA:
-               a carta continua subindo
+               a carta continua saindo
                reta e crescendo.
             */
 
