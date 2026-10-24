@@ -3,16 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Cartinha ❤️</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
 }
@@ -29,6 +32,8 @@ body {
 ========================= */
 
 .inicio {
+    position: relative;
+
     width: 100%;
     height: 100vh;
 
@@ -60,28 +65,40 @@ body {
 
     cursor: pointer;
 
-    filter: drop-shadow(0 18px 16px rgba(0,0,0,.30));
+    filter:
+        drop-shadow(
+            0 18px 16px rgba(0,0,0,.30)
+        );
 
-    animation: flutuar 2.5s ease-in-out infinite;
+    animation:
+        flutuar 2.5s ease-in-out infinite;
+
+    z-index: 10;
 }
+
 
 @keyframes flutuar {
 
-    0%, 100% {
-        transform: translateY(0) rotate(-1deg);
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(-1deg);
     }
 
     50% {
-        transform: translateY(-7px) rotate(1deg);
+        transform:
+            translateY(-7px)
+            rotate(1deg);
     }
 }
 
 
 /* =========================
-   CORPO DO ENVELOPE
+   CORPO
 ========================= */
 
 .corpo {
+
     position: absolute;
 
     inset: 0;
@@ -97,34 +114,11 @@ body {
 
 
 /* =========================
-   ÁREA INTERNA
-========================= */
-
-.interno {
-    position: absolute;
-
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
-
-    height: 72%;
-
-    /*
-       A carta pode sair pela abertura
-       sem ser cortada.
-    */
-
-    overflow: visible;
-
-    z-index: 4;
-}
-
-
-/* =========================
    CARTA
 ========================= */
 
 .carta {
+
     position: absolute;
 
     left: 10%;
@@ -134,11 +128,11 @@ body {
     height: 78%;
 
     /*
-       TOTALMENTE DENTRO DO ENVELOPE
-       ANTES DO CLIQUE.
+       COMEÇA COMPLETAMENTE
+       ESCONDIDA DENTRO DO ENVELOPE
     */
 
-    bottom: -62%;
+    bottom: -45%;
 
     background: #fffaf5;
 
@@ -149,22 +143,24 @@ body {
     box-shadow:
         0 5px 12px rgba(0,0,0,.18);
 
-    z-index: 5;
-
-    /*
-       Fica escondida atrás da frente
-       enquanto o envelope está fechado.
-    */
+    z-index: 4;
 
     opacity: 0;
 
+    transform:
+        scale(1)
+        translateY(0);
+
     transition:
         bottom 2.8s cubic-bezier(.22,.75,.2,1),
-        opacity .2s ease;
+        opacity .25s ease;
 }
 
 
+/* coração da carta */
+
 .carta::after {
+
     content: "💌";
 
     position: absolute;
@@ -184,6 +180,7 @@ body {
 ========================= */
 
 .esquerda {
+
     position: absolute;
 
     left: 5px;
@@ -212,6 +209,7 @@ body {
 ========================= */
 
 .direita {
+
     position: absolute;
 
     right: 5px;
@@ -236,10 +234,11 @@ body {
 
 
 /* =========================
-   FRENTE DO ENVELOPE
+   FRENTE
 ========================= */
 
 .frente {
+
     position: absolute;
 
     left: 5px;
@@ -271,6 +270,7 @@ body {
 ========================= */
 
 .aba {
+
     position: absolute;
 
     left: 2px;
@@ -302,9 +302,10 @@ body {
 }
 
 
-/* BORDA DA ABA */
+/* borda */
 
 .aba::before {
+
     content: "";
 
     position: absolute;
@@ -324,9 +325,10 @@ body {
 }
 
 
-/* INTERIOR DA ABA */
+/* interior */
 
 .aba::after {
+
     content: "";
 
     position: absolute;
@@ -350,43 +352,85 @@ body {
 
 
 /* =========================
-   ENVELOPE ABERTO
+   PRIMEIRA ETAPA
+   CARTA SAI DO ENVELOPE
 ========================= */
 
-.envelope.aberto {
-    animation: none;
-}
-
-
-/* ABA ABRE */
-
 .envelope.aberto .aba {
+
     transform:
         rotateX(180deg);
 }
 
 
-/* =========================
-   CARTA SAINDO
-========================= */
-
 .envelope.aberto .carta {
-
-    /*
-       Só agora ela aparece.
-       Ela começa dentro do envelope
-       e vai subindo lentamente.
-    */
 
     opacity: 1;
 
-    bottom: 58%;
+    /*
+       Ela sobe devagar.
+       Primeiro aparece somente
+       a pontinha.
+    */
+
+    bottom: 60%;
 
     z-index: 20;
 
     transition:
         bottom 2.8s cubic-bezier(.22,.75,.2,1),
-        opacity .2s ease;
+        opacity .25s ease;
+}
+
+
+/* =========================
+   SEGUNDA ETAPA
+   CARTA TOMA A TELA
+========================= */
+
+.envelope.carta-grande .carta {
+
+    position: fixed;
+
+    left: 5vw;
+    top: 5vh;
+
+    width: 90vw;
+    height: 90vh;
+
+    bottom: auto;
+
+    transform:
+        scale(1);
+
+    z-index: 100;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.35);
+
+    transition:
+        width 1.2s ease,
+        height 1.2s ease,
+        left 1.2s ease,
+        top 1.2s ease,
+        border-radius 1.2s ease;
+}
+
+
+/* envelope desaparece */
+
+.envelope.carta-grande .corpo,
+.envelope.carta-grande .frente,
+.envelope.carta-grande .esquerda,
+.envelope.carta-grande .direita,
+.envelope.carta-grande .aba {
+
+    opacity: 0;
+
+    transition:
+        opacity .8s ease;
 }
 
 
@@ -394,11 +438,51 @@ body {
    TEXTO
 ========================= */
 
+.carta-texto {
+
+    position: absolute;
+
+    left: 8%;
+    right: 8%;
+
+    top: 10%;
+    bottom: 10%;
+
+    overflow-y: auto;
+
+    color: #64151a;
+
+    font-size: 21px;
+
+    line-height: 1.6;
+
+    text-align: left;
+
+    opacity: 0;
+
+    transition:
+        opacity .8s ease;
+}
+
+
+.envelope.carta-grande .carta-texto {
+
+    opacity: 1;
+
+    transition-delay:
+        1s;
+}
+
+
+/* =========================
+   INSTRUÇÃO
+========================= */
+
 .instrucao {
+
     position: absolute;
 
     left: 50%;
-
     bottom: 7%;
 
     transform:
@@ -411,6 +495,17 @@ body {
     font-style: italic;
 
     white-space: nowrap;
+
+    z-index: 50;
+
+    transition:
+        opacity .5s ease;
+}
+
+
+.envelope.carta-grande + .instrucao {
+
+    opacity: 0;
 }
 
 
@@ -421,16 +516,16 @@ body {
 @media (max-width: 600px) {
 
     .envelope {
+
         width: 90vw;
         height: 61vw;
     }
 
-    .envelope.aberto .carta {
-        bottom: 52%;
-    }
+    .carta-texto {
 
-    .instrucao {
-        font-size: 22px;
+        font-size: 17px;
+
+        line-height: 1.55;
     }
 }
 
@@ -442,35 +537,59 @@ body {
 
 <section class="inicio">
 
+
     <div
         class="envelope"
         id="envelope"
     >
 
+
         <!-- CARTA -->
-        <div class="interno">
-            <div class="carta"></div>
+
+        <div class="carta">
+
+            <div class="carta-texto">
+
+                <p>
+                    Seu texto vai aparecer aqui.
+                </p>
+
+            </div>
+
         </div>
 
+
         <!-- CORPO -->
+
         <div class="corpo"></div>
 
+
         <!-- LATERAIS -->
+
         <div class="esquerda"></div>
+
         <div class="direita"></div>
 
+
         <!-- FRENTE -->
+
         <div class="frente"></div>
 
-        <!-- ABA SUPERIOR -->
+
+        <!-- ABA -->
+
         <div class="aba"></div>
+
 
     </div>
 
 
     <div class="instrucao">
+
         clica aqui soph
+
     </div>
+
 
 </section>
 
@@ -480,11 +599,43 @@ body {
 const envelope =
     document.getElementById("envelope");
 
+
+let aberto = false;
+
+
 envelope.addEventListener(
     "click",
     function() {
 
-        envelope.classList.add("aberto");
+        if (!aberto) {
+
+            aberto = true;
+
+            /*
+               PRIMEIRO:
+               abre o envelope e
+               começa a tirar a carta.
+            */
+
+            envelope.classList.add("aberto");
+
+
+            /*
+               DEPOIS que a carta
+               terminou de sair,
+               ela cresce e ocupa
+               a tela.
+            */
+
+            setTimeout(function() {
+
+                envelope.classList.add(
+                    "carta-grande"
+                );
+
+            }, 3000);
+
+        }
 
     }
 );
