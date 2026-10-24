@@ -6,6 +6,7 @@
 <title>Cartinha ❤️</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -19,7 +20,7 @@ html, body {
 
 body {
     overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: Georgia, serif;
     background: #921820;
 }
 
@@ -341,7 +342,7 @@ body {
 
 
 /* =========================
-   PRIMEIRA SAÍDA DA CARTA
+   PRIMEIRA SAÍDA
 ========================= */
 
 .envelope.aberto .carta {
@@ -353,10 +354,9 @@ body {
 }
 
 
-/* ==================================================
-   SEGUNDA ETAPA
-   CARTA SAI RETA
-================================================== */
+/* =========================
+   CARTA SAINDO
+========================= */
 
 .envelope.carta-saindo .interno {
 
@@ -376,7 +376,8 @@ body {
 
     height: 78%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     z-index: 20;
 
@@ -387,10 +388,9 @@ body {
 }
 
 
-/* ==================================================
-   CARTA FINAL
-   OCUPA A TELA INTEIRA
-================================================== */
+/* =========================
+   CARTA NA TELA
+========================= */
 
 .envelope.carta-tela .carta {
 
@@ -404,13 +404,14 @@ body {
     width: 100vw;
     height: 100vh;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
     border: none;
 
     border-radius: 0;
 
-    background: #f58a91;
+    background: #d94b59;
 
     z-index: 100;
 
@@ -425,7 +426,7 @@ body {
 
 
 /* =========================
-   CONTEÚDO DA CARTA
+   CONTEÚDO
 ========================= */
 
 .conteudo-carta {
@@ -437,7 +438,7 @@ body {
     overflow-x: hidden;
 
     padding:
-        45px 28px 80px;
+        55px 30px 90px;
 
     -webkit-overflow-scrolling: touch;
 
@@ -452,56 +453,38 @@ body {
 
 
 /* =========================
-   TEXTO
+   TEXTO PRINCIPAL
 ========================= */
 
 .texto-carta {
 
-    max-width: 650px;
+    max-width: 700px;
 
     margin: 0 auto;
 
-    color: #68131b;
+    color: #ffffff;
 
     font-family:
         "Georgia",
         "Times New Roman",
         serif;
 
-    font-size: 20px;
+    font-size: 23px;
 
-    line-height: 1.75;
+    line-height: 1.85;
+
+    font-style: italic;
 
     text-align: left;
+
+    text-shadow:
+        0 1px 2px rgba(80,0,10,.18);
 }
 
 
 .texto-carta p {
 
-    margin-bottom: 30px;
-}
-
-
-/* =========================
-   TÍTULO
-========================= */
-
-.titulo-carta {
-
-    text-align: center;
-
-    font-family:
-        "Georgia",
-        "Times New Roman",
-        serif;
-
-    font-size: 30px;
-
-    font-weight: bold;
-
-    color: #68131b;
-
-    margin-bottom: 35px;
+    margin-bottom: 34px;
 }
 
 
@@ -511,12 +494,20 @@ body {
 
 .significados {
 
-    margin-top: 45px;
+    margin-top: 55px;
 
-    padding-top: 30px;
+    padding: 28px 25px;
 
-    border-top:
-        2px solid rgba(104,19,27,.25);
+    border:
+        2px solid rgba(255,255,255,.65);
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.10);
+
+    box-shadow:
+        0 8px 25px rgba(80,0,10,.15);
 }
 
 
@@ -527,21 +518,33 @@ body {
         "Times New Roman",
         serif;
 
-    font-size: 25px;
+    font-size: 27px;
 
-    margin-bottom: 25px;
+    font-style: italic;
 
-    color: #68131b;
+    text-align: center;
+
+    color: #ffffff;
+
+    margin-bottom: 28px;
 }
 
 
 .significados p {
 
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 
-    font-size: 17px;
+    font-size: 19px;
 
-    line-height: 1.6;
+    line-height: 1.65;
+
+    color: #ffffff;
+}
+
+
+.significados p:last-child {
+
+    margin-bottom: 0;
 }
 
 
@@ -641,29 +644,37 @@ body {
     .conteudo-carta {
 
         padding:
-            35px 23px 70px;
+            40px 24px 75px;
     }
 
     .texto-carta {
 
-        font-size: 19px;
+        font-size: 21px;
 
-        line-height: 1.7;
+        line-height: 1.8;
     }
 
-    .titulo-carta {
+    .texto-carta p {
 
-        font-size: 27px;
+        margin-bottom: 30px;
+    }
+
+    .significados {
+
+        padding:
+            25px 20px;
     }
 
     .significados h2 {
 
-        font-size: 23px;
+        font-size: 24px;
     }
 
     .significados p {
 
-        font-size: 16px;
+        font-size: 17px;
+
+        line-height: 1.65;
     }
 
     .instrucao {
@@ -687,21 +698,15 @@ body {
     >
 
 
-        <!-- ÁREA INTERNA DO ENVELOPE -->
+        <!-- ÁREA INTERNA -->
 
         <div class="interno">
-
-            <!-- CARTA -->
 
             <div class="carta">
 
                 <div class="conteudo-carta">
 
                     <div class="texto-carta">
-
-                        <div class="titulo-carta">
-                            Para você, meu amor ❤️
-                        </div>
 
 
                         <p>
@@ -766,12 +771,14 @@ body {
                         </p>
 
 
-                        <!-- SIGNIFICADOS -->
+                        <!-- =========================
+                             SIGNIFICADO
+                        ========================= -->
 
                         <div class="significados">
 
                             <h2>
-                                Algumas palavras que usei ❤️
+                                Significado das palavras difíceis
                             </h2>
 
 
@@ -810,7 +817,7 @@ body {
 
                             <p>
                                 <strong>Amálgama:</strong>
-                                é uma mistura perfeita, fusão ou união
+                                É uma mistura perfeita, fusão ou união
                                 completa de elementos diferentes que se
                                 tornam uma coisa só.
                             </p>
@@ -850,7 +857,7 @@ body {
         <div class="frente"></div>
 
 
-        <!-- ABA SUPERIOR -->
+        <!-- ABA -->
 
         <div class="aba"></div>
 
@@ -859,9 +866,7 @@ body {
 
 
     <div class="instrucao">
-
         clica aqui soph
-
     </div>
 
 
@@ -881,23 +886,12 @@ envelope.addEventListener(
         envelope.classList.add("aberto");
 
 
-        /*
-           PRIMEIRA ETAPA:
-           a pontinha sai.
-        */
-
         setTimeout(function() {
 
             envelope.classList.add(
                 "carta-saindo"
             );
 
-
-            /*
-               SEGUNDA ETAPA:
-               a carta continua saindo
-               reta e crescendo.
-            */
 
             setTimeout(function() {
 
