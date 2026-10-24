@@ -110,8 +110,8 @@ body {
     height: 78%;
 
     /*
-       A carta fica INTEIRA
-       dentro do envelope.
+       A carta fica totalmente
+       escondida dentro do envelope.
     */
 
     bottom: 5%;
@@ -124,24 +124,15 @@ body {
 
     box-shadow: 0 5px 12px rgba(0,0,0,.18);
 
-    /*
-       Fica atrás da frente
-       do envelope.
-    */
-
     z-index: 2;
-
-    /*
-       NÃO aparece antes do clique.
-    */
 
     visibility: hidden;
 
     transform: translateY(0);
 
     transition:
-        transform 1.4s cubic-bezier(.2,.8,.2,1),
-        visibility 0s linear 1.4s;
+        transform 2.2s cubic-bezier(.22,.7,.2,1),
+        visibility 0s linear 2.2s;
 }
 
 .carta::after {
@@ -337,7 +328,7 @@ body {
 
 
 /* =========================
-   CARTA SAI DE DENTRO
+   CARTA SAI DEVAGAR
 ========================= */
 
 .envelope.aberto .carta {
@@ -346,10 +337,15 @@ body {
 
     z-index: 20;
 
+    /*
+       Ela começa escondida e sobe
+       lentamente pela abertura.
+    */
+
     transform: translateY(-105px);
 
     transition:
-        transform 1.4s cubic-bezier(.2,.8,.2,1),
+        transform 2.2s cubic-bezier(.22,.7,.2,1),
         visibility 0s;
 }
 
@@ -389,6 +385,7 @@ body {
     }
 
     .envelope.aberto .carta {
+
         transform: translateY(-85px);
     }
 
