@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Uma cartinha pra você ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: "Comic Sans MS", "Segoe Print", cursive;
+    background: #8f171d;
+}
+
+.tela-inicial {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,0.04) 0px,
+            rgba(255,255,255,0.04) 40px,
+            rgba(80,0,0,0.04) 40px,
+            rgba(80,0,0,0.04) 80px
+        ),
+        #94191f;
+}
+
+.cartinha {
+    width: min(82vw, 430px);
+    cursor: pointer;
+    animation: balancar 2s ease-in-out infinite;
+    filter: drop-shadow(0 12px 12px rgba(0,0,0,0.25));
+    transition: transform 0.3s;
+}
+
+.cartinha:hover {
+    transform: scale(1.03);
+}
+
+@keyframes balancar {
+    0%, 100% {
+        transform: rotate(-2deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(2deg) translateY(-10px);
+    }
+}
+
+.instrucao {
+    margin-top: 45px;
+    color: #fff4ef;
+    font-size: clamp(25px, 6vw, 40px);
+    text-align: center;
+    font-style: italic;
+}
+
+/* CARTA ABERTA */
+
+.carta-aberta {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding: 45px 20px 70px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,0.18) 0px,
+            rgba(255,255,255,0.18) 35px,
+            rgba(255,120,120,0.08) 35px,
+            rgba(255,120,120,0.08) 70px
+        ),
+        #f4aaa8;
+
+    color: #702126;
+    text-align: center;
+}
+
+.carta-aberta.mostrar {
+    display: block;
+    animation: aparecer 0.8s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.conteudo {
+    width: min(92vw, 680px);
+    margin: auto;
+}
+
+.titulo {
+    display: inline-block;
+    padding: 10px 25px;
+    margin-bottom: 40px;
+
+    background: #fff1ed;
+    border: 2px solid #d38c8d;
+    border-radius: 40px;
+
+    font-size: clamp(22px, 5vw, 32px);
+    box-shadow: 0 5px 12px rgba(80,20,20,0.12);
+}
+
+.texto-inicial {
+    font-size: clamp(25px, 6vw, 40px);
+    line-height: 1.45;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+.texto {
+    font-size: clamp(20px, 5vw, 30px);
+    line-height: 1.65;
+    font-weight: bold;
+}
+
+.texto p {
+    margin-bottom: 25px;
+}
+
+/* animação da carta */
+
+.envelope {
+    width: min(85vw, 500px);
+    height: 330px;
+    margin: 20px auto 45px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.envelope-fundo {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
+    height: 70%;
+
+    background: #f5d4c8;
+    border: 3px solid #c88c82;
+    border-radius: 8px;
+}
+
+.folha {
+    position: absolute;
+    z-index: 2;
+
+    left: 7%;
+    bottom: 8%;
+
+    width: 86%;
+    height: 75%;
+
+    background: #fffaf5;
+    border: 2px solid #d9b5a9;
+    border-radius: 6px;
+
+    padding: 25px;
+
+    transform: translateY(0);
+    transition: transform 1.4s ease;
+}
+
+.folha.subir {
+    transform: translateY(-125px);
+}
+
+.tampa {
+    position: absolute;
+    z-index: 4;
+
+    top: 28%;
+    left: 0;
+
+    width: 100%;
+    height: 45%;
+
+    background: #edc5ba;
+
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+
+    transform-origin: top center;
+    transition: transform 1s ease;
+}
+
+.tampa.abrir {
+    transform: rotateX(180deg);
+}
+
+.botao-voltar {
+    margin-top: 30px;
+    padding: 10px 20px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: #fff1ed;
+    color: #702126;
+
+    font-family: inherit;
+    font-size: 18px;
+
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- TELA INICIAL -->
+
+<section class="tela-inicial" id="inicio">
+
+    <!--
+    IMPORTANTE:
+    Depois vamos colocar aqui a imagem do Snoopy/cartinha
+    que aparece no seu vídeo.
+    -->
+
+    <img
+        src="snoopy.png"
+        class="cartinha"
+        id="botaoCarta"
+        alt="Snoopy segurando uma cartinha"
+    >
+
+    <div class="instrucao">
+        clica aqui soph
+    </div>
+
+</section>
+
+
+<!-- CARTA ABERTA -->
+
+<section class="carta-aberta" id="carta">
+
+    <div class="conteudo">
+
+        <div class="titulo">
+            💌 com amor
+        </div>
+
+        <div class="texto-inicial">
+            é uma coisinha besta mas q eu
+            <br>
+            queria dizer pra vcc
+        </div>
+
+
+        <!-- ENVELOPE -->
+
+        <div class="envelope">
+
+            <div class="envelope-fundo"></div>
+
+            <div class="folha" id="folha">
+                💌
+            </div>
+
+            <div class="tampa" id="tampa"></div>
+
+        </div>
+
+
+        <!-- TEXTO DA CARTA -->
+
+        <div class="texto">
+
+            <p>
+                amor a gnt não ta a tanto tempo assim juntos,
+                mas acho q nunca compartilhei tanto algo como
+                compartilho com você,
+            </p>
+
+            <p>
+                ja faz pelo menos 6 meses q vc faz parte da
+                minha vida, e q não deixo de reparar em você
+                1 dia sequer,
+            </p>
+
+            <p>
+                sou muito grato por vc fazer parte da minha
+                vida e não quero q isso acabe nunca.
+            </p>
+
+        </div>
+
+        <button class="botao-voltar" id="voltar">
+            voltar
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- MÚSICA -->
+
+<audio
+    id="musica"
+    src="musica-5s.mp3"
+    loop
+    preload="auto">
+</audio>
+
+
+<script>
+
+const botaoCarta = document.getElementById("botaoCarta");
+const inicio = document.getElementById("inicio");
+const carta = document.getElementById("carta");
+const musica = document.getElementById("musica");
+
+const tampa = document.getElementById("tampa");
+const folha = document.getElementById("folha");
+
+botaoCarta.addEventListener("click", function() {
+
+    inicio.style.display = "none";
+
+    carta.classList.add("mostrar");
+
+    setTimeout(function() {
+        tampa.classList.add("abrir");
+    }, 300);
+
+    setTimeout(function() {
+        folha.classList.add("subir");
+    }, 800);
+
+    /*
+    A música começa quando a cartinha é aberta.
+    O arquivo será colocado em loop.
+    */
+
+    musica.currentTime = 0;
+
+    musica.play().catch(function() {
+        console.log("O navegador bloqueou a reprodução automática.");
+    });
+
+});
+
+
+document.getElementById("voltar").addEventListener("click", function() {
+
+    musica.pause();
+    musica.currentTime = 0;
+
+    tampa.classList.remove("abrir");
+    folha.classList.remove("subir");
+
+    carta.classList.remove("mostrar");
+
+    setTimeout(function() {
+        inicio.style.display = "flex";
+    }, 300);
+
+});
+
+</script>
+
+</body>
+</html>
