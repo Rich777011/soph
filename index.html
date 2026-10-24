@@ -97,6 +97,26 @@ body {
 
 
 /* =========================
+   ÁREA INTERNA
+   ESCONDE A CARTA
+========================= */
+
+.interno {
+    position: absolute;
+
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+
+    height: 72%;
+
+    overflow: hidden;
+
+    z-index: 4;
+}
+
+
+/* =========================
    CARTA
 ========================= */
 
@@ -110,11 +130,14 @@ body {
     height: 78%;
 
     /*
-       A carta fica totalmente
-       escondida dentro do envelope.
+       A carta começa BEM DENTRO
+       do envelope.
+
+       Não existe parte visível
+       antes do clique.
     */
 
-    bottom: 5%;
+    bottom: -62%;
 
     background: #fffaf5;
 
@@ -122,20 +145,18 @@ body {
 
     border-radius: 5px;
 
-    box-shadow: 0 5px 12px rgba(0,0,0,.18);
+    box-shadow:
+        0 5px 12px rgba(0,0,0,.18);
 
-    z-index: 2;
-
-    visibility: hidden;
-
-    transform: translateY(0);
+    z-index: 5;
 
     transition:
-        transform 2.2s cubic-bezier(.22,.7,.2,1),
-        visibility 0s linear 2.2s;
+        bottom 2.8s cubic-bezier(.25,.75,.2,1);
 }
 
+
 .carta::after {
+
     content: "💌";
 
     position: absolute;
@@ -143,7 +164,8 @@ body {
     left: 50%;
     top: 50%;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
     font-size: 42px;
 }
@@ -154,6 +176,7 @@ body {
 ========================= */
 
 .esquerda {
+
     position: absolute;
 
     left: 5px;
@@ -165,12 +188,13 @@ body {
 
     background: #d9343d;
 
-    clip-path: polygon(
-        0 0,
-        100% 50%,
-        100% 100%,
-        0 100%
-    );
+    clip-path:
+        polygon(
+            0 0,
+            100% 50%,
+            100% 100%,
+            0 100%
+        );
 
     z-index: 6;
 }
@@ -181,6 +205,7 @@ body {
 ========================= */
 
 .direita {
+
     position: absolute;
 
     right: 5px;
@@ -192,12 +217,13 @@ body {
 
     background: #d9343d;
 
-    clip-path: polygon(
-        0 50%,
-        100% 0,
-        100% 100%,
-        0 100%
-    );
+    clip-path:
+        polygon(
+            0 50%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
 
     z-index: 6;
 }
@@ -208,6 +234,7 @@ body {
 ========================= */
 
 .frente {
+
     position: absolute;
 
     left: 5px;
@@ -219,15 +246,16 @@ body {
 
     background: #d9343d;
 
-    clip-path: polygon(
-        0 0,
-        38% 0,
-        50% 18%,
-        62% 0,
-        100% 0,
-        100% 100%,
-        0 100%
-    );
+    clip-path:
+        polygon(
+            0 0,
+            38% 0,
+            50% 18%,
+            62% 0,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
 
     z-index: 7;
 }
@@ -238,6 +266,7 @@ body {
 ========================= */
 
 .aba {
+
     position: absolute;
 
     left: 2px;
@@ -249,17 +278,20 @@ body {
 
     background: #e13a43;
 
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
 
-    border-radius: 7px 7px 0 0;
+    border-radius:
+        7px 7px 0 0;
 
     z-index: 10;
 
-    transform-origin: top center;
+    transform-origin:
+        top center;
 
     transition:
         transform 1.05s cubic-bezier(.2,.8,.2,1);
@@ -269,6 +301,7 @@ body {
 /* BORDA DA ABA */
 
 .aba::before {
+
     content: "";
 
     position: absolute;
@@ -277,11 +310,12 @@ body {
 
     background: #741017;
 
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
 
     z-index: -1;
 }
@@ -290,6 +324,7 @@ body {
 /* INTERIOR DA ABA */
 
 .aba::after {
+
     content: "";
 
     position: absolute;
@@ -303,19 +338,21 @@ body {
 
     background: #e13a43;
 
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
 }
 
 
 /* =========================
-   ABRIR
+   ABERTURA
 ========================= */
 
 .envelope.aberto {
+
     animation: none;
 }
 
@@ -323,7 +360,9 @@ body {
 /* ABA ABRE */
 
 .envelope.aberto .aba {
-    transform: rotateX(180deg);
+
+    transform:
+        rotateX(180deg);
 }
 
 
@@ -333,20 +372,18 @@ body {
 
 .envelope.aberto .carta {
 
-    visibility: visible;
-
-    z-index: 20;
-
     /*
-       Ela começa escondida e sobe
-       lentamente pela abertura.
+       Ela sai do fundo do envelope
+       lentamente.
+
+       Primeiro aparece somente
+       uma pequena parte.
     */
 
-    transform: translateY(-105px);
+    bottom: 22%;
 
     transition:
-        transform 2.2s cubic-bezier(.22,.7,.2,1),
-        visibility 0s;
+        bottom 2.8s cubic-bezier(.25,.75,.2,1);
 }
 
 
@@ -355,13 +392,14 @@ body {
 ========================= */
 
 .instrucao {
+
     position: absolute;
 
     left: 50%;
-
     bottom: 7%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     color: white;
 
@@ -380,16 +418,18 @@ body {
 @media (max-width: 600px) {
 
     .envelope {
+
         width: 90vw;
         height: 61vw;
     }
 
     .envelope.aberto .carta {
 
-        transform: translateY(-85px);
+        bottom: 20%;
     }
 
     .instrucao {
+
         font-size: 22px;
     }
 }
@@ -397,33 +437,60 @@ body {
 </style>
 </head>
 
+
 <body>
 
 <section class="inicio">
 
-    <div class="envelope" id="envelope">
 
-        <!-- CARTA ESCONDIDA DENTRO -->
-        <div class="carta"></div>
+    <div
+        class="envelope"
+        id="envelope"
+    >
+
+
+        <!-- ÁREA INTERNA DO ENVELOPE -->
+
+        <div class="interno">
+
+            <!-- CARTA DENTRO DO ENVELOPE -->
+
+            <div class="carta"></div>
+
+        </div>
+
 
         <!-- CORPO -->
+
         <div class="corpo"></div>
 
+
         <!-- LATERAIS -->
+
         <div class="esquerda"></div>
+
         <div class="direita"></div>
 
+
         <!-- FRENTE -->
+
         <div class="frente"></div>
 
+
         <!-- ABA SUPERIOR -->
+
         <div class="aba"></div>
 
+
     </div>
 
+
     <div class="instrucao">
+
         clica aqui soph
+
     </div>
+
 
 </section>
 
@@ -433,13 +500,18 @@ body {
 const envelope =
     document.getElementById("envelope");
 
-envelope.addEventListener("click", function() {
 
-    envelope.classList.add("aberto");
+envelope.addEventListener(
+    "click",
+    function() {
 
-});
+        envelope.classList.add("aberto");
+
+    }
+);
 
 </script>
+
 
 </body>
 </html>
