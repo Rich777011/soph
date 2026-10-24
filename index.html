@@ -23,15 +23,13 @@ body {
     background: #921820;
 }
 
-/* FUNDO */
-
 .inicio {
     width: 100%;
     height: 100vh;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     background:
         repeating-linear-gradient(
@@ -44,7 +42,10 @@ body {
         #921820;
 }
 
-/* ENVELOPE */
+
+/* =========================
+   ENVELOPE
+========================= */
 
 .envelope {
     position: relative;
@@ -69,7 +70,10 @@ body {
     }
 }
 
-/* CORPO DO ENVELOPE */
+
+/* =========================
+   FUNDO DO ENVELOPE
+========================= */
 
 .corpo {
     position: absolute;
@@ -85,25 +89,26 @@ body {
     z-index: 1;
 }
 
-/* =================================
+
+/* =========================
    CARTA
-   ELA COMEÇA DENTRO DO ENVELOPE
-================================= */
+   FICA DENTRO DO ENVELOPE
+========================= */
 
 .folha {
     position: absolute;
 
-    left: 9%;
-    width: 82%;
+    left: 10%;
+    width: 80%;
 
-    height: 80%;
+    height: 78%;
 
     /*
-       A carta começa BEM DENTRO
-       do envelope.
+       A carta começa abaixo
+       da abertura do envelope.
     */
 
-    top: 25%;
+    top: 35%;
 
     background: #fffaf5;
 
@@ -114,22 +119,19 @@ body {
     box-shadow: 0 5px 12px rgba(0,0,0,.18);
 
     /*
-       Fica atrás das partes vermelhas
-       do envelope.
+       IMPORTANTE:
+       fica acima do fundo,
+       mas abaixo da frente.
     */
 
     z-index: 2;
 
-    /*
-       Escondida inicialmente.
-    */
+    transform: translateY(0);
 
     opacity: 0;
 
-    transform: translateY(0);
-
     transition:
-        transform 1.35s cubic-bezier(.2,.8,.2,1),
+        transform 1.4s cubic-bezier(.2,.8,.2,1),
         opacity .2s ease;
 }
 
@@ -146,7 +148,10 @@ body {
     font-size: 42px;
 }
 
-/* PARTE INTERNA */
+
+/* =========================
+   PARTE INTERNA
+========================= */
 
 .interno {
     position: absolute;
@@ -164,7 +169,10 @@ body {
     z-index: 3;
 }
 
-/* LADO ESQUERDO */
+
+/* =========================
+   LATERAL ESQUERDA
+========================= */
 
 .esquerda {
     position: absolute;
@@ -187,7 +195,10 @@ body {
     z-index: 5;
 }
 
-/* LADO DIREITO */
+
+/* =========================
+   LATERAL DIREITA
+========================= */
 
 .direita {
     position: absolute;
@@ -210,7 +221,10 @@ body {
     z-index: 5;
 }
 
-/* FRENTE DO ENVELOPE */
+
+/* =========================
+   FRENTE DO ENVELOPE
+========================= */
 
 .frente {
     position: absolute;
@@ -231,12 +245,18 @@ body {
         0 100%
     );
 
+    /*
+       A FRENTE fica na frente
+       da carta.
+    */
+
     z-index: 6;
 }
 
-/* =================================
+
+/* =========================
    ABA SUPERIOR
-================================= */
+========================= */
 
 .aba {
     position: absolute;
@@ -245,11 +265,6 @@ body {
     top: 2px;
 
     width: calc(100% - 4px);
-
-    /*
-       Aba grande o suficiente para
-       fechar completamente o envelope.
-    */
 
     height: 82%;
 
@@ -271,8 +286,6 @@ body {
         transform 1.05s cubic-bezier(.2,.8,.2,1);
 }
 
-/* BORDA DA ABA */
-
 .aba::before {
     content: "";
 
@@ -290,8 +303,6 @@ body {
 
     z-index: -1;
 }
-
-/* INTERIOR DA ABA */
 
 .aba::after {
     content: "";
@@ -313,33 +324,36 @@ body {
     );
 }
 
-/* =================================
-   ABERTURA
-================================= */
+
+/* =========================
+   ABRIR
+========================= */
 
 .envelope.aberto {
     animation: none;
 }
 
-/* ABA SOBE */
-
 .envelope.aberto .aba {
     transform: rotateX(180deg);
 }
 
+
 /*
-   A CARTA SOBE DE DENTRO DO ENVELOPE.
+   A CARTA SOBE DE DENTRO.
 */
 
 .envelope.aberto .folha {
     opacity: 1;
 
-    transform: translateY(-115px);
+    transform: translateY(-135px);
 
-    transition-delay: .3s;
+    transition-delay: .35s;
 }
 
-/* TEXTO */
+
+/* =========================
+   TEXTO
+========================= */
 
 .instrucao {
     position: absolute;
@@ -358,7 +372,10 @@ body {
     white-space: nowrap;
 }
 
-/* CELULAR */
+
+/* =========================
+   CELULAR
+========================= */
 
 @media (max-width: 600px) {
 
@@ -384,10 +401,10 @@ body {
 
     <div class="envelope" id="envelope">
 
-        <!-- CARTA DENTRO DO ENVELOPE -->
+        <!-- CARTA: FICA DENTRO -->
         <div class="folha"></div>
 
-        <!-- CORPO -->
+        <!-- FUNDO -->
         <div class="corpo"></div>
 
         <!-- INTERIOR -->
@@ -397,10 +414,10 @@ body {
         <div class="esquerda"></div>
         <div class="direita"></div>
 
-        <!-- FRENTE -->
+        <!-- FRENTE: FICA NA FRENTE DA CARTA -->
         <div class="frente"></div>
 
-        <!-- ABA -->
+        <!-- ABA SUPERIOR -->
         <div class="aba"></div>
 
     </div>
@@ -410,6 +427,7 @@ body {
     </div>
 
 </section>
+
 
 <script>
 
