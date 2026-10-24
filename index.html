@@ -78,7 +78,7 @@ body {
 
 
 /* =========================
-   CORPO
+   CORPO DO ENVELOPE
 ========================= */
 
 .corpo {
@@ -98,7 +98,6 @@ body {
 
 /* =========================
    ÁREA INTERNA
-   ESCONDE A CARTA
 ========================= */
 
 .interno {
@@ -110,7 +109,12 @@ body {
 
     height: 72%;
 
-    overflow: hidden;
+    /*
+       A carta pode sair pela abertura
+       sem ser cortada.
+    */
+
+    overflow: visible;
 
     z-index: 4;
 }
@@ -130,11 +134,8 @@ body {
     height: 78%;
 
     /*
-       A carta começa BEM DENTRO
-       do envelope.
-
-       Não existe parte visível
-       antes do clique.
+       TOTALMENTE DENTRO DO ENVELOPE
+       ANTES DO CLIQUE.
     */
 
     bottom: -62%;
@@ -150,13 +151,20 @@ body {
 
     z-index: 5;
 
+    /*
+       Fica escondida atrás da frente
+       enquanto o envelope está fechado.
+    */
+
+    opacity: 0;
+
     transition:
-        bottom 2.8s cubic-bezier(.25,.75,.2,1);
+        bottom 2.8s cubic-bezier(.22,.75,.2,1),
+        opacity .2s ease;
 }
 
 
 .carta::after {
-
     content: "💌";
 
     position: absolute;
@@ -176,7 +184,6 @@ body {
 ========================= */
 
 .esquerda {
-
     position: absolute;
 
     left: 5px;
@@ -205,7 +212,6 @@ body {
 ========================= */
 
 .direita {
-
     position: absolute;
 
     right: 5px;
@@ -230,11 +236,10 @@ body {
 
 
 /* =========================
-   FRENTE
+   FRENTE DO ENVELOPE
 ========================= */
 
 .frente {
-
     position: absolute;
 
     left: 5px;
@@ -266,7 +271,6 @@ body {
 ========================= */
 
 .aba {
-
     position: absolute;
 
     left: 2px;
@@ -301,7 +305,6 @@ body {
 /* BORDA DA ABA */
 
 .aba::before {
-
     content: "";
 
     position: absolute;
@@ -324,7 +327,6 @@ body {
 /* INTERIOR DA ABA */
 
 .aba::after {
-
     content: "";
 
     position: absolute;
@@ -348,11 +350,10 @@ body {
 
 
 /* =========================
-   ABERTURA
+   ENVELOPE ABERTO
 ========================= */
 
 .envelope.aberto {
-
     animation: none;
 }
 
@@ -360,30 +361,32 @@ body {
 /* ABA ABRE */
 
 .envelope.aberto .aba {
-
     transform:
         rotateX(180deg);
 }
 
 
 /* =========================
-   CARTA SAI DEVAGAR
+   CARTA SAINDO
 ========================= */
 
 .envelope.aberto .carta {
 
     /*
-       Ela sai do fundo do envelope
-       lentamente.
-
-       Primeiro aparece somente
-       uma pequena parte.
+       Só agora ela aparece.
+       Ela começa dentro do envelope
+       e vai subindo lentamente.
     */
 
-    bottom: 22%;
+    opacity: 1;
+
+    bottom: 58%;
+
+    z-index: 20;
 
     transition:
-        bottom 2.8s cubic-bezier(.25,.75,.2,1);
+        bottom 2.8s cubic-bezier(.22,.75,.2,1),
+        opacity .2s ease;
 }
 
 
@@ -392,10 +395,10 @@ body {
 ========================= */
 
 .instrucao {
-
     position: absolute;
 
     left: 50%;
+
     bottom: 7%;
 
     transform:
@@ -418,18 +421,15 @@ body {
 @media (max-width: 600px) {
 
     .envelope {
-
         width: 90vw;
         height: 61vw;
     }
 
     .envelope.aberto .carta {
-
-        bottom: 20%;
+        bottom: 52%;
     }
 
     .instrucao {
-
         font-size: 22px;
     }
 }
@@ -442,55 +442,35 @@ body {
 
 <section class="inicio">
 
-
     <div
         class="envelope"
         id="envelope"
     >
 
-
-        <!-- ÁREA INTERNA DO ENVELOPE -->
-
+        <!-- CARTA -->
         <div class="interno">
-
-            <!-- CARTA DENTRO DO ENVELOPE -->
-
             <div class="carta"></div>
-
         </div>
 
-
         <!-- CORPO -->
-
         <div class="corpo"></div>
 
-
         <!-- LATERAIS -->
-
         <div class="esquerda"></div>
-
         <div class="direita"></div>
 
-
         <!-- FRENTE -->
-
         <div class="frente"></div>
 
-
         <!-- ABA SUPERIOR -->
-
         <div class="aba"></div>
-
 
     </div>
 
 
     <div class="instrucao">
-
         clica aqui soph
-
     </div>
-
 
 </section>
 
@@ -499,7 +479,6 @@ body {
 
 const envelope =
     document.getElementById("envelope");
-
 
 envelope.addEventListener(
     "click",
@@ -511,7 +490,6 @@ envelope.addEventListener(
 );
 
 </script>
-
 
 </body>
 </html>
