@@ -25,11 +25,6 @@ body {
     background: #921820;
 }
 
-
-/* =========================
-   FUNDO
-========================= */
-
 .inicio {
     width: 100%;
     height: 100vh;
@@ -48,11 +43,6 @@ body {
         ),
         #921820;
 }
-
-
-/* =========================
-   ENVELOPE
-========================= */
 
 .envelope {
     position: relative;
@@ -78,11 +68,6 @@ body {
     }
 }
 
-
-/* =========================
-   CORPO
-========================= */
-
 .corpo {
     position: absolute;
 
@@ -97,11 +82,6 @@ body {
     z-index: 1;
 }
 
-
-/* =========================
-   ÁREA INTERNA
-========================= */
-
 .interno {
     position: absolute;
 
@@ -115,11 +95,6 @@ body {
 
     z-index: 4;
 }
-
-
-/* =========================
-   CARTA
-========================= */
 
 .carta {
     position: absolute;
@@ -155,13 +130,7 @@ body {
         bottom 2.8s cubic-bezier(.25,.75,.2,1);
 }
 
-
-/* =========================
-   LATERAL ESQUERDA
-========================= */
-
 .esquerda {
-
     position: absolute;
 
     left: 5px;
@@ -184,13 +153,7 @@ body {
     z-index: 6;
 }
 
-
-/* =========================
-   LATERAL DIREITA
-========================= */
-
 .direita {
-
     position: absolute;
 
     right: 5px;
@@ -213,13 +176,7 @@ body {
     z-index: 6;
 }
 
-
-/* =========================
-   FRENTE
-========================= */
-
 .frente {
-
     position: absolute;
 
     left: 5px;
@@ -245,13 +202,7 @@ body {
     z-index: 7;
 }
 
-
-/* =========================
-   ABA SUPERIOR
-========================= */
-
 .aba {
-
     position: absolute;
 
     left: 2px;
@@ -282,11 +233,7 @@ body {
         transform 1.05s cubic-bezier(.2,.8,.2,1);
 }
 
-
-/* BORDA DA ABA */
-
 .aba::before {
-
     content: "";
 
     position: absolute;
@@ -305,11 +252,7 @@ body {
     z-index: -1;
 }
 
-
-/* INTERIOR DA ABA */
-
 .aba::after {
-
     content: "";
 
     position: absolute;
@@ -331,28 +274,14 @@ body {
         );
 }
 
-
-/* =========================
-   ABERTURA
-========================= */
-
 .envelope.aberto {
     animation: none;
 }
 
-
-/* ABA ABRE */
-
 .envelope.aberto .aba {
-
     transform:
         rotateX(180deg);
 }
-
-
-/* =========================
-   CARTA SAI DEVAGAR
-========================= */
 
 .envelope.aberto .carta {
 
@@ -362,16 +291,9 @@ body {
         bottom 2.8s cubic-bezier(.25,.75,.2,1);
 }
 
-
-/* =========================
-   CARTA SAINDO
-========================= */
-
 .envelope.carta-saindo .interno {
-
     overflow: visible;
 }
-
 
 .envelope.carta-saindo .carta {
 
@@ -405,11 +327,6 @@ body {
         width 3.5s cubic-bezier(.2,.8,.2,1),
         height 3.5s cubic-bezier(.2,.8,.2,1);
 }
-
-
-/* =========================
-   CARTA NA TELA
-========================= */
 
 .envelope.carta-tela .carta {
 
@@ -451,11 +368,6 @@ body {
         border-radius 1s ease;
 }
 
-
-/* =========================
-   CONTEÚDO
-========================= */
-
 .conteudo-carta {
 
     width: 100%;
@@ -477,11 +389,6 @@ body {
 .conteudo-carta::-webkit-scrollbar {
     display: none;
 }
-
-
-/* =========================
-   TEXTO PRINCIPAL
-========================= */
 
 .texto-carta {
 
@@ -510,19 +417,12 @@ body {
 }
 
 
-/* =========================
-   ESPAÇO GRANDE PARA OS SNOOPYS
-========================= */
+/* ESPAÇO ENTRE OS PARÁGRAFOS */
 
 .texto-carta p {
-
-    margin-bottom: 800px;
+    margin-bottom: 580px;
 }
 
-
-/* =========================
-   SIGNIFICADOS
-========================= */
 
 .significados {
 
@@ -541,7 +441,6 @@ body {
     box-shadow:
         0 8px 25px rgba(80,0,10,.15);
 }
-
 
 .significados h2 {
 
@@ -562,7 +461,6 @@ body {
     margin-bottom: 28px;
 }
 
-
 .significados p {
 
     margin-bottom: 20px;
@@ -574,16 +472,9 @@ body {
     color: #ffffff;
 }
 
-
 .significados p:last-child {
-
     margin-bottom: 0;
 }
-
-
-/* =========================
-   ENVELOPE DESAPARECE
-========================= */
 
 .envelope.carta-tela .corpo,
 .envelope.carta-tela .esquerda,
@@ -596,11 +487,6 @@ body {
     transition:
         opacity 1s ease;
 }
-
-
-/* =========================
-   INSTRUÇÃO
-========================= */
 
 .instrucao {
 
@@ -624,16 +510,9 @@ body {
         opacity .6s ease;
 }
 
-
 .envelope.carta-tela + .instrucao {
-
     opacity: 0;
 }
-
-
-/* =========================
-   CELULAR
-========================= */
 
 @media (max-width: 600px) {
 
@@ -644,7 +523,6 @@ body {
     }
 
     .envelope.aberto .carta {
-
         bottom: 20%;
     }
 
@@ -688,18 +566,15 @@ body {
     }
 
     .texto-carta p {
-
-        margin-bottom: 800px;
+        margin-bottom: 580px;
     }
 
     .significados {
-
         padding:
             25px 20px;
     }
 
     .significados h2 {
-
         font-size: 24px;
     }
 
@@ -711,7 +586,6 @@ body {
     }
 
     .instrucao {
-
         font-size: 22px;
     }
 
@@ -725,14 +599,10 @@ body {
 
 <section class="inicio">
 
-
     <div
         class="envelope"
         id="envelope"
     >
-
-
-        <!-- ÁREA INTERNA -->
 
         <div class="interno">
 
@@ -742,11 +612,9 @@ body {
 
                     <div class="texto-carta">
 
-
                         <p>
                             é uma coisinha besta mas q eu qria dizer pra vcc
                         </p>
-
 
                         <p>
                             amor a gnt não ta a tanto tempo assim juntos,
@@ -758,14 +626,12 @@ body {
                             isso acabe nunca.
                         </p>
 
-
                         <p>
                             desde q conversamos a primeira vez, ja me
                             apaixonei totalmente.. cada palavra que saia
                             da sua boca, cada gesto, olhar, ja fazia eu
                             querer me aproximar cada vez mais.
                         </p>
-
 
                         <p>
                             Hoje poder te chamar se amor, te abraçar,
@@ -777,7 +643,6 @@ body {
                             ouviu e me abençoou.
                         </p>
 
-
                         <p>
                             não tenho palavras pra dizer o quanto eu te
                             amo e o quanto admiro a pessoa que você é.
@@ -786,7 +651,6 @@ body {
                             sinto, ent acabei procurando palavras que
                             fossem um pouco mais a fundoo, bomm...
                         </p>
-
 
                         <p>
                             falar que "eu te amo" ficou pequeno demais
@@ -798,16 +662,10 @@ body {
                             sempiterno..
                         </p>
 
-
                         <p>
                             acho q é isso amor, to com muita sdd de vc,
                             e te amo mto, bjao❤️
                         </p>
-
-
-                        <!-- =========================
-                             SIGNIFICADOS
-                        ========================= -->
 
                         <div class="significados">
 
@@ -815,13 +673,11 @@ body {
                                 Significado das palavras difíceis
                             </h2>
 
-
                             <p>
                                 <strong>Imorredouro:</strong>
                                 Que não morre; imortal, eterno, que dura
                                 para sempre.
                             </p>
-
 
                             <p>
                                 <strong>Eviterno:</strong>
@@ -829,7 +685,6 @@ body {
                                 refere-se a algo que teve um início mas que
                                 nunca terá um fim.
                             </p>
-
 
                             <p>
                                 <strong>Sempiterno:</strong>
@@ -839,7 +694,6 @@ body {
                                 sem interrupção.
                             </p>
 
-
                             <p>
                                 <strong>Inefável:</strong>
                                 Algo que é tão grandioso, belo ou intenso
@@ -848,14 +702,12 @@ body {
                                 da linguagem humana.
                             </p>
 
-
                             <p>
                                 <strong>Amálgama:</strong>
                                 É uma mistura perfeita, fusão ou união
                                 completa de elementos diferentes que se
                                 tornam uma coisa só.
                             </p>
-
 
                             <p>
                                 <strong>Indissolúvel:</strong>
@@ -873,36 +725,21 @@ body {
 
         </div>
 
-
-        <!-- CORPO -->
-
         <div class="corpo"></div>
-
-
-        <!-- LATERAIS -->
 
         <div class="esquerda"></div>
 
         <div class="direita"></div>
 
-
-        <!-- FRENTE -->
-
         <div class="frente"></div>
-
-
-        <!-- ABA -->
 
         <div class="aba"></div>
 
-
     </div>
-
 
     <div class="instrucao">
         clica aqui soph
     </div>
-
 
 </section>
 
@@ -912,20 +749,17 @@ body {
 const envelope =
     document.getElementById("envelope");
 
-
 envelope.addEventListener(
     "click",
     function() {
 
         envelope.classList.add("aberto");
 
-
         setTimeout(function() {
 
             envelope.classList.add(
                 "carta-saindo"
             );
-
 
             setTimeout(function() {
 
