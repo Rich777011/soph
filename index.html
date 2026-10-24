@@ -3,19 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Cartinha ❤️</title>
 
 <style>
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html,
-body {
+html, body {
     width: 100%;
     height: 100%;
 }
@@ -26,16 +23,11 @@ body {
     background: #921820;
 }
 
-
-/* =========================
-   FUNDO
-========================= */
+/* FUNDO */
 
 .inicio {
-
     width: 100%;
     height: 100vh;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,13 +43,9 @@ body {
         #921820;
 }
 
-
-/* =========================
-   ENVELOPE
-========================= */
+/* ENVELOPE */
 
 .envelope {
-
     position: relative;
 
     width: min(88vw, 540px);
@@ -65,104 +53,70 @@ body {
 
     cursor: pointer;
 
-    filter:
-        drop-shadow(
-            0 18px 16px rgba(0,0,0,.30)
-        );
+    filter: drop-shadow(0 18px 16px rgba(0,0,0,.30));
 
-    animation:
-        flutuar 2.5s ease-in-out infinite;
+    animation: flutuar 2.5s ease-in-out infinite;
 }
 
-
 @keyframes flutuar {
-
-    0%, 100% {
-        transform:
-            translateY(0)
-            rotate(-1deg);
+    0%,100% {
+        transform: translateY(0) rotate(-1deg);
     }
 
     50% {
-        transform:
-            translateY(-7px)
-            rotate(1deg);
+        transform: translateY(-7px) rotate(1deg);
     }
 }
 
-
-/* =========================
-   CORPO DO ENVELOPE
-========================= */
+/* CORPO */
 
 .corpo {
-
     position: absolute;
-
     inset: 0;
 
     background: #cf3039;
 
     border: 5px solid #741017;
-
     border-radius: 11px;
 
     z-index: 1;
 }
 
 
-/* =========================
+/* =================================================
    CARTA
-========================= */
+   COMEÇA COMPLETAMENTE DENTRO DO ENVELOPE
+================================================= */
 
 .carta {
-
     position: absolute;
 
     left: 10%;
-
     width: 80%;
 
     height: 78%;
 
     /*
-       A carta começa escondida
-       dentro do envelope.
+       A parte de baixo da carta
+       fica escondida dentro do envelope.
     */
 
-    left: 10%;
-    bottom: 8%;
+    bottom: -45%;
 
     background: #fffaf5;
 
     border: 2px solid #d6bdb4;
-
     border-radius: 5px;
 
-    box-shadow:
-        0 5px 12px rgba(0,0,0,.18);
-
-    /*
-       IMPORTANTE:
-       enquanto fechado ela fica
-       escondida atrás da frente.
-    */
+    box-shadow: 0 5px 12px rgba(0,0,0,.18);
 
     z-index: 4;
 
-    transform:
-        translateY(65%);
-
-    opacity: 0;
-
     transition:
-        transform 1.4s cubic-bezier(.2,.8,.2,1),
-        opacity .25s ease;
+        bottom 1.4s cubic-bezier(.2,.8,.2,1);
 }
 
-
 .carta::after {
-
     content: "💌";
 
     position: absolute;
@@ -170,107 +124,108 @@ body {
     left: 50%;
     top: 50%;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
     font-size: 42px;
 }
 
 
-/* =========================
-   LATERAL ESQUERDA
-========================= */
+/* =================================================
+   FRENTE INFERIOR DO ENVELOPE
 
-.esquerda {
-
-    position: absolute;
-
-    left: 5px;
-    bottom: 5px;
-
-    width: calc(50% - 5px);
-
-    height: 68%;
-
-    background: #d9343d;
-
-    clip-path:
-        polygon(
-            0 0,
-            100% 50%,
-            100% 100%,
-            0 100%
-        );
-
-    z-index: 6;
-}
-
-
-/* =========================
-   LATERAL DIREITA
-========================= */
-
-.direita {
-
-    position: absolute;
-
-    right: 5px;
-    bottom: 5px;
-
-    width: calc(50% - 5px);
-
-    height: 68%;
-
-    background: #d9343d;
-
-    clip-path:
-        polygon(
-            0 50%,
-            100% 0,
-            100% 100%,
-            0 100%
-        );
-
-    z-index: 6;
-}
-
-
-/* =========================
-   FRENTE DO ENVELOPE
-========================= */
+   IMPORTANTE:
+   ela NÃO cobre o centro inteiro.
+   Existe uma abertura central por onde
+   a carta consegue passar.
+================================================= */
 
 .frente {
-
     position: absolute;
 
     left: 5px;
     bottom: 5px;
 
     width: calc(100% - 10px);
-
     height: 58%;
 
     background: #d9343d;
 
-    clip-path:
-        polygon(
-            0 0,
-            50% 62%,
-            100% 0,
-            100% 100%,
-            0 100%
-        );
+    /*
+       Criamos uma abertura no centro
+       deixando a carta passar.
+    */
+
+    clip-path: polygon(
+        0 0,
+        38% 0,
+        50% 18%,
+        62% 0,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
 
     z-index: 7;
 }
 
 
-/* =========================
+/* =================================================
+   LATERAL ESQUERDA
+================================================= */
+
+.esquerda {
+    position: absolute;
+
+    left: 5px;
+    bottom: 5px;
+
+    width: calc(50% - 5px);
+    height: 68%;
+
+    background: #d9343d;
+
+    clip-path: polygon(
+        0 0,
+        100% 50%,
+        100% 100%,
+        0 100%
+    );
+
+    z-index: 6;
+}
+
+
+/* =================================================
+   LATERAL DIREITA
+================================================= */
+
+.direita {
+    position: absolute;
+
+    right: 5px;
+    bottom: 5px;
+
+    width: calc(50% - 5px);
+    height: 68%;
+
+    background: #d9343d;
+
+    clip-path: polygon(
+        0 50%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+
+    z-index: 6;
+}
+
+
+/* =================================================
    ABA SUPERIOR
-========================= */
+================================================= */
 
 .aba {
-
     position: absolute;
 
     left: 2px;
@@ -282,20 +237,17 @@ body {
 
     background: #e13a43;
 
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            50% 100%
-        );
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
 
-    border-radius:
-        7px 7px 0 0;
+    border-radius: 7px 7px 0 0;
 
     z-index: 10;
 
-    transform-origin:
-        top center;
+    transform-origin: top center;
 
     transition:
         transform 1.05s cubic-bezier(.2,.8,.2,1);
@@ -305,21 +257,18 @@ body {
 /* BORDA DA ABA */
 
 .aba::before {
-
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     background: #741017;
 
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            50% 100%
-        );
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
 
     z-index: -1;
 }
@@ -328,7 +277,6 @@ body {
 /* INTERIOR DA ABA */
 
 .aba::after {
-
     content: "";
 
     position: absolute;
@@ -337,75 +285,51 @@ body {
     top: 5px;
 
     width: calc(100% - 10px);
-
     height: calc(100% - 5px);
 
     background: #e13a43;
 
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            50% 100%
-        );
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
 }
 
 
-/* =========================
+/* =================================================
    ABRIR
-========================= */
+================================================= */
 
 .envelope.aberto {
-
     animation: none;
 }
 
-
-/* ABA ABRE */
+/* ABA SOBE */
 
 .envelope.aberto .aba {
-
-    transform:
-        rotateX(180deg);
+    transform: rotateX(180deg);
 }
 
 
-/* =========================
-   CARTA SAI
-========================= */
-
-/*
-   Depois que o envelope abre,
-   a carta sobe PARA A FRENTE.
-*/
+/* CARTA SAI DE DENTRO */
 
 .envelope.aberto .carta {
+    bottom: 35%;
 
-    z-index: 20;
-
-    opacity: 1;
-
-    transform:
-        translateY(-115px);
-
-    transition-delay:
-        .35s;
+    transition-delay: .25s;
 }
 
 
-/* =========================
-   TEXTO
-========================= */
+/* TEXTO */
 
 .instrucao {
-
     position: absolute;
 
     left: 50%;
     bottom: 7%;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     color: white;
 
@@ -417,98 +341,69 @@ body {
 }
 
 
-/* =========================
-   CELULAR
-========================= */
+/* CELULAR */
 
 @media (max-width: 600px) {
 
     .envelope {
-
         width: 90vw;
         height: 61vw;
     }
 
     .envelope.aberto .carta {
-
-        transform:
-            translateY(-90px);
+        bottom: 32%;
     }
 
     .instrucao {
-
         font-size: 22px;
     }
 }
 
 </style>
-
 </head>
-
 
 <body>
 
 <section class="inicio">
 
-
-    <div
-        class="envelope"
-        id="envelope"
-    >
-
+    <div class="envelope" id="envelope">
 
         <!-- CARTA -->
         <div class="carta"></div>
 
-
         <!-- CORPO -->
         <div class="corpo"></div>
 
-
         <!-- LATERAIS -->
         <div class="esquerda"></div>
-
         <div class="direita"></div>
 
-
-        <!-- FRENTE -->
+        <!-- FRENTE COM ABERTURA -->
         <div class="frente"></div>
 
-
-        <!-- ABA -->
+        <!-- ABA SUPERIOR -->
         <div class="aba"></div>
 
-
     </div>
-
 
     <div class="instrucao">
-
         clica aqui soph
-
     </div>
-
 
 </section>
 
 
 <script>
 
-const envelope =
-    document.getElementById("envelope");
+const envelope = document.getElementById("envelope");
 
+envelope.addEventListener("click", function() {
 
-envelope.addEventListener(
-    "click",
-    function() {
+    envelope.classList.add("aberto");
 
-        envelope.classList.add("aberto");
-
-    }
-);
+});
 
 </script>
-
 
 </body>
 </html>
