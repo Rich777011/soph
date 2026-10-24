@@ -23,6 +23,8 @@ body {
     background: #921820;
 }
 
+/* FUNDO */
+
 .inicio {
     width: 100%;
     height: 100vh;
@@ -61,7 +63,8 @@ body {
 }
 
 @keyframes flutuar {
-    0%, 100% {
+
+    0%,100% {
         transform: translateY(0) rotate(-1deg);
     }
 
@@ -72,7 +75,7 @@ body {
 
 
 /* =========================
-   FUNDO DO ENVELOPE
+   CORPO
 ========================= */
 
 .corpo {
@@ -91,24 +94,47 @@ body {
 
 
 /* =========================
-   CARTA
-   FICA DENTRO DO ENVELOPE
+   BOLSA INTERNA
 ========================= */
 
-.folha {
+.bolsa {
+    position: absolute;
+
+    left: 5px;
+    bottom: 5px;
+
+    width: calc(100% - 10px);
+    height: 68%;
+
+    background: #c92f38;
+
+    border-radius: 0 0 6px 6px;
+
+    z-index: 2;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   CARTA
+========================= */
+
+.carta {
     position: absolute;
 
     left: 10%;
+
     width: 80%;
 
     height: 78%;
 
     /*
-       A carta começa abaixo
-       da abertura do envelope.
+       A carta começa aqui dentro.
+       Ela NÃO aparece atrás.
     */
 
-    top: 35%;
+    bottom: -48%;
 
     background: #fffaf5;
 
@@ -118,24 +144,13 @@ body {
 
     box-shadow: 0 5px 12px rgba(0,0,0,.18);
 
-    /*
-       IMPORTANTE:
-       fica acima do fundo,
-       mas abaixo da frente.
-    */
-
-    z-index: 2;
-
-    transform: translateY(0);
-
-    opacity: 0;
+    z-index: 4;
 
     transition:
-        transform 1.4s cubic-bezier(.2,.8,.2,1),
-        opacity .2s ease;
+        bottom 1.35s cubic-bezier(.2,.8,.2,1);
 }
 
-.folha::after {
+.carta::after {
     content: "💌";
 
     position: absolute;
@@ -146,27 +161,6 @@ body {
     transform: translate(-50%, -50%);
 
     font-size: 42px;
-}
-
-
-/* =========================
-   PARTE INTERNA
-========================= */
-
-.interno {
-    position: absolute;
-
-    left: 5px;
-    top: 5px;
-
-    width: calc(100% - 10px);
-    height: calc(100% - 10px);
-
-    background: #d9343d;
-
-    border-radius: 6px;
-
-    z-index: 3;
 }
 
 
@@ -192,7 +186,7 @@ body {
         0 100%
     );
 
-    z-index: 5;
+    z-index: 6;
 }
 
 
@@ -218,12 +212,12 @@ body {
         0 100%
     );
 
-    z-index: 5;
+    z-index: 6;
 }
 
 
 /* =========================
-   FRENTE DO ENVELOPE
+   FRENTE
 ========================= */
 
 .frente {
@@ -245,12 +239,7 @@ body {
         0 100%
     );
 
-    /*
-       A FRENTE fica na frente
-       da carta.
-    */
-
-    z-index: 6;
+    z-index: 7;
 }
 
 
@@ -286,6 +275,9 @@ body {
         transform 1.05s cubic-bezier(.2,.8,.2,1);
 }
 
+
+/* BORDA */
+
 .aba::before {
     content: "";
 
@@ -303,6 +295,9 @@ body {
 
     z-index: -1;
 }
+
+
+/* INTERIOR DA ABA */
 
 .aba::after {
     content: "";
@@ -326,12 +321,15 @@ body {
 
 
 /* =========================
-   ABRIR
+   ABERTURA
 ========================= */
 
 .envelope.aberto {
     animation: none;
 }
+
+
+/* ABA SOBE */
 
 .envelope.aberto .aba {
     transform: rotateX(180deg);
@@ -339,15 +337,14 @@ body {
 
 
 /*
-   A CARTA SOBE DE DENTRO.
+   A CARTA SOBE PELA ABERTURA.
+   Ela não vem de trás.
 */
 
-.envelope.aberto .folha {
-    opacity: 1;
+.envelope.aberto .carta {
+    bottom: 28%;
 
-    transform: translateY(-135px);
-
-    transition-delay: .35s;
+    transition-delay: .25s;
 }
 
 
@@ -384,14 +381,15 @@ body {
         height: 61vw;
     }
 
-    .envelope.aberto .folha {
-        transform: translateY(-90px);
+    .envelope.aberto .carta {
+        bottom: 30%;
     }
 
     .instrucao {
         font-size: 22px;
     }
 }
+
 </style>
 </head>
 
@@ -401,20 +399,20 @@ body {
 
     <div class="envelope" id="envelope">
 
-        <!-- CARTA: FICA DENTRO -->
-        <div class="folha"></div>
+        <!-- CARTA FICA DENTRO DA BOLSA -->
+        <div class="carta"></div>
 
-        <!-- FUNDO -->
+        <!-- CORPO DO ENVELOPE -->
         <div class="corpo"></div>
 
-        <!-- INTERIOR -->
-        <div class="interno"></div>
+        <!-- BOLSA -->
+        <div class="bolsa"></div>
 
         <!-- LATERAIS -->
         <div class="esquerda"></div>
         <div class="direita"></div>
 
-        <!-- FRENTE: FICA NA FRENTE DA CARTA -->
+        <!-- FRENTE -->
         <div class="frente"></div>
 
         <!-- ABA SUPERIOR -->
@@ -434,7 +432,9 @@ body {
 const envelope = document.getElementById("envelope");
 
 envelope.addEventListener("click", function() {
+
     envelope.classList.add("aberto");
+
 });
 
 </script>
