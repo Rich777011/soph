@@ -3,19 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Cartinha ❤️</title>
 
 <style>
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html,
-body {
+html, body {
     width: 100%;
     height: 100%;
 }
@@ -33,8 +30,8 @@ body {
     height: 100vh;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
     background:
         repeating-linear-gradient(
@@ -47,90 +44,82 @@ body {
         #921820;
 }
 
-
 /* ENVELOPE */
 
 .envelope {
     position: relative;
 
-    width: min(88vw, 540px);
-    height: min(60vw, 350px);
+    width: min(88vw, 520px);
+    height: min(62vw, 340px);
 
     cursor: pointer;
 
-    filter: drop-shadow(
-        0 18px 16px rgba(0,0,0,.30)
-    );
+    filter: drop-shadow(0 16px 15px rgba(0,0,0,.3));
 
-    animation: flutuar 2.5s ease-in-out infinite;
+    animation: balanco 2.5s ease-in-out infinite;
 }
 
-@keyframes flutuar {
-
+@keyframes balanco {
     0%, 100% {
-        transform: translateY(0) rotate(-1deg);
+        transform: rotate(-1deg) translateY(0);
     }
 
     50% {
-        transform: translateY(-7px) rotate(1deg);
+        transform: rotate(1deg) translateY(-7px);
     }
 }
 
-
-/* CARTA BRANCA */
+/* =========================
+   FOLHA
+   FICA DENTRO DO ENVELOPE
+========================= */
 
 .folha {
     position: absolute;
 
-    width: 82%;
-    height: 82%;
-
     left: 9%;
 
+    width: 82%;
+    height: 78%;
+
     /*
-    A carta continua dentro do envelope.
-    Ela fica escondida atrás do corpo
-    enquanto o envelope está fechado.
+      Ela começa atrás do envelope.
+      Não existe nenhuma parte branca
+      visível no estado fechado.
     */
 
-    bottom: 12%;
+    bottom: 18%;
 
     background: #fffaf5;
 
-    border: 2px solid #d8c1b7;
+    border: 2px solid #d8c0b7;
+    border-radius: 4px;
 
-    border-radius: 5px;
-
-    box-shadow:
-        0 5px 12px rgba(0,0,0,.18);
+    box-shadow: 0 4px 10px rgba(0,0,0,.15);
 
     z-index: 2;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    /*
-    Não aparece enquanto fechado.
-    */
-
     opacity: 0;
 
-    transform: translateY(0);
+    transform: translateY(20px);
 
     transition:
-        transform 1.35s cubic-bezier(.18,.82,.25,1),
-        opacity .25s ease;
+        transform 1.35s cubic-bezier(.2,.8,.2,1),
+        opacity .15s ease;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .folha::after {
     content: "💌";
-
     font-size: 42px;
 }
 
-
-/* CORPO DO ENVELOPE */
+/* =========================
+   CORPO
+========================= */
 
 .envelope-corpo {
     position: absolute;
@@ -139,7 +128,7 @@ body {
     bottom: 0;
 
     width: 100%;
-    height: 76%;
+    height: 72%;
 
     background: #c92832;
 
@@ -150,8 +139,9 @@ body {
     z-index: 3;
 }
 
-
-/* TRIÂNGULO DA FRENTE */
+/* =========================
+   FRENTE DO ENVELOPE
+========================= */
 
 .envelope-frente {
     position: absolute;
@@ -160,34 +150,31 @@ body {
     bottom: 0;
 
     width: 100%;
-    height: 76%;
+    height: 72%;
 
-    background: #d8323b;
+    background: #d5323b;
+
+    /*
+      As duas pontas superiores da frente
+      descem até o centro.
+
+      Isso fecha a abertura do envelope.
+    */
 
     clip-path: polygon(
-        0% 0%,
+        0 0,
         50% 62%,
-        100% 0%,
+        100% 0,
         100% 100%,
-        0% 100%
+        0 100%
     );
 
     z-index: 6;
 }
 
-
-/* =================================================
-   ABA SUPERIOR DO ENVELOPE
-   ================================================= */
-
-/*
-   AQUI ESTÁ A CORREÇÃO.
-
-   O triângulo começa mais baixo e sua ponta
-   desce até aproximadamente o centro do envelope.
-
-   Assim ele cobre a carta branca quando fechado.
-*/
+/* =========================
+   ABA SUPERIOR
+========================= */
 
 .aba {
     position: absolute;
@@ -195,58 +182,56 @@ body {
     left: 0;
 
     /*
-    Antes estava muito para cima.
-    Agora a aba começa mais abaixo.
+      A aba foi DESCIDA.
+      Ela começa exatamente onde
+      precisa fechar o envelope.
     */
 
-    top: 18px;
+    top: 17%;
 
     width: 100%;
 
+    height: 61%;
+
+    background: #e13a43;
+
     /*
-    Aba maior para fechar completamente.
+      Ponta inferior da aba:
+      vai até o centro do envelope.
     */
 
-    height: 72%;
-
-    background: #df353e;
-
     clip-path: polygon(
-        0% 0%,
+        0 0,
         50% 100%,
-        100% 0%
+        100% 0
     );
 
     z-index: 8;
 
     transform-origin: top center;
 
-    transform: rotateX(0deg);
-
     transition:
         transform 1s cubic-bezier(.2,.8,.2,1);
 }
 
-
-/* BORDA DA ABA */
+/* borda escura da aba */
 
 .aba-borda {
     position: absolute;
 
     left: 0;
-
-    top: 18px;
+    top: 17%;
 
     width: 100%;
-    height: 72%;
-
-    clip-path: polygon(
-        0% 0%,
-        50% 100%,
-        100% 0%
-    );
+    height: 61%;
 
     background: #781017;
+
+    clip-path: polygon(
+        0 0,
+        50% 100%,
+        100% 0
+    );
 
     z-index: 7;
 
@@ -256,11 +241,7 @@ body {
         transform 1s cubic-bezier(.2,.8,.2,1);
 }
 
-
-/* parte interna da borda */
-
 .aba-borda::after {
-
     content: "";
 
     position: absolute;
@@ -271,96 +252,62 @@ body {
     width: calc(100% - 8px);
     height: calc(100% - 4px);
 
-    background: #df353e;
+    background: #e13a43;
 
     clip-path: polygon(
-        0% 0%,
+        0 0,
         50% 100%,
-        100% 0%
+        100% 0
     );
 }
 
-
-/* =================================================
-   QUANDO CLICAR
-   ================================================= */
+/* =========================
+   ABERTURA
+========================= */
 
 .envelope.aberto {
     animation: none;
 }
 
-
 /*
-   Primeiro a aba abre.
+   A aba abre para cima.
 */
 
 .envelope.aberto .aba,
 .envelope.aberto .aba-borda {
-
     transform: rotateX(180deg);
 }
 
-
 /*
-   Depois a carta aparece e sobe.
+   Só depois que a aba começa a abrir,
+   a folha sai DE DENTRO do envelope.
 */
 
 .envelope.aberto .folha {
-
     opacity: 1;
 
-    transform: translateY(-145px);
+    transform: translateY(-150px);
 
     transition-delay: .35s;
 }
 
-
-/* TEXTO */
-
-.instrucao {
-
-    position: absolute;
-
-    bottom: 8%;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    color: white;
-
-    font-size: 25px;
-
-    font-style: italic;
-
-    white-space: nowrap;
-}
-
-
-/* CELULAR */
+/* =========================
+   CELULAR
+========================= */
 
 @media (max-width: 600px) {
 
     .envelope {
-
         width: 90vw;
-        height: 60vw;
-    }
-
-    .instrucao {
-
-        font-size: 23px;
+        height: 62vw;
     }
 
     .envelope.aberto .folha {
-
         transform: translateY(-110px);
     }
 }
-
 </style>
 </head>
-
 
 <body>
 
@@ -368,10 +315,10 @@ body {
 
     <div class="envelope" id="envelope">
 
-        <!-- CARTA BRANCA -->
+        <!-- FOLHA ESCONDIDA DENTRO -->
         <div class="folha"></div>
 
-        <!-- CORPO DO ENVELOPE -->
+        <!-- CORPO -->
         <div class="envelope-corpo"></div>
 
         <!-- FRENTE -->
@@ -385,17 +332,11 @@ body {
 
     </div>
 
-    <div class="instrucao">
-        clica aqui soph
-    </div>
-
 </section>
-
 
 <script>
 
-const envelope =
-    document.getElementById("envelope");
+const envelope = document.getElementById("envelope");
 
 envelope.addEventListener("click", function() {
 
