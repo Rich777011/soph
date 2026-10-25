@@ -497,7 +497,8 @@ body {
 
 
 /* =========================
-   CARTA SAI DEVAGAR
+   PRIMEIRA PARTE:
+   CARTA SAI DO ENVELOPE
 ========================= */
 
 .envelope.aberto .carta {
@@ -506,6 +507,20 @@ body {
 
     transition:
         bottom 2.8s cubic-bezier(.25,.75,.2,1);
+}
+
+
+/* =========================
+   SEGUNDA PARTE:
+   CARTA SOBE COMPLETAMENTE
+========================= */
+
+.envelope.subindo .carta {
+
+    bottom: 100%;
+
+    transition:
+        bottom 1.8s cubic-bezier(.25,.75,.2,1);
 }
 
 
@@ -551,11 +566,6 @@ body {
     z-index: 101;
 }
 
-
-/* =========================
-   TRANSIÇÃO SUAVE DA CARTA
-========================= */
-
 .envelope.leitura .carta {
 
     position: absolute;
@@ -586,20 +596,8 @@ body {
         ),
         #b92f39;
 
-    opacity: 0;
-
-    transform: scale(.97);
-
     transition:
-        opacity 1.2s ease,
-        transform 1.4s cubic-bezier(.2,.8,.2,1);
-}
-
-.envelope.leitura .carta {
-
-    opacity: 1;
-
-    transform: scale(1);
+        all 1.5s ease;
 }
 
 
@@ -1007,14 +1005,27 @@ envelope.addEventListener(
 
 
         /* =========================
-           CONTINUAÇÃO DA CARTA
+           ETAPA 1:
+           CARTA SAI DO ENVELOPE
         ========================= */
 
         setTimeout(function() {
 
-            envelope.classList.add("leitura");
+            envelope.classList.add("subindo");
 
-        }, 2900);
+
+            /* =========================
+               ETAPA 2:
+               CARTA SOBE COMPLETAMENTE
+            ========================= */
+
+            setTimeout(function() {
+
+                envelope.classList.add("leitura");
+
+            }, 1800);
+
+        }, 2800);
 
     }
 );
