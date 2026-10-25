@@ -42,11 +42,6 @@ body {
         #921820;
 }
 
-
-/* =========================
-   ENVELOPE
-========================= */
-
 .envelope {
     position: relative;
 
@@ -613,8 +608,6 @@ body {
    PÉTALAS
 ===================================================== */
 
-/* Camada que cobre a tela durante a transição */
-
 .petalas-cobertura {
 
     position: fixed;
@@ -636,24 +629,23 @@ body {
 }
 
 
-/* Cada pétala da cobertura */
+/* PÉTALAS QUE ENCHEM A TELA */
 
 .petala-cobertura {
 
     position: absolute;
 
-    width: 150px;
-    height: 150px;
+    width: 105px;
+    height: 105px;
 
-    background-image: url("petalas.jpg");
+    background-image:
+        url("petalas.png");
 
     background-repeat: no-repeat;
 
     background-size: 300% 300%;
 
     background-color: transparent;
-
-    mix-blend-mode: multiply;
 
     opacity: 0;
 
@@ -662,13 +654,11 @@ body {
         rotate(0deg);
 
     animation:
-        encherPetala 1.2s ease-out forwards;
+        encherPetala 1.3s ease-out forwards;
 }
 
 
-/* A imagem enviada tem 9 pétalas.
-   Isso escolhe partes diferentes da imagem
-   para que não pareçam todas iguais. */
+/* Diferentes partes da imagem */
 
 .petala-cobertura:nth-child(3n + 1) {
     background-position: 0% 0%;
@@ -714,8 +704,6 @@ body {
 }
 
 
-/* Depois que a tela ficou completamente coberta */
-
 .petalas-cobertura.coberta {
 
     visibility: visible;
@@ -727,8 +715,6 @@ body {
 }
 
 
-/* Faz as pétalas da cobertura desaparecerem */
-
 .petalas-cobertura.sumindo {
 
     opacity: 0;
@@ -738,9 +724,9 @@ body {
 }
 
 
-/* =========================
-   PÉTALAS CONTÍNUAS
-========================= */
+/* =====================================================
+   PÉTALAS CONTINUANDO A CAIR
+===================================================== */
 
 .petalas-caindo {
 
@@ -769,24 +755,21 @@ body {
 }
 
 
-/* Pétalas individuais */
-
 .petala-caindo {
 
     position: absolute;
 
-    top: -180px;
+    top: -130px;
 
-    width: 95px;
-    height: 95px;
+    width: 65px;
+    height: 65px;
 
-    background-image: url("petalas.jpg");
+    background-image:
+        url("petalas.png");
 
     background-repeat: no-repeat;
 
     background-size: 300% 300%;
-
-    mix-blend-mode: multiply;
 
     opacity: .88;
 
@@ -949,18 +932,18 @@ body {
         font-size: 19px;
     }
 
-    /* Pétalas maiores no celular */
+    /* Pétalas um pouco menores no celular */
 
     .petala-cobertura {
 
-        width: 125px;
-        height: 125px;
+        width: 85px;
+        height: 85px;
     }
 
     .petala-caindo {
 
-        width: 85px;
-        height: 85px;
+        width: 55px;
+        height: 55px;
     }
 
 }
@@ -1215,9 +1198,7 @@ body {
 </section>
 
 
-<!-- =====================================================
-     PÉTALAS DA TRANSIÇÃO
-===================================================== -->
+<!-- PÉTALAS DA COBERTURA -->
 
 <div
     class="petalas-cobertura"
@@ -1225,29 +1206,27 @@ body {
 </div>
 
 
-<!-- =====================================================
-     PÉTALAS QUE CONTINUAM CAINDO
-===================================================== -->
+<!-- PÉTALAS QUE CONTINUAM CAINDO -->
 
 <div
     class="petalas-caindo"
     id="petalasCaindo">
 
-    <div class="petala-caindo" style="left: 4%; --movimento: 80px; animation-duration: 6.5s; animation-delay: 0s;"></div>
-
-    <div class="petala-caindo" style="left: 16%; --movimento: -100px; animation-duration: 7.5s; animation-delay: 1.5s;"></div>
-
-    <div class="petala-caindo" style="left: 29%; --movimento: 70px; animation-duration: 8s; animation-delay: 3s;"></div>
-
-    <div class="petala-caindo" style="left: 43%; --movimento: -80px; animation-duration: 6.8s; animation-delay: 2s;"></div>
-
-    <div class="petala-caindo" style="left: 57%; --movimento: 110px; animation-duration: 7.8s; animation-delay: 4s;"></div>
-
-    <div class="petala-caindo" style="left: 70%; --movimento: -70px; animation-duration: 6.9s; animation-delay: 1s;"></div>
-
-    <div class="petala-caindo" style="left: 82%; --movimento: 90px; animation-duration: 8.2s; animation-delay: 3.5s;"></div>
-
-    <div class="petala-caindo" style="left: 94%; --movimento: -90px; animation-duration: 7.2s; animation-delay: 5s;"></div>
+    <div class="petala-caindo" style="left: 2%; --movimento: 60px; animation-duration: 9s; animation-delay: 0s;"></div>
+    <div class="petala-caindo" style="left: 8%; --movimento: -80px; animation-duration: 10s; animation-delay: 1s;"></div>
+    <div class="petala-caindo" style="left: 14%; --movimento: 70px; animation-duration: 11s; animation-delay: 2s;"></div>
+    <div class="petala-caindo" style="left: 21%; --movimento: -60px; animation-duration: 9.5s; animation-delay: 3s;"></div>
+    <div class="petala-caindo" style="left: 28%; --movimento: 90px; animation-duration: 10.5s; animation-delay: 1.5s;"></div>
+    <div class="petala-caindo" style="left: 35%; --movimento: -75px; animation-duration: 11.5s; animation-delay: 4s;"></div>
+    <div class="petala-caindo" style="left: 42%; --movimento: 65px; animation-duration: 9.8s; animation-delay: 2.5s;"></div>
+    <div class="petala-caindo" style="left: 49%; --movimento: -90px; animation-duration: 10.8s; animation-delay: 5s;"></div>
+    <div class="petala-caindo" style="left: 56%; --movimento: 75px; animation-duration: 11.2s; animation-delay: 1s;"></div>
+    <div class="petala-caindo" style="left: 63%; --movimento: -65px; animation-duration: 9.7s; animation-delay: 3.5s;"></div>
+    <div class="petala-caindo" style="left: 70%; --movimento: 85px; animation-duration: 10.7s; animation-delay: 2s;"></div>
+    <div class="petala-caindo" style="left: 77%; --movimento: -70px; animation-duration: 11.7s; animation-delay: 4.5s;"></div>
+    <div class="petala-caindo" style="left: 84%; --movimento: 60px; animation-duration: 9.3s; animation-delay: 1.8s;"></div>
+    <div class="petala-caindo" style="left: 91%; --movimento: -85px; animation-duration: 10.3s; animation-delay: 5.5s;"></div>
+    <div class="petala-caindo" style="left: 97%; --movimento: 70px; animation-duration: 11.3s; animation-delay: 3.2s;"></div>
 
 </div>
 
@@ -1268,14 +1247,20 @@ const petalasCaindo =
 
 
 /* =====================================================
-   CRIA AS PÉTALAS QUE VÃO ENCHER A TELA
+   CRIA AS PÉTALAS DA COBERTURA
 ===================================================== */
 
 function criarPetalasDaCobertura() {
 
     petalasCobertura.innerHTML = "";
 
-    const quantidade = 75;
+    /*
+       MUITO MAIS PÉTALAS:
+       elas são menores e ficam bem próximas,
+       formando uma cobertura muito mais completa.
+    */
+
+    const quantidade = 150;
 
     for (let i = 0; i < quantidade; i++) {
 
@@ -1287,22 +1272,22 @@ function criarPetalasDaCobertura() {
 
 
         /*
-           Distribui as pétalas pela tela inteira.
-           O pequeno atraso diferente em cada uma
-           faz elas aparecerem aos poucos.
+           Distribuição pela tela inteira.
         */
 
         const coluna =
-            i % 10;
+            i % 15;
 
         const linha =
-            Math.floor(i / 10);
+            Math.floor(i / 15);
 
         const esquerda =
-            coluna * 10 + (Math.random() * 7 - 3.5);
+            coluna * 6.8 +
+            (Math.random() * 5 - 2.5);
 
         const topo =
-            linha * 13 + (Math.random() * 8 - 4);
+            linha * 10 +
+            (Math.random() * 7 - 3.5);
 
 
         petala.style.left =
@@ -1312,16 +1297,23 @@ function criarPetalasDaCobertura() {
             topo + "vh";
 
 
+        /*
+           Tamanho menor.
+        */
+
+        const tamanho =
+            85 + Math.random() * 40;
+
         petala.style.width =
-            (125 + Math.random() * 65) + "px";
+            tamanho + "px";
 
         petala.style.height =
-            petala.style.width;
+            tamanho + "px";
 
 
         /*
-           Cada pétala usa uma parte diferente
-           da foto enviada.
+           Usa diferentes partes
+           da imagem PNG.
         */
 
         const posicoes = [
@@ -1346,22 +1338,22 @@ function criarPetalasDaCobertura() {
 
 
         /*
-           Começam em momentos diferentes.
-           Assim não aparece tudo de uma vez.
+           Aparecem uma depois da outra,
+           e não todas de uma vez.
         */
 
         petala.style.animationDelay =
-            (i * 0.025) + "s";
+            (i * 0.018) + "s";
 
 
         petala.style.animationDuration =
-            (0.9 + Math.random() * 0.6) + "s";
+            (1.0 + Math.random() * 0.6) + "s";
 
 
         petala.style.transform =
             "rotate(" +
             (Math.random() * 80 - 40) +
-            "deg)";
+            "deg";
 
 
         petalasCobertura.appendChild(petala);
@@ -1403,7 +1395,7 @@ envelope.addEventListener(
 
 
         /* =========================
-           COMEÇA A ENCHER DE PÉTALAS
+           PÉTALAS COMEÇAM A ENCHER
         ========================= */
 
         criarPetalasDaCobertura();
@@ -1413,8 +1405,8 @@ envelope.addEventListener(
 
 
         /*
-           As pétalas vão enchendo
-           enquanto o envelope abre.
+           Elas continuam aparecendo
+           aos poucos durante a abertura.
         */
 
         setTimeout(function() {
@@ -1423,31 +1415,27 @@ envelope.addEventListener(
                 "coberta"
             );
 
-        }, 1900);
+        }, 2600);
 
 
         /*
-           Depois que a tela já está
-           completamente coberta,
-           segura as pétalas por aproximadamente
-           2 segundos.
+           Depois de a tela estar cheia,
+           espera aproximadamente 2 segundos.
         */
 
         setTimeout(function() {
 
-            /*
-               A carta passa para a tela
-               enquanto as pétalas ainda cobrem tudo.
-            */
+            envelope.classList.add(
+                "leitura"
+            );
 
-            envelope.classList.add("leitura");
-
-        }, 3900);
+        }, 4600);
 
 
         /*
-           Depois a cobertura começa
-           a desaparecer devagar.
+           Começa a revelar o texto
+           e as pétalas vão desaparecendo
+           devagar.
         */
 
         setTimeout(function() {
@@ -1460,12 +1448,12 @@ envelope.addEventListener(
                 "ativas"
             );
 
-        }, 4100);
+        }, 4800);
 
 
         /*
-           Remove a camada de cobertura
-           depois da transição.
+           Remove a cobertura somente
+           depois que ela desapareceu.
         */
 
         setTimeout(function() {
@@ -1475,7 +1463,7 @@ envelope.addEventListener(
 
             petalasCobertura.innerHTML = "";
 
-        }, 6800);
+        }, 7600);
 
     }
 );
