@@ -176,7 +176,7 @@ body {
 
 
 /* =========================
-   ANIMAÇÃO DOS SNOOPYS
+   SNOOPYS DA CARTA
 ========================= */
 
 .snoopy {
@@ -249,6 +249,86 @@ body {
         transform:
             translateY(-8px)
             rotate(1deg);
+    }
+}
+
+
+/* =========================
+   PETALAS
+   APARECEM SOMENTE NA LEITURA
+========================= */
+
+.petalas {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 500;
+
+    opacity: 0;
+
+    transition: opacity 1s ease;
+}
+
+.envelope.leitura .petalas {
+    opacity: 1;
+}
+
+.petala {
+    position: absolute;
+
+    top: -12vh;
+
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    will-change: transform;
+
+    animation:
+        cairPetala linear infinite;
+}
+
+@keyframes cairPetala {
+
+    0% {
+        transform:
+            translate3d(0, -15vh, 0)
+            rotate(0deg);
+    }
+
+    25% {
+        transform:
+            translate3d(25px, 25vh, 0)
+            rotate(90deg);
+    }
+
+    50% {
+        transform:
+            translate3d(-25px, 50vh, 0)
+            rotate(180deg);
+    }
+
+    75% {
+        transform:
+            translate3d(30px, 75vh, 0)
+            rotate(270deg);
+    }
+
+    100% {
+        transform:
+            translate3d(-15px, 115vh, 0)
+            rotate(360deg);
     }
 }
 
@@ -642,31 +722,6 @@ body {
 
 
 /* =========================
-   INSTRUÇÃO
-========================= */
-
-.instrucao {
-
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 7%;
-
-    transform:
-        translateX(-50%);
-
-    color: white;
-
-    font-size: 24px;
-
-    font-style: italic;
-
-    white-space: nowrap;
-}
-
-
-/* =========================
    CELULAR
 ========================= */
 
@@ -682,11 +737,6 @@ body {
     .envelope.aberto .carta {
 
         bottom: 20%;
-    }
-
-    .instrucao {
-
-        font-size: 22px;
     }
 
     .conteudo {
@@ -734,13 +784,16 @@ body {
             -45px
             auto
             180px;
-
-        transform: translateY(-5px);
     }
 
     .significados p {
 
         font-size: 19px;
+    }
+
+    .petala {
+        width: 34px;
+        height: 34px;
     }
 
 }
@@ -752,6 +805,8 @@ body {
 
 <section class="inicio">
 
+    <!-- ÁUDIO -->
+
     <audio
         id="musica"
         src="raios-da-manha-cortado.mp3"
@@ -759,10 +814,13 @@ body {
         loop>
     </audio>
 
+
     <div
         class="envelope"
         id="envelope"
     >
+
+        <!-- SNOOPY DO ENVELOPE -->
 
         <img
             class="snoopy-envelope"
@@ -770,15 +828,26 @@ body {
             alt="Snoopy abraçando um coração"
         >
 
+
+        <!-- ÁREA INTERNA DO ENVELOPE -->
+
         <div class="interno">
 
             <div class="carta">
 
                 <div class="conteudo">
 
+
+                    <!-- TEXTO 1 -->
+
                     <div class="paragrafo">
+
                         é uma coisinha besta mas q eu queria dizer pra você
+
                     </div>
+
+
+                    <!-- SNOOPY 1 -->
 
                     <img
                         class="snoopy"
@@ -786,9 +855,17 @@ body {
                         alt="Snoopy"
                     >
 
+
+                    <!-- TEXTO 2 -->
+
                     <div class="paragrafo">
+
                         amor a gnt não ta a tanto tempo assim juntos, mas acho q nunca compartilhei tanto algo como compartilho com você, ja faz pelo menos 6 meses q vc faz parte da minha vida, e q não deixo de reparar em você 1 dia sequer, sou muito grato por vc fazer parte da minha vida e não quero q isso acabe nunca.
+
                     </div>
+
+
+                    <!-- SNOOPY 2 -->
 
                     <img
                         class="snoopy"
@@ -796,9 +873,17 @@ body {
                         alt="Snoopy"
                     >
 
+
+                    <!-- TEXTO 3 -->
+
                     <div class="paragrafo">
+
                         desde q conversamos a primeira vez, ja me apaixonei totalmente.. cada palavra que saia da sua boca, cada gesto, olhar, ja fazia eu querer me aproximar cada vez mais.
+
                     </div>
+
+
+                    <!-- SNOOPY 3 -->
 
                     <img
                         class="snoopy"
@@ -806,9 +891,17 @@ body {
                         alt="Snoopy"
                     >
 
+
+                    <!-- TEXTO 4 -->
+
                     <div class="paragrafo">
+
                         Hoje poder te chamar de amor, te abraçar, receber seu carinho, é quase inacreditável, pedi por muito tempo pra Deus algo que iluminasse minha vida e me fizesse uma pessoa melhor, e hoje tendo você ao meu lado fazendo meus dias mais felizes, precebo que Deus me ouviu e me abençoou.
+
                     </div>
+
+
+                    <!-- SNOOPY 4 -->
 
                     <img
                         class="snoopy"
@@ -816,9 +909,17 @@ body {
                         alt="Snoopy"
                     >
 
+
+                    <!-- TEXTO 5 -->
+
                     <div class="paragrafo">
+
                         não tenho palavras pra dizer o quanto eu te amo e o quanto admiro a pessoa que você é. comentei esses dias com você q o "eu te amo" estava muito pequeno para oque eu realmente sinto, ent acabei procurando palavras que fossem um pouco mais a fundoo, bomm...
+
                     </div>
+
+
+                    <!-- SNOOPY 5 -->
 
                     <img
                         class="snoopy"
@@ -826,9 +927,17 @@ body {
                         alt="Snoopy"
                     >
 
+
+                    <!-- TEXTO 6 -->
+
                     <div class="paragrafo">
+
                         falar que "eu te amo" ficou pequeno demais pro tamanho do amor q tenho, o que eu sinto por você é uma coisa inefável e imorredouro, como uma amálgama perfeita que grudou nossas vidas de um jeito indissolúvel. Nosso laço não tem tanto tempo, mas já virou algo eviterno e sempiterno..
+
                     </div>
+
+
+                    <!-- SNOOPY 6 -->
 
                     <img
                         class="snoopy"
@@ -836,15 +945,26 @@ body {
                         alt="Snoopy"
                     >
 
+
+                    <!-- TEXTO 7 -->
+
                     <div class="paragrafo">
+
                         acho q é isso amor, to com muita sdd de vc, e te amo mto, bjao❤️
+
                     </div>
+
+
+                    <!-- SNOOPY 7 -->
 
                     <img
                         class="snoopy snoopy-final"
                         src="snoopy7.png"
                         alt="Snoopy"
                     >
+
+
+                    <!-- SIGNIFICADOS -->
 
                     <div class="significados">
 
@@ -890,17 +1010,38 @@ body {
 
         </div>
 
+
+        <!-- PETALAS -->
+
+        <div
+            class="petalas"
+            id="petalas">
+        </div>
+
+
+        <!-- CORPO -->
+
         <div class="corpo"></div>
+
+
+        <!-- LATERAIS -->
 
         <div class="esquerda"></div>
 
         <div class="direita"></div>
 
+
+        <!-- FRENTE -->
+
         <div class="frente"></div>
+
+
+        <!-- ABA SUPERIOR -->
 
         <div class="aba"></div>
 
-    
+
+    </div>
 
 </section>
 
@@ -913,6 +1054,68 @@ const envelope =
 const musica =
     document.getElementById("musica");
 
+const petalas =
+    document.getElementById("petalas");
+
+
+/* =========================
+   CRIA AS PÉTALAS
+========================= */
+
+function criarPetalas() {
+
+    if (petalas.children.length > 0) {
+        return;
+    }
+
+    const quantidade = 22;
+
+    for (let i = 0; i < quantidade; i++) {
+
+        const p = document.createElement("img");
+
+        p.src = "petala.png";
+
+        p.className = "petala";
+
+        p.alt = "";
+
+        const esquerda =
+            Math.random() * 100;
+
+        const atraso =
+            Math.random() * 7;
+
+        const duracao =
+            7 + Math.random() * 5;
+
+        const tamanho =
+            30 + Math.random() * 15;
+
+        p.style.left =
+            esquerda + "vw";
+
+        p.style.width =
+            tamanho + "px";
+
+        p.style.height =
+            tamanho + "px";
+
+        p.style.animationDelay =
+            "-" + atraso + "s";
+
+        p.style.animationDuration =
+            duracao + "s";
+
+        petalas.appendChild(p);
+    }
+}
+
+
+/* =========================
+   ABERTURA
+========================= */
+
 envelope.addEventListener(
     "click",
     function() {
@@ -923,15 +1126,27 @@ envelope.addEventListener(
 
         envelope.classList.add("aberto");
 
+
+        /* =========================
+           MÚSICA
+        ========================= */
+
         musica.currentTime = 0;
 
         musica.play().catch(function() {
             console.log("O navegador bloqueou o áudio.");
         });
 
+
+        /* =========================
+           CARTA VIRA LEITURA
+        ========================= */
+
         setTimeout(function() {
 
             envelope.classList.add("leitura");
+
+            criarPetalas();
 
         }, 2900);
 
