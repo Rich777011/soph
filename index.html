@@ -111,20 +111,37 @@ body {
 
     bottom: -62%;
 
-    /* NOVO: degradê vermelho + textura delicada de papel */
+    /* FUNDO DE PAPEL MELHORADO */
     background:
+        radial-gradient(
+            ellipse at 20% 15%,
+            rgba(255,255,255,.08) 0%,
+            rgba(255,255,255,0) 42%
+        ),
+        radial-gradient(
+            ellipse at 80% 85%,
+            rgba(80,0,10,.08) 0%,
+            rgba(80,0,10,0) 45%
+        ),
         repeating-linear-gradient(
             0deg,
             rgba(255,255,255,.018) 0px,
-            rgba(255,255,255,.018) 1px,
-            rgba(0,0,0,.012) 1px,
-            rgba(0,0,0,.012) 3px
+            rgba(255,255,255,.018) 2px,
+            rgba(80,0,10,.012) 2px,
+            rgba(80,0,10,.012) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,.012) 0px,
+            rgba(255,255,255,.012) 3px,
+            rgba(80,0,10,.008) 3px,
+            rgba(80,0,10,.008) 6px
         ),
         linear-gradient(
             135deg,
-            #c93640 0%,
-            #b92f39 45%,
-            #a92833 100%
+            #c83a43 0%,
+            #bc323c 45%,
+            #ad2b35 100%
         );
 
     border: 2px solid rgba(255,255,255,.28);
@@ -227,18 +244,34 @@ body {
     filter:
         drop-shadow(0 8px 8px rgba(0,0,0,.20));
 
-    /* NOVO: movimento muito leve */
+    /* BALANÇO UM POUCO MAIS PERCEPTÍVEL */
     animation: snoopyLeve 4.2s ease-in-out infinite;
 }
 
 @keyframes snoopyLeve {
 
     0%, 100% {
-        transform: translateY(-5px) rotate(-0.4deg);
+        transform:
+            translateY(-5px)
+            rotate(-1.2deg);
+    }
+
+    25% {
+        transform:
+            translateY(-9px)
+            rotate(0.8deg);
     }
 
     50% {
-        transform: translateY(-9px) rotate(0.4deg);
+        transform:
+            translateY(-13px)
+            rotate(1.2deg);
+    }
+
+    75% {
+        transform:
+            translateY(-9px)
+            rotate(-0.8deg);
     }
 }
 
@@ -286,11 +319,27 @@ body {
 @keyframes snoopyLeveFinal {
 
     0%, 100% {
-        transform: translateY(-5px) rotate(-0.4deg);
+        transform:
+            translateY(-5px)
+            rotate(-1.2deg);
+    }
+
+    25% {
+        transform:
+            translateY(-8px)
+            rotate(0.8deg);
     }
 
     50% {
-        transform: translateY(-8px) rotate(0.4deg);
+        transform:
+            translateY(-11px)
+            rotate(1.2deg);
+    }
+
+    75% {
+        transform:
+            translateY(-8px)
+            rotate(-0.8deg);
     }
 }
 
@@ -651,18 +700,35 @@ body {
     z-index: 200;
 
     background:
+        radial-gradient(
+            ellipse at 20% 15%,
+            rgba(255,255,255,.08) 0%,
+            rgba(255,255,255,0) 42%
+        ),
+        radial-gradient(
+            ellipse at 80% 85%,
+            rgba(80,0,10,.08) 0%,
+            rgba(80,0,10,0) 45%
+        ),
         repeating-linear-gradient(
             0deg,
             rgba(255,255,255,.018) 0px,
-            rgba(255,255,255,.018) 1px,
-            rgba(0,0,0,.012) 1px,
-            rgba(0,0,0,.012) 3px
+            rgba(255,255,255,.018) 2px,
+            rgba(80,0,10,.012) 2px,
+            rgba(80,0,10,.012) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,.012) 0px,
+            rgba(255,255,255,.012) 3px,
+            rgba(80,0,10,.008) 3px,
+            rgba(80,0,10,.008) 6px
         ),
         linear-gradient(
             135deg,
-            #c93640 0%,
-            #b92f39 45%,
-            #a92833 100%
+            #c83a43 0%,
+            #bc323c 45%,
+            #ad2b35 100%
         );
 
     transition:
@@ -905,6 +971,7 @@ body {
 <body>
 
 <section class="inicio">
+
 
     <!-- ÁUDIO -->
 
