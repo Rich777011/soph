@@ -10,6 +10,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
@@ -21,6 +22,9 @@ body {
     overflow: hidden;
     font-family: Arial, sans-serif;
     background: #921820;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .inicio {
@@ -53,6 +57,8 @@ body {
     filter: drop-shadow(0 18px 16px rgba(0,0,0,.30));
 
     animation: flutuar 2.5s ease-in-out infinite;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
 @keyframes flutuar {
@@ -68,28 +74,41 @@ body {
 
 .corpo {
     position: absolute;
+
     inset: 0;
+
     background: #cf3039;
+
     border: 5px solid #741017;
+
     border-radius: 11px;
+
     z-index: 1;
 }
 
 .interno {
     position: absolute;
+
     left: 5px;
     right: 5px;
     bottom: 5px;
+
     height: 72%;
+
     overflow: hidden;
+
     z-index: 4;
 }
 
 .carta {
     position: absolute;
+
     left: 10%;
+
     width: 80%;
+
     height: 78%;
+
     bottom: -62%;
 
     background:
@@ -103,6 +122,7 @@ body {
         #b92f39;
 
     border: 2px solid rgba(255,255,255,.28);
+
     border-radius: 10px;
 
     box-shadow:
@@ -125,7 +145,9 @@ body {
 }
 
 .conteudo {
+
     width: 100%;
+
     min-height: 100%;
 
     padding:
@@ -134,6 +156,7 @@ body {
         80px;
 
     color: white;
+
     text-align: center;
 }
 
@@ -581,7 +604,7 @@ body {
 
 
 /* =====================================================
-   PÉTALAS DA COBERTURA INICIAL
+   COBERTURA DE PÉTALAS
 ===================================================== */
 
 .petalas-cobertura {
@@ -602,23 +625,23 @@ body {
     visibility: hidden;
 
     opacity: 1;
+
+    background: transparent;
 }
 
 
 /*
-   MENOS PÉTALAS E MAIORES.
-
-   Elas ficam distribuídas em posições
-   estratégicas para preencher a tela
-   sem precisar de centenas de imagens.
+   Cada pétala é GRANDE.
+   Elas se sobrepõem propositalmente.
+   Assim não existem buracos entre elas.
 */
 
 .petala-cobertura {
 
     position: absolute;
 
-    width: 150px;
-    height: 150px;
+    width: 190px;
+    height: 190px;
 
     background-image:
         url("petalas.png");
@@ -627,19 +650,21 @@ body {
 
     background-size: 300% 300%;
 
+    background-color: transparent;
+
     opacity: 0;
 
     transform:
-        translateY(-180px)
-        scale(.55)
-        rotate(-30deg);
+        translateY(-220px)
+        scale(.75)
+        rotate(-35deg);
 
     animation:
-        cairECobrir .6s ease-out forwards;
+        cairECobrir .65s ease-out forwards;
 }
 
 
-/* Variações da imagem */
+/* Variações da pétala */
 
 .petala-cobertura:nth-child(3n + 1) {
     background-position: 0% 0%;
@@ -654,9 +679,9 @@ body {
 }
 
 
-/*
-   Entrada das pétalas.
-*/
+/* =====================================================
+   ENTRADA DAS PÉTALAS
+===================================================== */
 
 @keyframes cairECobrir {
 
@@ -665,29 +690,19 @@ body {
         opacity: 0;
 
         transform:
-            translateY(-180px)
-            scale(.55)
-            rotate(-40deg);
+            translateY(-220px)
+            scale(.72)
+            rotate(-35deg);
     }
 
-    45% {
+    40% {
 
         opacity: 1;
 
         transform:
-            translateY(15px)
-            scale(1.08)
+            translateY(25px)
+            scale(1.05)
             rotate(15deg);
-    }
-
-    75% {
-
-        opacity: 1;
-
-        transform:
-            translateY(-5px)
-            scale(1.02)
-            rotate(-8deg);
     }
 
     100% {
@@ -702,10 +717,6 @@ body {
 }
 
 
-/*
-   Mantém a camada visível.
-*/
-
 .petalas-cobertura.coberta {
 
     visibility: visible;
@@ -713,11 +724,6 @@ body {
     opacity: 1;
 }
 
-
-/*
-   Depois a cobertura desaparece
-   devagar para revelar a carta.
-*/
 
 .petalas-cobertura.sumindo {
 
@@ -730,7 +736,6 @@ body {
 
 /* =====================================================
    PÉTALAS QUE CONTINUAM CAINDO
-   NÃO ALTERADO
 ===================================================== */
 
 .petalas-caindo {
@@ -935,15 +940,16 @@ body {
         font-size: 19px;
     }
 
+
     /*
-       No celular, pétalas maiores
-       para precisar de menos elementos.
+       No celular, as pétalas da
+       cobertura continuam grandes.
     */
 
     .petala-cobertura {
 
-        width: 125px;
-        height: 125px;
+        width: 145px;
+        height: 145px;
     }
 
     .petala-caindo {
@@ -961,7 +967,6 @@ body {
 
 <section class="inicio">
 
-
     <!-- ÁUDIO -->
 
     <audio
@@ -976,7 +981,6 @@ body {
         class="envelope"
         id="envelope"
     >
-
 
         <!-- SNOOPY DO ENVELOPE -->
 
@@ -994,7 +998,6 @@ body {
             <div class="carta">
 
                 <div class="conteudo">
-
 
                     <!-- TEXTO 1 -->
 
@@ -1173,23 +1176,19 @@ body {
 
         <div class="corpo"></div>
 
-
         <!-- LATERAIS -->
 
         <div class="esquerda"></div>
 
         <div class="direita"></div>
 
-
         <!-- FRENTE -->
 
         <div class="frente"></div>
 
-
         <!-- ABA SUPERIOR -->
 
         <div class="aba"></div>
-
 
     </div>
 
@@ -1200,11 +1199,12 @@ body {
 
     </div>
 
-
 </section>
 
 
-<!-- PÉTALAS DA COBERTURA -->
+<!-- =====================================================
+     PÉTALAS DA COBERTURA
+===================================================== -->
 
 <div
     class="petalas-cobertura"
@@ -1212,7 +1212,9 @@ body {
 </div>
 
 
-<!-- PÉTALAS QUE CONTINUAM CAINDO -->
+<!-- =====================================================
+     PÉTALAS QUE CONTINUAM CAINDO
+===================================================== -->
 
 <div
     class="petalas-caindo"
@@ -1262,14 +1264,17 @@ function criarPetalasDaCobertura() {
 
 
     /*
-       SOMENTE 48 PÉTALAS.
+       36 pétalas grandes.
 
-       Elas são grandes e posicionadas
-       em uma grade, evitando a enorme
-       quantidade que estava travando.
+       Elas são distribuídas em uma grade
+       com sobreposição.
+
+       A sobreposição é proposital:
+       é ela que impede que apareçam
+       buracos mostrando o fundo.
     */
 
-    const colunas = 8;
+    const colunas = 6;
     const linhas = 6;
 
 
@@ -1285,11 +1290,7 @@ function criarPetalasDaCobertura() {
 
 
             /*
-               Grade estratégica.
-
-               Cada pétala ocupa uma área
-               grande da tela e as bordas
-               se encontram.
+               Posicionamento em grade.
             */
 
             const largura =
@@ -1300,18 +1301,19 @@ function criarPetalasDaCobertura() {
 
 
             petala.style.left =
-                (coluna * largura - 4) + "vw";
+                (coluna * largura - 7) + "vw";
 
             petala.style.top =
-                (linha * altura - 5) + "vh";
+                (linha * altura - 8) + "vh";
 
 
             /*
-               Pétalas grandes.
+               Tamanho grande o suficiente
+               para cobrir as áreas vizinhas.
             */
 
             const tamanho =
-                155 + Math.random() * 20;
+                205 + Math.random() * 25;
 
             petala.style.width =
                 tamanho + "px";
@@ -1321,7 +1323,7 @@ function criarPetalasDaCobertura() {
 
 
             /*
-               Variações da própria imagem.
+               Variações da imagem PNG.
             */
 
             const posicoes = [
@@ -1346,42 +1348,34 @@ function criarPetalasDaCobertura() {
 
 
             /*
-               Pequena variação de posição
-               para ficar mais natural,
-               mas sem criar buracos.
+               Pequena variação para não
+               parecer uma grade perfeita.
             */
 
             petala.style.marginLeft =
-                (Math.random() * 16 - 8) + "px";
+                (Math.random() * 20 - 10) + "px";
 
             petala.style.marginTop =
-                (Math.random() * 16 - 8) + "px";
+                (Math.random() * 20 - 10) + "px";
 
 
             /*
-               As pétalas começam em sequência.
-               Isso evita que 48 animações
-               sejam executadas exatamente
-               no mesmo instante.
+               Entrada sequencial.
+               A tela começa a ser preenchida
+               e rapidamente fica totalmente
+               coberta.
             */
 
             const atraso =
-                (linha * 0.055) +
-                (coluna * 0.025) +
-                Math.random() * 0.08;
+                (linha * 0.07) +
+                (coluna * 0.035) +
+                Math.random() * 0.05;
 
             petala.style.animationDelay =
                 atraso + "s";
 
-
             petala.style.animationDuration =
                 "0.6s";
-
-
-            petala.style.zIndex =
-                1000 +
-                (linha * colunas) +
-                coluna;
 
 
             petalasCobertura.appendChild(
@@ -1438,10 +1432,9 @@ envelope.addEventListener(
 
 
         /*
-           As pétalas entram rapidamente,
-           mas uma sequência curta faz
-           parecer que a tela está sendo
-           preenchida de cima para baixo.
+           Em aproximadamente 0,6 segundo,
+           a tela já está completamente
+           tomada pelas pétalas.
         */
 
         setTimeout(function() {
@@ -1450,13 +1443,12 @@ envelope.addEventListener(
                 "coberta"
             );
 
-        }, 650);
+        }, 600);
 
 
-        /*
-           A carta entra enquanto a tela
-           continua completamente coberta.
-        */
+        /* =========================
+           CARTA
+        ========================= */
 
         setTimeout(function() {
 
@@ -1467,14 +1459,9 @@ envelope.addEventListener(
         }, 3000);
 
 
-        /*
-           Depois de cobrir a tela,
-           as pétalas começam a desaparecer
-           devagar.
-
-           Ao mesmo tempo continuam caindo
-           as pétalas normais.
-        */
+        /* =========================
+           PÉTALAS DESAPARECEM
+        ========================= */
 
         setTimeout(function() {
 
@@ -1490,8 +1477,8 @@ envelope.addEventListener(
 
 
         /*
-           Remove a camada inicial
-           depois que ela já sumiu.
+           Limpa a cobertura depois
+           que ela desapareceu.
         */
 
         setTimeout(function() {
