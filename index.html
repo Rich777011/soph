@@ -133,24 +133,35 @@ body {
     background:
         repeating-linear-gradient(
             45deg,
-            rgba(255,255,255,.055) 0px,
-            rgba(255,255,255,.055) 35px,
+            rgba(255,255,255,.035) 0px,
+            rgba(255,255,255,.035) 35px,
             rgba(0,0,0,.025) 35px,
             rgba(0,0,0,.025) 70px
         ),
-        #d83d49;
+        #b92f39;
 
-    border: 2px solid #b72c37;
+    border: 2px solid rgba(255,255,255,.28);
 
-    border-radius: 5px;
+    border-radius: 10px;
 
     box-shadow:
-        0 5px 12px rgba(0,0,0,.18);
+        0 5px 20px rgba(0,0,0,.25);
 
     z-index: 5;
 
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* ESCONDE A BARRA DE ROLAGEM */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
     transition:
         bottom 2.8s cubic-bezier(.25,.75,.2,1);
+}
+
+.carta::-webkit-scrollbar {
+    display: none;
 }
 
 
@@ -158,97 +169,80 @@ body {
    CONTEÚDO DA CARTA
 ========================= */
 
-.conteudo-carta {
-
-    position: absolute;
-
-    left: 0;
-    top: 0;
+.conteudo {
 
     width: 100%;
-    height: 100%;
 
-    overflow-y: auto;
-    overflow-x: hidden;
+    min-height: 100%;
 
-    padding: 55px 9% 70px;
-
-    scrollbar-width: none;
-}
-
-.conteudo-carta::-webkit-scrollbar {
-    display: none;
-}
-
-
-/* =========================
-   TEXTO
-========================= */
-
-.texto-carta {
+    padding:
+        55px
+        8%
+        80px;
 
     color: white;
 
+    text-align: center;
+}
+
+
+.paragrafo {
+
     font-family:
         "Segoe Print",
+        "Bradley Hand",
         "Comic Sans MS",
         cursive;
 
-    font-size: 22px;
+    font-style: italic;
+
+    font-size: clamp(22px, 4.5vw, 32px);
 
     line-height: 1.65;
 
-    text-align: center;
+    color: white;
 
-    font-style: italic;
-}
-
-.texto-carta p {
-
-    margin: 0 0 480px 0;
+    margin-bottom: 480px;
 }
 
 
 /* =========================
-   SNOOPY DENTRO DA CARTA
+   SNOOPY DA CARTA
 ========================= */
 
-.snoopy-espaco {
+.snoopy {
 
-    width: 100%;
+    display: block;
 
-    height: 0;
+    width: min(70vw, 360px);
 
-    position: relative;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-}
-
-.snoopy-espaco img {
-
-    position: absolute;
-
-    width: 220px;
-
-    max-width: 65vw;
+    max-width: 85%;
 
     height: auto;
 
+    /*
+       Mantém o Snoopy no CENTRO
+       do espaço entre os textos.
+    */
+
+    margin:
+        -180px
+        auto
+        360px;
+
     object-fit: contain;
 
-    left: 50%;
-
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
     filter:
-        drop-shadow(0 5px 7px rgba(0,0,0,.18));
+        drop-shadow(0 8px 8px rgba(0,0,0,.20));
+}
+
+
+.snoopy-final {
+
+    margin:
+        -180px
+        auto
+        180px;
 }
 
 
@@ -258,44 +252,62 @@ body {
 
 .significados {
 
-    margin-top: -300px;
+    width: 92%;
 
-    padding: 28px 24px;
+    margin: 0 auto;
+
+    padding: 35px 28px;
+
+    background: rgba(105, 15, 24, .45);
+
+    border:
+        2px solid
+        rgba(255,255,255,.35);
 
     border-radius: 22px;
 
-    background: rgba(120, 15, 25, .35);
-
-    border: 2px solid rgba(255,255,255,.25);
-
-    color: white;
-
-    font-family:
-        "Segoe Print",
-        "Comic Sans MS",
-        cursive;
-
     text-align: left;
 
-    font-size: 19px;
-
-    line-height: 1.55;
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.20);
 }
+
 
 .significados h2 {
 
-    text-align: center;
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Comic Sans MS",
+        cursive;
 
-    font-size: 25px;
-
-    margin-bottom: 20px;
+    font-size: 27px;
 
     font-style: italic;
+
+    color: white;
+
+    text-align: center;
+
+    margin-bottom: 25px;
 }
+
 
 .significados p {
 
-    margin-bottom: 14px;
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 21px;
+
+    line-height: 1.6;
+
+    color: white;
+
+    margin-bottom: 20px;
 }
 
 
@@ -309,123 +321,62 @@ body {
 
     z-index: 20;
 
-    left: 50%;
-
-    bottom: 45%;
-
-    width: 175px;
-
-    transform:
-        translateX(-50%);
-
-    pointer-events: none;
-
-    filter:
-        drop-shadow(0 7px 8px rgba(0,0,0,.22));
-}
-
-.snoopy-envelope img {
-
-    width: 100%;
+    width: 150px;
 
     height: auto;
 
-    display: block;
-}
-
-
-/* CORAÇÃO PULSANDO */
-
-.snoopy-envelope img {
-
-    animation:
-        nenhum 1s infinite;
-}
-
-
-/* =========================
-   ABERTURA
-========================= */
-
-.envelope.aberto {
-
-    animation: none;
-}
-
-
-/* ABA ABRE */
-
-.envelope.aberto .aba {
-
-    transform:
-        rotateX(180deg);
-}
-
-
-/* CARTA SAI */
-
-.envelope.aberto .carta {
-
     left: 50%;
 
-    width: 100vw;
-
-    height: 100vh;
-
-    bottom: 50%;
+    top: 50%;
 
     transform:
-        translate(-50%, 50%);
+        translate(-50%, -50%);
 
-    border-radius: 0;
-
-    transition:
-        width 2.8s cubic-bezier(.25,.75,.2,1),
-        height 2.8s cubic-bezier(.25,.75,.2,1),
-        bottom 2.8s cubic-bezier(.25,.75,.2,1),
-        left 2.8s cubic-bezier(.25,.75,.2,1);
-}
-
-
-/* ESCONDE O SNOOPY DO ENVELOPE APÓS ABRIR */
-
-.envelope.aberto .snoopy-envelope {
-
-    opacity: 0;
-
-    transition: opacity .6s ease;
+    pointer-events: none;
 }
 
 
 /* =========================
-   FRENTE
+   CORAÇÃO DO SNOOPY
 ========================= */
 
-.frente {
+.coracao-envelope {
 
     position: absolute;
 
-    left: 5px;
-    bottom: 5px;
+    z-index: 21;
 
-    width: calc(100% - 10px);
+    width: 48px;
 
-    height: 58%;
+    height: 48px;
 
-    background: #d9343d;
+    left: 50%;
 
-    clip-path:
-        polygon(
-            0 0,
-            38% 0,
-            50% 18%,
-            62% 0,
-            100% 0,
-            100% 100%,
-            0 100%
-        );
+    top: 50%;
 
-    z-index: 7;
+    transform:
+        translate(12px, -8px);
+
+    pointer-events: none;
+
+    animation:
+        coracaoBatendo 1s ease-in-out infinite;
+}
+
+
+@keyframes coracaoBatendo {
+
+    0%, 100% {
+        transform:
+            translate(12px, -8px)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(12px, -8px)
+            scale(1.18);
+    }
 }
 
 
@@ -484,6 +435,38 @@ body {
         );
 
     z-index: 6;
+}
+
+
+/* =========================
+   FRENTE
+========================= */
+
+.frente {
+
+    position: absolute;
+
+    left: 5px;
+    bottom: 5px;
+
+    width: calc(100% - 10px);
+
+    height: 58%;
+
+    background: #d9343d;
+
+    clip-path:
+        polygon(
+            0 0,
+            38% 0,
+            50% 18%,
+            62% 0,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    z-index: 7;
 }
 
 
@@ -574,6 +557,134 @@ body {
 
 
 /* =========================
+   ABERTURA
+========================= */
+
+.envelope.aberto {
+
+    animation: none;
+}
+
+
+.envelope.aberto .aba {
+
+    transform:
+        rotateX(180deg);
+}
+
+
+/* =========================
+   CARTA SAI DEVAGAR
+========================= */
+
+.envelope.aberto .carta {
+
+    bottom: 22%;
+
+    transition:
+        bottom 2.8s cubic-bezier(.25,.75,.2,1);
+}
+
+
+/* =========================
+   CARTA OCUPA A TELA
+========================= */
+
+.envelope.leitura {
+
+    position: fixed;
+
+    left: 0;
+
+    top: 0;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    transform: none !important;
+
+    animation: none;
+
+    z-index: 100;
+
+    filter: none;
+}
+
+
+.envelope.leitura .interno {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: visible;
+
+    z-index: 101;
+}
+
+
+.envelope.leitura .carta {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+    border-radius: 0;
+
+    box-shadow: none;
+
+    z-index: 200;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,.035) 0px,
+            rgba(255,255,255,.035) 35px,
+            rgba(0,0,0,.025) 35px,
+            rgba(0,0,0,.025) 70px
+        ),
+        #b92f39;
+
+    transition:
+        all 1.5s ease;
+}
+
+
+/* ESCONDE O ENVELOPE */
+
+.envelope.leitura .corpo,
+.envelope.leitura .esquerda,
+.envelope.leitura .direita,
+.envelope.leitura .frente,
+.envelope.leitura .aba,
+.envelope.leitura .snoopy-envelope,
+.envelope.leitura .coracao-envelope {
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity .8s ease;
+}
+
+
+/* =========================
    INSTRUÇÃO
 ========================= */
 
@@ -582,6 +693,7 @@ body {
     position: absolute;
 
     left: 50%;
+
     bottom: 7%;
 
     transform:
@@ -606,36 +718,57 @@ body {
     .envelope {
 
         width: 90vw;
+
         height: 61vw;
     }
 
     .envelope.aberto .carta {
 
-        width: 100vw;
-
-        height: 100vh;
-
-        bottom: 50%;
-    }
-
-    .texto-carta {
-
-        font-size: 20px;
-    }
-
-    .snoopy-espaco img {
-
-        width: 190px;
-    }
-
-    .significados {
-
-        font-size: 17px;
+        bottom: 20%;
     }
 
     .instrucao {
 
         font-size: 22px;
+    }
+
+    .conteudo {
+
+        padding:
+            45px
+            7%
+            70px;
+    }
+
+    .paragrafo {
+
+        font-size: 21px;
+
+        line-height: 1.6;
+
+        margin-bottom: 480px;
+    }
+
+    .snoopy {
+
+        width: 75vw;
+
+        margin:
+            -180px
+            auto
+            360px;
+    }
+
+    .significados p {
+
+        font-size: 19px;
+    }
+
+    .coracao-envelope {
+
+        width: 42px;
+
+        height: 42px;
     }
 }
 
@@ -648,159 +781,210 @@ body {
 <section class="inicio">
 
 
+    <!-- ÁUDIO -->
+
+    <audio
+        id="musica"
+        src="raios-da-manha-cortado.mp3"
+        preload="auto">
+    </audio>
+
+
     <div
         class="envelope"
         id="envelope"
     >
 
 
-        <!-- SNOOPY DA FRENTE DO ENVELOPE -->
+        <!-- SNOOPY DO ENVELOPE -->
 
-        <div class="snoopy-envelope">
+        <img
+            class="snoopy-envelope"
+            src="snoopy-envelope.png"
+            alt="Snoopy abraçando um coração"
+        >
 
-            <img
-                src="snoopy-coracao.png"
-                alt="Snoopy abraçando um coração"
-            >
+        <!-- CORAÇÃO PULSANDO -->
 
+        <div
+            class="coracao-envelope"
+        >
+            ❤️
         </div>
 
 
-        <!-- ÁREA INTERNA -->
+        <!-- ÁREA INTERNA DO ENVELOPE -->
 
         <div class="interno">
 
             <div class="carta">
 
-                <div class="conteudo-carta">
+                <div class="conteudo">
 
-                    <div class="texto-carta">
 
+                    <!-- TEXTO 1 -->
+
+                    <div class="paragrafo">
+
+                        é uma coisinha besta mas q eu queria dizer pra você
+
+                    </div>
+
+
+                    <!-- SNOOPY 1 -->
+
+                    <img
+                        class="snoopy"
+                        src="snoopy1.png"
+                        alt="Snoopy"
+                    >
+
+
+                    <!-- TEXTO 2 -->
+
+                    <div class="paragrafo">
+
+                        amor a gnt não ta a tanto tempo assim juntos, mas acho q nunca compartilhei tanto algo como compartilho com você, ja faz pelo menos 6 meses q vc faz parte da minha vida, e q não deixo de reparar em você 1 dia sequer, sou muito grato por vc fazer parte da minha vida e não quero q isso acabe nunca.
+
+                    </div>
+
+
+                    <!-- SNOOPY 2 -->
+
+                    <img
+                        class="snoopy"
+                        src="snoopy2.png"
+                        alt="Snoopy"
+                    >
+
+
+                    <!-- TEXTO 3 -->
+
+                    <div class="paragrafo">
+
+                        desde q conversamos a primeira vez, ja me apaixonei totalmente.. cada palavra que saia da sua boca, cada gesto, olhar, ja fazia eu querer me aproximar cada vez mais.
+
+                    </div>
+
+
+                    <!-- SNOOPY 3 -->
+
+                    <img
+                        class="snoopy"
+                        src="snoopy3.png"
+                        alt="Snoopy"
+                    >
+
+
+                    <!-- TEXTO 4 -->
+
+                    <div class="paragrafo">
+
+                        Hoje poder te chamar se amor, te abraçar, receber seu carinho, é quase inacreditável, pedi por muito tempo pra Deus algo que iluminasse minha vida e me fizesse uma pessoa melhor, e hoje tendo você ao meu lado fazendo meus dias mais felizes, precebo que Deus me ouviu e me abençoou.
+
+                    </div>
+
+
+                    <!-- SNOOPY 4 -->
+
+                    <img
+                        class="snoopy"
+                        src="snoopy4.png"
+                        alt="Snoopy"
+                    >
+
+
+                    <!-- TEXTO 5 -->
+
+                    <div class="paragrafo">
+
+                        não tenho palavras pra dizer o quanto eu te amo e o quanto admiro a pessoa que você é. comentei esses dias com você q o "eu te amo" estava muito pequeno para oque eu realmente sinto, ent acabei procurando palavras que fossem um pouco mais a fundoo, bomm...
+
+                    </div>
+
+
+                    <!-- SNOOPY 5 -->
+
+                    <img
+                        class="snoopy"
+                        src="snoopy5.png"
+                        alt="Snoopy"
+                    >
+
+
+                    <!-- TEXTO 6 -->
+
+                    <div class="paragrafo">
+
+                        falar que "eu te amo" ficou pequeno demais pro tamanho do amor q tenho, o que eu sinto por você é uma coisa inefável e imorredouro, como uma amálgama perfeita que grudou nossas vidas de um jeito indissolúvel. Nosso laço não tem tanto tempo, mas já virou algo eviterno e sempiterno..
+
+                    </div>
+
+
+                    <!-- SNOOPY 6 -->
+
+                    <img
+                        class="snoopy"
+                        src="snoopy6.png"
+                        alt="Snoopy"
+                    >
+
+
+                    <!-- TEXTO 7 -->
+
+                    <div class="paragrafo">
+
+                        acho q é isso amor, to com muita sdd de vc, e te amo mto, bjao❤️
+
+                    </div>
+
+
+                    <!-- SNOOPY 7 -->
+
+                    <img
+                        class="snoopy snoopy-final"
+                        src="snoopy7.png"
+                        alt="Snoopy"
+                    >
+
+
+                    <!-- SIGNIFICADOS -->
+
+                    <div class="significados">
+
+                        <h2>
+                            significado das palavras difíceis
+                        </h2>
 
                         <p>
-                            é uma coisinha besta mas q eu queria dizer pra vcc
+                            <strong>Imorredouro:</strong>
+                            Que não morre; imortal, eterno, que dura para sempre.
                         </p>
-
-
-                        <!-- SNOOPY 1 -->
-
-                        <div class="snoopy-espaco">
-                            <img src="snoopy1.png" alt="Snoopy">
-                        </div>
-
 
                         <p>
-                            amor a gnt não ta a tanto tempo assim juntos, mas acho q nunca compartilhei tanto algo como compartilho com você, ja faz pelo menos 6 meses q vc faz parte da minha vida, e q não deixo de reparar em você 1 dia sequer, sou muito grato por vc fazer parte da minha vida e não quero q isso acabe nunca.
+                            <strong>Eviterno:</strong>
+                            Tem um significado muito bonito na filosofia: refere-se a algo que teve um início mas que nunca terá um fim.
                         </p>
-
-
-                        <!-- SNOOPY 2 -->
-
-                        <div class="snoopy-espaco">
-                            <img src="snoopy2.png" alt="Snoopy">
-                        </div>
-
 
                         <p>
-                            desde q conversamos a primeira vez, ja me apaixonei totalmente.. cada palavra que saia da sua boca, cada gesto, olhar, ja fazia eu querer me aproximar cada vez mais.
+                            <strong>Sempiterno:</strong>
+                            É aquilo que é eterno tanto para o passado quanto para o futuro, algo que parece que sempre existiu e que vai durar para sempre, sem interrupção.
                         </p>
-
-
-                        <!-- SNOOPY 3 -->
-
-                        <div class="snoopy-espaco">
-                            <img src="snoopy3.png" alt="Snoopy">
-                        </div>
-
 
                         <p>
-                            Hoje poder te chamar se amor, te abraçar, receber seu carinho, é quase inacreditável, pedi por muito tempo pra Deus algo que iluminasse minha vida e me fizesse uma pessoa melhor, e hoje tendo você ao meu lado fazendo meus dias mais felizes, precebo que Deus me ouviu e me abençoou.
+                            <strong>Inefável:</strong>
+                            Algo que é tão grandioso, belo ou intenso que não pode ser expresso em palavras. É um sentimento que ultrapassa a capacidade da linguagem humana.
                         </p>
-
-
-                        <!-- SNOOPY 4 -->
-
-                        <div class="snoopy-espaco">
-                            <img src="snoopy4.png" alt="Snoopy">
-                        </div>
-
 
                         <p>
-                            não tenho palavras pra dizer o quanto eu te amo e o quanto admiro a pessoa que você é. comentei esses dias com você q o "eu te amo" estava muito pequeno para oque eu realmente sinto, ent acabei procurando palavras que fossem um pouco mais a fundoo, bomm...
+                            <strong>Amálgama:</strong>
+                            É uma mistura perfeita, fusão ou união completa de elementos diferentes que se tornam uma coisa só.
                         </p>
-
-
-                        <!-- SNOOPY 5 -->
-
-                        <div class="snoopy-espaco">
-                            <img src="snoopy5.png" alt="Snoopy">
-                        </div>
-
 
                         <p>
-                            falar que "eu te amo" ficou pequeno demais pro tamanho do amor q tenho, o que eu sinto por você é uma coisa inefável e imorredouro, como uma amálgama perfeita que grudou nossas vidas de um jeito indissolúvel. Nosso laço não tem tanto tempo, mas já virou algo eviterno e sempiterno..
+                            <strong>Indissolúvel:</strong>
+                            Que não se pode dissolver, separar ou destruir. É um vínculo inquebrável.
                         </p>
-
-
-                        <!-- SNOOPY 6 -->
-
-                        <div class="snoopy-espaco">
-                            <img src="snoopy6.png" alt="Snoopy">
-                        </div>
-
-
-                        <p>
-                            acho q é isso amor, to com muita sdd de vc, e te amo mto, bjao❤️
-                        </p>
-
-
-                        <!-- SNOOPY 7 -->
-
-                        <div class="snoopy-espaco">
-                            <img src="snoopy7.png" alt="Snoopy">
-                        </div>
-
-
-                        <!-- SIGNIFICADOS -->
-
-                        <div class="significados">
-
-                            <h2>
-                                Significado das palavras difíceis
-                            </h2>
-
-                            <p>
-                                <strong>• Imorredouro:</strong>
-                                Que não morre; imortal, eterno, que dura para sempre.
-                            </p>
-
-                            <p>
-                                <strong>• Eviterno:</strong>
-                                Tem um significado muito bonito na filosofia: refere-se a algo que teve um início mas que nunca terá um fim.
-                            </p>
-
-                            <p>
-                                <strong>• Sempiterno:</strong>
-                                É aquilo que é eterno tanto para o passado quanto para o futuro, algo que parece que sempre existiu e que vai durar para sempre, sem interrupção.
-                            </p>
-
-                            <p>
-                                <strong>• Inefável:</strong>
-                                Algo que é tão grandioso, belo ou intenso que não pode ser expresso em palavras. É um sentimento que ultrapassa a capacidade da linguagem humana.
-                            </p>
-
-                            <p>
-                                <strong>• Amálgama:</strong>
-                                é uma mistura perfeita, fusão ou união completa de elementos diferentes que se tornam uma coisa só
-                            </p>
-
-                            <p>
-                                <strong>• Indissolúvel:</strong>
-                                Que não se pode dissolver, separar ou destruir. É um vínculo inquebrável.
-                            </p>
-
-                        </div>
-
 
                     </div>
 
@@ -828,7 +1012,7 @@ body {
         <div class="frente"></div>
 
 
-        <!-- ABA -->
+        <!-- ABA SUPERIOR -->
 
         <div class="aba"></div>
 
@@ -837,7 +1021,9 @@ body {
 
 
     <div class="instrucao">
+
         clica aqui soph
+
     </div>
 
 
@@ -849,18 +1035,46 @@ body {
 const envelope =
     document.getElementById("envelope");
 
+const musica =
+    document.getElementById("musica");
+
 
 envelope.addEventListener(
     "click",
     function() {
 
+        if (envelope.classList.contains("aberto")) {
+            return;
+        }
+
         envelope.classList.add("aberto");
+
+
+        /* =========================
+           MÚSICA
+        ========================= */
+
+        musica.currentTime = 0;
+
+        musica.play().catch(function() {
+            console.log("O navegador bloqueou o áudio.");
+        });
+
+
+        /* =========================
+           CONTINUAÇÃO DA CARTA
+        ========================= */
+
+        setTimeout(function() {
+
+            envelope.classList.add("leitura");
+
+        }, 2900);
 
     }
 );
 
 </script>
-
 
 </body>
 </html>
