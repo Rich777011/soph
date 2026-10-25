@@ -152,10 +152,16 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
 
-    scrollbar-width: thin;
+    /* ESCONDE A BARRA DE ROLAGEM */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 
     transition:
         bottom 2.8s cubic-bezier(.25,.75,.2,1);
+}
+
+.carta::-webkit-scrollbar {
+    display: none;
 }
 
 
@@ -214,10 +220,15 @@ body {
 
     height: auto;
 
+    /*
+       Mantém o Snoopy no CENTRO
+       do espaço entre os textos.
+    */
+
     margin:
-        -300px
+        -180px
         auto
-        480px;
+        360px;
 
     object-fit: contain;
 
@@ -229,7 +240,7 @@ body {
 .snoopy-final {
 
     margin:
-        -300px
+        -180px
         auto
         180px;
 }
@@ -743,9 +754,9 @@ body {
         width: 75vw;
 
         margin:
-            -300px
+            -180px
             auto
-            480px;
+            360px;
     }
 
     .significados p {
