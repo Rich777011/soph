@@ -165,13 +165,13 @@ body {
 
     font-style: italic;
 
-    font-size: clamp(22px, 4.5vw, 32px);
+    font-size: clamp(25px, 5.2vw, 36px);
 
     line-height: 1.65;
 
     color: white;
 
-    margin-bottom: 300px;
+    margin-bottom: 180px;
 }
 
 
@@ -183,16 +183,16 @@ body {
 
     display: block;
 
-    width: min(70vw, 360px);
+    width: min(55vw, 280px);
 
-    max-width: 85%;
+    max-width: 70%;
 
-    height: auto;
+    height: 220px;
 
     margin:
         -45px
         auto
-        135px;
+        125px;
 
     transform: translateY(-5px);
 
@@ -204,6 +204,10 @@ body {
 
 .snoopy-final {
 
+    width: min(55vw, 280px);
+
+    height: 220px;
+
     margin:
         -45px
         auto
@@ -211,6 +215,11 @@ body {
 
     transform: translateY(-5px);
 }
+
+
+/* =========================
+   SIGNIFICADOS
+========================= */
 
 .significados {
 
@@ -270,6 +279,11 @@ body {
     margin-bottom: 20px;
 }
 
+
+/* =========================
+   SNOOPY DO ENVELOPE
+========================= */
+
 .snoopy-envelope {
 
     position: absolute;
@@ -289,6 +303,11 @@ body {
 
     pointer-events: none;
 }
+
+
+/* =========================
+   LATERAL ESQUERDA
+========================= */
 
 .esquerda {
 
@@ -314,6 +333,11 @@ body {
     z-index: 6;
 }
 
+
+/* =========================
+   LATERAL DIREITA
+========================= */
+
 .direita {
 
     position: absolute;
@@ -337,6 +361,11 @@ body {
 
     z-index: 6;
 }
+
+
+/* =========================
+   FRENTE
+========================= */
 
 .frente {
 
@@ -364,6 +393,11 @@ body {
 
     z-index: 7;
 }
+
+
+/* =========================
+   ABA SUPERIOR
+========================= */
 
 .aba {
 
@@ -397,6 +431,9 @@ body {
         transform 1.05s cubic-bezier(.2,.8,.2,1);
 }
 
+
+/* BORDA DA ABA */
+
 .aba::before {
 
     content: "";
@@ -416,6 +453,9 @@ body {
 
     z-index: -1;
 }
+
+
+/* INTERIOR DA ABA */
 
 .aba::after {
 
@@ -440,6 +480,11 @@ body {
         );
 }
 
+
+/* =========================
+   ABERTURA
+========================= */
+
 .envelope.aberto {
 
     animation: none;
@@ -451,6 +496,11 @@ body {
         rotateX(180deg);
 }
 
+
+/* =========================
+   CARTA SAI DEVAGAR
+========================= */
+
 .envelope.aberto .carta {
 
     bottom: 22%;
@@ -458,6 +508,11 @@ body {
     transition:
         bottom 2.8s cubic-bezier(.25,.75,.2,1);
 }
+
+
+/* =========================
+   CARTA OCUPA A TELA
+========================= */
 
 .envelope.leitura {
 
@@ -531,6 +586,9 @@ body {
         all 1.5s ease;
 }
 
+
+/* ESCONDE O ENVELOPE */
+
 .envelope.leitura .corpo,
 .envelope.leitura .esquerda,
 .envelope.leitura .direita,
@@ -545,6 +603,11 @@ body {
     transition:
         opacity .8s ease;
 }
+
+
+/* =========================
+   INSTRUÇÃO
+========================= */
 
 .instrucao {
 
@@ -565,6 +628,11 @@ body {
 
     white-space: nowrap;
 }
+
+
+/* =========================
+   CELULAR
+========================= */
 
 @media (max-width: 600px) {
 
@@ -595,21 +663,41 @@ body {
 
     .paragrafo {
 
-        font-size: 21px;
+        font-size: 25px;
 
         line-height: 1.6;
 
-        margin-bottom: 300px;
+        margin-bottom: 180px;
     }
 
     .snoopy {
 
-        width: 75vw;
+        width: 58vw;
+
+        max-width: 58vw;
+
+        height: 180px;
 
         margin:
             -45px
             auto
-            135px;
+            125px;
+
+        transform: translateY(-5px);
+    }
+
+    .snoopy-final {
+
+        width: 58vw;
+
+        max-width: 58vw;
+
+        height: 180px;
+
+        margin:
+            -45px
+            auto
+            180px;
 
         transform: translateY(-5px);
     }
@@ -628,6 +716,9 @@ body {
 
 <section class="inicio">
 
+
+    <!-- ÁUDIO -->
+
     <audio
         id="musica"
         src="raios-da-manha-cortado.mp3"
@@ -635,10 +726,14 @@ body {
         loop>
     </audio>
 
+
     <div
         class="envelope"
         id="envelope"
     >
+
+
+        <!-- SNOOPY DO ENVELOPE -->
 
         <img
             class="snoopy-envelope"
@@ -646,11 +741,17 @@ body {
             alt="Snoopy abraçando um coração"
         >
 
+
+        <!-- ÁREA INTERNA DO ENVELOPE -->
+
         <div class="interno">
 
             <div class="carta">
 
                 <div class="conteudo">
+
+
+                    <!-- TEXTO 1 -->
 
                     <div class="paragrafo">
 
@@ -658,11 +759,17 @@ body {
 
                     </div>
 
+
+                    <!-- SNOOPY 1 -->
+
                     <img
                         class="snoopy"
                         src="snoopy1.png"
                         alt="Snoopy"
                     >
+
+
+                    <!-- TEXTO 2 -->
 
                     <div class="paragrafo">
 
@@ -670,11 +777,17 @@ body {
 
                     </div>
 
+
+                    <!-- SNOOPY 2 -->
+
                     <img
                         class="snoopy"
                         src="snoopy2.png"
                         alt="Snoopy"
                     >
+
+
+                    <!-- TEXTO 3 -->
 
                     <div class="paragrafo">
 
@@ -682,11 +795,17 @@ body {
 
                     </div>
 
+
+                    <!-- SNOOPY 3 -->
+
                     <img
                         class="snoopy"
                         src="snoopy3.png"
                         alt="Snoopy"
                     >
+
+
+                    <!-- TEXTO 4 -->
 
                     <div class="paragrafo">
 
@@ -694,11 +813,17 @@ body {
 
                     </div>
 
+
+                    <!-- SNOOPY 4 -->
+
                     <img
                         class="snoopy"
                         src="snoopy4.png"
                         alt="Snoopy"
                     >
+
+
+                    <!-- TEXTO 5 -->
 
                     <div class="paragrafo">
 
@@ -706,11 +831,17 @@ body {
 
                     </div>
 
+
+                    <!-- SNOOPY 5 -->
+
                     <img
                         class="snoopy"
                         src="snoopy5.png"
                         alt="Snoopy"
                     >
+
+
+                    <!-- TEXTO 6 -->
 
                     <div class="paragrafo">
 
@@ -718,11 +849,17 @@ body {
 
                     </div>
 
+
+                    <!-- SNOOPY 6 -->
+
                     <img
                         class="snoopy"
                         src="snoopy6.png"
                         alt="Snoopy"
                     >
+
+
+                    <!-- TEXTO 7 -->
 
                     <div class="paragrafo">
 
@@ -730,11 +867,17 @@ body {
 
                     </div>
 
+
+                    <!-- SNOOPY 7 -->
+
                     <img
                         class="snoopy snoopy-final"
                         src="snoopy7.png"
                         alt="Snoopy"
                     >
+
+
+                    <!-- SIGNIFICADOS -->
 
                     <div class="significados">
 
@@ -780,17 +923,31 @@ body {
 
         </div>
 
+
+        <!-- CORPO -->
+
         <div class="corpo"></div>
+
+
+        <!-- LATERAIS -->
 
         <div class="esquerda"></div>
 
         <div class="direita"></div>
 
+
+        <!-- FRENTE -->
+
         <div class="frente"></div>
+
+
+        <!-- ABA SUPERIOR -->
 
         <div class="aba"></div>
 
+
     </div>
+
 
     <div class="instrucao">
 
@@ -798,7 +955,9 @@ body {
 
     </div>
 
+
 </section>
+
 
 <script>
 
@@ -807,6 +966,7 @@ const envelope =
 
 const musica =
     document.getElementById("musica");
+
 
 envelope.addEventListener(
     "click",
@@ -818,11 +978,21 @@ envelope.addEventListener(
 
         envelope.classList.add("aberto");
 
+
+        /* =========================
+           MÚSICA
+        ========================= */
+
         musica.currentTime = 0;
 
         musica.play().catch(function() {
             console.log("O navegador bloqueou o áudio.");
         });
+
+
+        /* =========================
+           CONTINUAÇÃO DA CARTA
+        ========================= */
 
         setTimeout(function() {
 
