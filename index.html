@@ -176,7 +176,7 @@ body {
 
 
 /* =========================
-   SNOOPYS DA CARTA
+   SNOOPY DA CARTA
 ========================= */
 
 .snoopy {
@@ -202,10 +202,10 @@ body {
         drop-shadow(0 8px 8px rgba(0,0,0,.20));
 
     animation:
-        snoopyBalancca 3.2s ease-in-out infinite;
+        balancarSnoopy 3.2s ease-in-out infinite;
 }
 
-@keyframes snoopyBalancca {
+@keyframes balancarSnoopy {
 
     0%, 100% {
         transform:
@@ -234,10 +234,10 @@ body {
     transform: translateY(-5px);
 
     animation:
-        snoopyBalanccaFinal 3.4s ease-in-out infinite;
+        balancarSnoopyFinal 3.4s ease-in-out infinite;
 }
 
-@keyframes snoopyBalanccaFinal {
+@keyframes balancarSnoopyFinal {
 
     0%, 100% {
         transform:
@@ -254,11 +254,11 @@ body {
 
 
 /* =========================
-   PETALAS
-   APARECEM SOMENTE NA LEITURA
+   PETALAS CAINDO
 ========================= */
 
 .petalas {
+
     position: fixed;
 
     inset: 0;
@@ -270,7 +270,7 @@ body {
 
     pointer-events: none;
 
-    z-index: 500;
+    z-index: 250;
 
     opacity: 0;
 
@@ -278,56 +278,68 @@ body {
 }
 
 .envelope.leitura .petalas {
+
     opacity: 1;
 }
 
 .petala {
+
     position: absolute;
 
-    top: -12vh;
+    top: -60px;
 
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
 
     object-fit: contain;
 
     pointer-events: none;
 
+    opacity: .95;
+
     will-change: transform;
 
-    animation:
-        cairPetala linear infinite;
+    animation-name: quedaPetala;
+
+    animation-timing-function: linear;
+
+    animation-iteration-count: infinite;
 }
 
-@keyframes cairPetala {
+@keyframes quedaPetala {
 
     0% {
+
         transform:
-            translate3d(0, -15vh, 0)
+            translate3d(0, -70px, 0)
             rotate(0deg);
     }
 
     25% {
+
         transform:
-            translate3d(25px, 25vh, 0)
+            translate3d(35px, 25vh, 0)
             rotate(90deg);
     }
 
     50% {
+
         transform:
-            translate3d(-25px, 50vh, 0)
+            translate3d(-30px, 50vh, 0)
             rotate(180deg);
     }
 
     75% {
+
         transform:
             translate3d(30px, 75vh, 0)
             rotate(270deg);
     }
 
     100% {
+
         transform:
-            translate3d(-15px, 115vh, 0)
+            translate3d(-20px, 110vh, 0)
             rotate(360deg);
     }
 }
@@ -768,8 +780,6 @@ body {
             -45px
             auto
             125px;
-
-        transform: translateY(-5px);
     }
 
     .snoopy-final {
@@ -792,8 +802,9 @@ body {
     }
 
     .petala {
-        width: 34px;
-        height: 34px;
+
+        width: 36px;
+        height: 36px;
     }
 
 }
@@ -819,6 +830,7 @@ body {
         class="envelope"
         id="envelope"
     >
+
 
         <!-- SNOOPY DO ENVELOPE -->
 
@@ -1059,7 +1071,7 @@ const petalas =
 
 
 /* =========================
-   CRIA AS PÉTALAS
+   CRIA AS PETALAS
 ========================= */
 
 function criarPetalas() {
@@ -1068,44 +1080,33 @@ function criarPetalas() {
         return;
     }
 
-    const quantidade = 22;
+    const quantidade = 18;
 
     for (let i = 0; i < quantidade; i++) {
 
-        const p = document.createElement("img");
-
-        p.src = "petala.png";
+        const p =
+            document.createElement("img");
 
         p.className = "petala";
 
+        p.src = "petala.png";
+
         p.alt = "";
 
-        const esquerda =
-            Math.random() * 100;
-
-        const atraso =
-            Math.random() * 7;
-
-        const duracao =
-            7 + Math.random() * 5;
-
-        const tamanho =
-            30 + Math.random() * 15;
-
         p.style.left =
-            esquerda + "vw";
-
-        p.style.width =
-            tamanho + "px";
-
-        p.style.height =
-            tamanho + "px";
-
-        p.style.animationDelay =
-            "-" + atraso + "s";
+            (Math.random() * 105 - 2) + "vw";
 
         p.style.animationDuration =
-            duracao + "s";
+            (8 + Math.random() * 4) + "s";
+
+        p.style.animationDelay =
+            (-Math.random() * 10) + "s";
+
+        p.style.width =
+            (36 + Math.random() * 12) + "px";
+
+        p.style.height =
+            p.style.width;
 
         petalas.appendChild(p);
     }
@@ -1120,7 +1121,9 @@ envelope.addEventListener(
     "click",
     function() {
 
-        if (envelope.classList.contains("aberto")) {
+        if (
+            envelope.classList.contains("aberto")
+        ) {
             return;
         }
 
@@ -1134,12 +1137,16 @@ envelope.addEventListener(
         musica.currentTime = 0;
 
         musica.play().catch(function() {
-            console.log("O navegador bloqueou o áudio.");
+
+            console.log(
+                "O navegador bloqueou o áudio."
+            );
+
         });
 
 
         /* =========================
-           CARTA VIRA LEITURA
+           CARTA
         ========================= */
 
         setTimeout(function() {
