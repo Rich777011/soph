@@ -436,6 +436,9 @@ body {
         transform 1.05s cubic-bezier(.2,.8,.2,1);
 }
 
+
+/* BORDA DA ABA */
+
 .aba::before {
 
     content: "";
@@ -455,6 +458,9 @@ body {
 
     z-index: -1;
 }
+
+
+/* INTERIOR DA ABA */
 
 .aba::after {
 
@@ -485,6 +491,7 @@ body {
 ========================= */
 
 .envelope.aberto {
+
     animation: none;
 }
 
@@ -603,133 +610,9 @@ body {
 }
 
 
-/* =====================================================
-   COBERTURA INICIAL DE PÉTALAS
-===================================================== */
-
-.petalas-cobertura {
-
-    position: fixed;
-
-    inset: 0;
-
-    width: 100vw;
-    height: 100vh;
-
-    z-index: 1000;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    visibility: hidden;
-
-    opacity: 1;
-}
-
-
-/*
-   PÉTALAS GRANDES E SOBREPOSTAS.
-
-   A camada é mais densa nas bordas
-   para impedir qualquer fresta.
-*/
-
-.petala-cobertura {
-
-    position: absolute;
-
-    width: 210px;
-    height: 210px;
-
-    background-image:
-        url("petalas.png");
-
-    background-repeat: no-repeat;
-
-    background-size: 300% 300%;
-
-    opacity: 0;
-
-    transform:
-        translateY(-250px)
-        scale(.72)
-        rotate(-35deg);
-
-    animation:
-        cairECobrir .65s ease-out forwards;
-}
-
-
-/* Variações da imagem */
-
-.petala-cobertura:nth-child(3n + 1) {
-    background-position: 0% 0%;
-}
-
-.petala-cobertura:nth-child(3n + 2) {
-    background-position: 50% 50%;
-}
-
-.petala-cobertura:nth-child(3n + 3) {
-    background-position: 100% 100%;
-}
-
-
-@keyframes cairECobrir {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-            translateY(-250px)
-            scale(.72)
-            rotate(-35deg);
-    }
-
-    40% {
-
-        opacity: 1;
-
-        transform:
-            translateY(20px)
-            scale(1.05)
-            rotate(12deg);
-    }
-
-    100% {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1)
-            rotate(0deg);
-    }
-}
-
-
-.petalas-cobertura.coberta {
-
-    visibility: visible;
-
-    opacity: 1;
-}
-
-
-.petalas-cobertura.sumindo {
-
-    opacity: 0;
-
-    transition:
-        opacity 2.4s ease;
-}
-
-
-/* =====================================================
-   PÉTALAS QUE CONTINUAM CAINDO
-===================================================== */
+/* =========================
+   PÉTALAS CAINDO
+========================= */
 
 .petalas-caindo {
 
@@ -757,7 +640,6 @@ body {
     opacity: 1;
 }
 
-
 .petala-caindo {
 
     position: absolute;
@@ -780,6 +662,8 @@ body {
         cairPetala linear infinite;
 }
 
+
+/* VARIAÇÕES DAS PÉTALAS */
 
 .petala-caindo:nth-child(3n + 1) {
     background-position: 0% 0%;
@@ -933,17 +817,6 @@ body {
         font-size: 19px;
     }
 
-    /*
-       No celular, aumenta a cobertura
-       para eliminar as frestas.
-    */
-
-    .petala-cobertura {
-
-        width: 175px;
-        height: 175px;
-    }
-
     .petala-caindo {
 
         width: 55px;
@@ -974,6 +847,7 @@ body {
         id="envelope"
     >
 
+
         <!-- SNOOPY DO ENVELOPE -->
 
         <img
@@ -990,6 +864,7 @@ body {
             <div class="carta">
 
                 <div class="conteudo">
+
 
                     <!-- TEXTO 1 -->
 
@@ -1168,19 +1043,23 @@ body {
 
         <div class="corpo"></div>
 
+
         <!-- LATERAIS -->
 
         <div class="esquerda"></div>
 
         <div class="direita"></div>
 
+
         <!-- FRENTE -->
 
         <div class="frente"></div>
 
+
         <!-- ABA SUPERIOR -->
 
         <div class="aba"></div>
+
 
     </div>
 
@@ -1191,18 +1070,11 @@ body {
 
     </div>
 
+
 </section>
 
 
-<!-- PÉTALAS DA COBERTURA -->
-
-<div
-    class="petalas-cobertura"
-    id="petalasCobertura">
-</div>
-
-
-<!-- PÉTALAS QUE CONTINUAM CAINDO -->
+<!-- PÉTALAS QUE CAEM DEPOIS QUE A CARTA ABRE -->
 
 <div
     class="petalas-caindo"
@@ -1235,233 +1107,53 @@ const envelope =
 const musica =
     document.getElementById("musica");
 
-const petalasCobertura =
-    document.getElementById("petalasCobertura");
-
 const petalasCaindo =
     document.getElementById("petalasCaindo");
 
-
-/* =====================================================
-   CRIA A COBERTURA INICIAL
-===================================================== */
-
-function criarPetalasDaCobertura() {
-
-    petalasCobertura.innerHTML = "";
-
-
-    /*
-       60 pétalas.
-
-       A quantidade é maior que antes,
-       mas cada uma é grande.
-
-       Elas se sobrepõem para que
-       nenhuma parte do fundo apareça.
-    */
-
-    const colunas = 10;
-    const linhas = 6;
-
-
-    for (let linha = 0; linha < linhas; linha++) {
-
-        for (let coluna = 0; coluna < colunas; coluna++) {
-
-            const petala =
-                document.createElement("div");
-
-            petala.className =
-                "petala-cobertura";
-
-
-            /*
-               A grade é mais apertada
-               que a anterior.
-            */
-
-            const largura =
-                100 / colunas;
-
-            const altura =
-                100 / linhas;
-
-
-            petala.style.left =
-                (coluna * largura - 5) + "vw";
-
-            petala.style.top =
-                (linha * altura - 7) + "vh";
-
-
-            /*
-               Pétala grande.
-            */
-
-            const tamanho =
-                190 + Math.random() * 25;
-
-            petala.style.width =
-                tamanho + "px";
-
-            petala.style.height =
-                tamanho + "px";
-
-
-            /*
-               Variações da imagem.
-            */
-
-            const posicoes = [
-                "0% 0%",
-                "50% 0%",
-                "100% 0%",
-                "0% 50%",
-                "50% 50%",
-                "100% 50%",
-                "0% 100%",
-                "50% 100%",
-                "100% 100%"
-            ];
-
-            petala.style.backgroundPosition =
-                posicoes[
-                    Math.floor(
-                        Math.random() *
-                        posicoes.length
-                    )
-                ];
-
-
-            /*
-               Sobreposição pequena.
-               Isso elimina as frestas.
-            */
-
-            petala.style.marginLeft =
-                (Math.random() * 14 - 7) + "px";
-
-            petala.style.marginTop =
-                (Math.random() * 14 - 7) + "px";
-
-
-            /*
-               A entrada acontece em ondas
-               muito rápidas.
-            */
-
-            const atraso =
-                (linha * 0.07) +
-                (coluna * 0.025);
-
-            petala.style.animationDelay =
-                atraso + "s";
-
-            petala.style.animationDuration =
-                "0.6s";
-
-
-            petalasCobertura.appendChild(
-                petala
-            );
-        }
-    }
-}
-
-
-/* =====================================================
-   CLIQUE
-===================================================== */
 
 envelope.addEventListener(
     "click",
     function() {
 
-        if (
-            envelope.classList.contains("aberto")
-        ) {
+        if (envelope.classList.contains("aberto")) {
             return;
         }
 
-
-        envelope.classList.add(
-            "aberto"
-        );
+        envelope.classList.add("aberto");
 
 
-        /* MÚSICA */
+        /* =========================
+           MÚSICA
+        ========================= */
 
         musica.currentTime = 0;
 
         musica.play().catch(function() {
-
-            console.log(
-                "O navegador bloqueou o áudio."
-            );
-
+            console.log("O navegador bloqueou o áudio.");
         });
 
 
-        /* COBERTURA */
-
-        criarPetalasDaCobertura();
-
-        petalasCobertura.style.visibility =
-            "visible";
-
-
-        /*
-           Aproximadamente 0,6 segundo
-           para a cobertura fechar a tela.
-        */
+        /* =========================
+           ABRE A CARTA
+        ========================= */
 
         setTimeout(function() {
 
-            petalasCobertura.classList.add(
-                "coberta"
-            );
+            envelope.classList.add("leitura");
 
-        }, 600);
+        }, 2900);
 
 
-        /* CARTA */
-
-        setTimeout(function() {
-
-            envelope.classList.add(
-                "leitura"
-            );
-
-        }, 3000);
-
-
-        /* PETALAS CONTINUAM CAINDO */
+        /* =========================
+           PÉTALAS
+           COMEÇAM DEPOIS DO TEXTO
+        ========================= */
 
         setTimeout(function() {
 
-            petalasCobertura.classList.add(
-                "sumindo"
-            );
+            petalasCaindo.classList.add("ativas");
 
-            petalasCaindo.classList.add(
-                "ativas"
-            );
-
-        }, 3200);
-
-
-        /* LIMPA A CAMADA */
-
-        setTimeout(function() {
-
-            petalasCobertura.style.visibility =
-                "hidden";
-
-            petalasCobertura.innerHTML =
-                "";
-
-        }, 6000);
+        }, 4400);
 
     }
 );
