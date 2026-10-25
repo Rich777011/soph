@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -152,7 +153,6 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
 
-    /* ESCONDE A BARRA DE ROLAGEM */
     scrollbar-width: none;
     -ms-overflow-style: none;
 
@@ -202,7 +202,7 @@ body {
 
     color: white;
 
-    margin-bottom: 480px;
+    margin-bottom: 350px;
 }
 
 
@@ -219,11 +219,6 @@ body {
     max-width: 85%;
 
     height: auto;
-
-    /*
-       Mantém o Snoopy no CENTRO
-       do espaço entre os textos.
-    */
 
     margin:
         -180px
@@ -333,50 +328,6 @@ body {
         translate(-50%, -50%);
 
     pointer-events: none;
-}
-
-
-/* =========================
-   CORAÇÃO DO SNOOPY
-========================= */
-
-.coracao-envelope {
-
-    position: absolute;
-
-    z-index: 21;
-
-    width: 48px;
-
-    height: 48px;
-
-    left: 50%;
-
-    top: 50%;
-
-    transform:
-        translate(12px, -8px);
-
-    pointer-events: none;
-
-    animation:
-        coracaoBatendo 1s ease-in-out infinite;
-}
-
-
-@keyframes coracaoBatendo {
-
-    0%, 100% {
-        transform:
-            translate(12px, -8px)
-            scale(1);
-    }
-
-    50% {
-        transform:
-            translate(12px, -8px)
-            scale(1.18);
-    }
 }
 
 
@@ -672,8 +623,7 @@ body {
 .envelope.leitura .direita,
 .envelope.leitura .frente,
 .envelope.leitura .aba,
-.envelope.leitura .snoopy-envelope,
-.envelope.leitura .coracao-envelope {
+.envelope.leitura .snoopy-envelope {
 
     opacity: 0;
 
@@ -746,7 +696,7 @@ body {
 
         line-height: 1.6;
 
-        margin-bottom: 480px;
+        margin-bottom: 350px;
     }
 
     .snoopy {
@@ -764,12 +714,6 @@ body {
         font-size: 19px;
     }
 
-    .coracao-envelope {
-
-        width: 42px;
-
-        height: 42px;
-    }
 }
 
 </style>
@@ -803,14 +747,6 @@ body {
             src="snoopy-envelope.png"
             alt="Snoopy abraçando um coração"
         >
-
-        <!-- CORAÇÃO PULSANDO -->
-
-        <div
-            class="coracao-envelope"
-        >
-            ❤️
-        </div>
 
 
         <!-- ÁREA INTERNA DO ENVELOPE -->
@@ -1078,3 +1014,4 @@ envelope.addEventListener(
 
 </body>
 </html>
+```
