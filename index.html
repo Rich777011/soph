@@ -10,7 +10,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
@@ -22,9 +21,6 @@ body {
     overflow: hidden;
     font-family: Arial, sans-serif;
     background: #921820;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-    -webkit-user-select: none;
 }
 
 .inicio {
@@ -57,8 +53,6 @@ body {
     filter: drop-shadow(0 18px 16px rgba(0,0,0,.30));
 
     animation: flutuar 2.5s ease-in-out infinite;
-
-    -webkit-tap-highlight-color: transparent;
 }
 
 @keyframes flutuar {
@@ -111,96 +105,15 @@ body {
 
     bottom: -62%;
 
-    /* FUNDO DE PAPEL AMASSADO */
     background:
-        radial-gradient(
-            ellipse at 8% 12%,
-            rgba(255,255,255,.12) 0%,
-            rgba(255,255,255,.035) 12%,
-            transparent 28%
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,.035) 0px,
+            rgba(255,255,255,.035) 35px,
+            rgba(0,0,0,.025) 35px,
+            rgba(0,0,0,.025) 70px
         ),
-        radial-gradient(
-            ellipse at 28% 5%,
-            rgba(75,0,10,.12) 0%,
-            transparent 24%
-        ),
-        radial-gradient(
-            ellipse at 48% 17%,
-            rgba(255,255,255,.08) 0%,
-            transparent 22%
-        ),
-        radial-gradient(
-            ellipse at 78% 8%,
-            rgba(70,0,10,.10) 0%,
-            transparent 27%
-        ),
-        radial-gradient(
-            ellipse at 94% 27%,
-            rgba(255,255,255,.09) 0%,
-            transparent 25%
-        ),
-        radial-gradient(
-            ellipse at 18% 39%,
-            rgba(70,0,10,.09) 0%,
-            transparent 26%
-        ),
-        radial-gradient(
-            ellipse at 45% 42%,
-            rgba(255,255,255,.065) 0%,
-            transparent 25%
-        ),
-        radial-gradient(
-            ellipse at 70% 35%,
-            rgba(70,0,10,.10) 0%,
-            transparent 28%
-        ),
-        radial-gradient(
-            ellipse at 90% 55%,
-            rgba(255,255,255,.075) 0%,
-            transparent 25%
-        ),
-        radial-gradient(
-            ellipse at 5% 64%,
-            rgba(255,255,255,.07) 0%,
-            transparent 25%
-        ),
-        radial-gradient(
-            ellipse at 31% 68%,
-            rgba(70,0,10,.10) 0%,
-            transparent 27%
-        ),
-        radial-gradient(
-            ellipse at 56% 62%,
-            rgba(255,255,255,.075) 0%,
-            transparent 25%
-        ),
-        radial-gradient(
-            ellipse at 80% 76%,
-            rgba(70,0,10,.10) 0%,
-            transparent 28%
-        ),
-        radial-gradient(
-            ellipse at 97% 88%,
-            rgba(255,255,255,.08) 0%,
-            transparent 24%
-        ),
-        radial-gradient(
-            ellipse at 16% 91%,
-            rgba(70,0,10,.09) 0%,
-            transparent 26%
-        ),
-        radial-gradient(
-            ellipse at 48% 94%,
-            rgba(255,255,255,.06) 0%,
-            transparent 25%
-        ),
-        linear-gradient(
-            135deg,
-            #c83a43 0%,
-            #bd333c 42%,
-            #b42f38 70%,
-            #aa2933 100%
-        );
+        #b92f39;
 
     border: 2px solid rgba(255,255,255,.28);
 
@@ -262,21 +175,6 @@ body {
 
 
 /* =========================
-   DESTAQUES DO TEXTO
-========================= */
-
-.destaque {
-
-    display: inline;
-
-    font-weight: bold;
-
-    text-shadow:
-        0 0 10px rgba(255,255,255,.22);
-}
-
-
-/* =========================
    SNOOPY DA CARTA
 ========================= */
 
@@ -301,59 +199,6 @@ body {
 
     filter:
         drop-shadow(0 8px 8px rgba(0,0,0,.20));
-
-    animation: snoopyLeve 4.2s ease-in-out infinite;
-}
-
-@keyframes snoopyLeve {
-
-    0%, 100% {
-        transform:
-            translateY(-5px)
-            rotate(-1.2deg);
-    }
-
-    25% {
-        transform:
-            translateY(-9px)
-            rotate(0.8deg);
-    }
-
-    50% {
-        transform:
-            translateY(-13px)
-            rotate(1.2deg);
-    }
-
-    75% {
-        transform:
-            translateY(-9px)
-            rotate(-0.8deg);
-    }
-}
-
-.snoopy:nth-of-type(2) {
-    animation-delay: .4s;
-}
-
-.snoopy:nth-of-type(3) {
-    animation-delay: .8s;
-}
-
-.snoopy:nth-of-type(4) {
-    animation-delay: 1.2s;
-}
-
-.snoopy:nth-of-type(5) {
-    animation-delay: 1.6s;
-}
-
-.snoopy:nth-of-type(6) {
-    animation-delay: 2s;
-}
-
-.snoopy:nth-of-type(7) {
-    animation-delay: 2.4s;
 }
 
 .snoopy-final {
@@ -368,36 +213,6 @@ body {
         180px;
 
     transform: translateY(-5px);
-
-    animation:
-        snoopyLeveFinal 4.5s ease-in-out infinite;
-}
-
-@keyframes snoopyLeveFinal {
-
-    0%, 100% {
-        transform:
-            translateY(-5px)
-            rotate(-1.2deg);
-    }
-
-    25% {
-        transform:
-            translateY(-8px)
-            rotate(0.8deg);
-    }
-
-    50% {
-        transform:
-            translateY(-11px)
-            rotate(1.2deg);
-    }
-
-    75% {
-        transform:
-            translateY(-8px)
-            rotate(-0.8deg);
-    }
 }
 
 
@@ -736,6 +551,11 @@ body {
     z-index: 101;
 }
 
+
+/* =========================
+   TRANSIÇÃO SUAVE DA CARTA
+========================= */
+
 .envelope.leitura .carta {
 
     position: absolute;
@@ -756,99 +576,30 @@ body {
 
     z-index: 200;
 
-    /* MESMO PAPEL AMASSADO NA TELA DE LEITURA */
     background:
-        radial-gradient(
-            ellipse at 8% 12%,
-            rgba(255,255,255,.12) 0%,
-            rgba(255,255,255,.035) 12%,
-            transparent 28%
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,.035) 0px,
+            rgba(255,255,255,.035) 35px,
+            rgba(0,0,0,.025) 35px,
+            rgba(0,0,0,.025) 70px
         ),
-        radial-gradient(
-            ellipse at 28% 5%,
-            rgba(75,0,10,.12) 0%,
-            transparent 24%
-        ),
-        radial-gradient(
-            ellipse at 48% 17%,
-            rgba(255,255,255,.08) 0%,
-            transparent 22%
-        ),
-        radial-gradient(
-            ellipse at 78% 8%,
-            rgba(70,0,10,.10) 0%,
-            transparent 27%
-        ),
-        radial-gradient(
-            ellipse at 94% 27%,
-            rgba(255,255,255,.09) 0%,
-            transparent 25%
-        ),
-        radial-gradient(
-            ellipse at 18% 39%,
-            rgba(70,0,10,.09) 0%,
-            transparent 26%
-        ),
-        radial-gradient(
-            ellipse at 45% 42%,
-            rgba(255,255,255,.065) 0%,
-            transparent 25%
-        ),
-        radial-gradient(
-            ellipse at 70% 35%,
-            rgba(70,0,10,.10) 0%,
-            transparent 28%
-        ),
-        radial-gradient(
-            ellipse at 90% 55%,
-            rgba(255,255,255,.075) 0%,
-            transparent 25%
-        ),
-        radial-gradient(
-            ellipse at 5% 64%,
-            rgba(255,255,255,.07) 0%,
-            transparent 25%
-        ),
-        radial-gradient(
-            ellipse at 31% 68%,
-            rgba(70,0,10,.10) 0%,
-            transparent 27%
-        ),
-        radial-gradient(
-            ellipse at 56% 62%,
-            rgba(255,255,255,.075) 0%,
-            transparent 25%
-        ),
-        radial-gradient(
-            ellipse at 80% 76%,
-            rgba(70,0,10,.10) 0%,
-            transparent 28%
-        ),
-        radial-gradient(
-            ellipse at 97% 88%,
-            rgba(255,255,255,.08) 0%,
-            transparent 24%
-        ),
-        radial-gradient(
-            ellipse at 16% 91%,
-            rgba(70,0,10,.09) 0%,
-            transparent 26%
-        ),
-        radial-gradient(
-            ellipse at 48% 94%,
-            rgba(255,255,255,.06) 0%,
-            transparent 25%
-        ),
-        linear-gradient(
-            135deg,
-            #c83a43 0%,
-            #bd333c 42%,
-            #b42f38 70%,
-            #aa2933 100%
-        );
+        #b92f39;
+
+    opacity: 0;
+
+    transform: scale(.97);
 
     transition:
-        all 1.5s ease;
+        opacity 1.2s ease,
+        transform 1.4s cubic-bezier(.2,.8,.2,1);
+}
+
+.envelope.leitura .carta {
+
+    opacity: 1;
+
+    transform: scale(1);
 }
 
 
@@ -867,107 +618,6 @@ body {
 
     transition:
         opacity .8s ease;
-}
-
-
-/* =========================
-   PÉTALAS CAINDO
-========================= */
-
-.petalas-caindo {
-
-    position: fixed;
-
-    inset: 0;
-
-    width: 100vw;
-    height: 100vh;
-
-    z-index: 500;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    opacity: 0;
-
-    transition:
-        opacity 1.5s ease;
-}
-
-.petalas-caindo.ativas {
-
-    opacity: 1;
-}
-
-.petala-caindo {
-
-    position: absolute;
-
-    top: -130px;
-
-    width: 65px;
-    height: 65px;
-
-    background-image:
-        url("petalas.png");
-
-    background-repeat: no-repeat;
-
-    background-size: 300% 300%;
-
-    opacity: .88;
-
-    animation:
-        cairPetala linear infinite;
-}
-
-.petala-caindo:nth-child(3n + 1) {
-    background-position: 0% 0%;
-}
-
-.petala-caindo:nth-child(3n + 2) {
-    background-position: 50% 50%;
-}
-
-.petala-caindo:nth-child(3n + 3) {
-    background-position: 100% 100%;
-}
-
-@keyframes cairPetala {
-
-    0% {
-
-        transform:
-            translate3d(0, -160px, 0)
-            rotate(0deg)
-            scale(.9);
-
-        opacity: 0;
-    }
-
-    10% {
-
-        opacity: .88;
-    }
-
-    50% {
-
-        transform:
-            translate3d(var(--movimento), 55vh, 0)
-            rotate(180deg)
-            scale(1);
-    }
-
-    100% {
-
-        transform:
-            translate3d(calc(var(--movimento) * -1), 120vh, 0)
-            rotate(360deg)
-            scale(.9);
-
-        opacity: 0;
-    }
 }
 
 
@@ -1073,12 +723,6 @@ body {
         font-size: 19px;
     }
 
-    .petala-caindo {
-
-        width: 55px;
-        height: 55px;
-    }
-
 }
 
 </style>
@@ -1088,6 +732,9 @@ body {
 
 <section class="inicio">
 
+
+    <!-- ÁUDIO -->
+
     <audio
         id="musica"
         src="raios-da-manha-cortado.mp3"
@@ -1095,10 +742,14 @@ body {
         loop>
     </audio>
 
+
     <div
         class="envelope"
         id="envelope"
     >
+
+
+        <!-- SNOOPY DO ENVELOPE -->
 
         <img
             class="snoopy-envelope"
@@ -1106,15 +757,26 @@ body {
             alt="Snoopy abraçando um coração"
         >
 
+
+        <!-- ÁREA INTERNA DO ENVELOPE -->
+
         <div class="interno">
 
             <div class="carta">
 
                 <div class="conteudo">
 
+
+                    <!-- TEXTO 1 -->
+
                     <div class="paragrafo">
+
                         é uma coisinha besta mas q eu queria dizer pra você
+
                     </div>
+
+
+                    <!-- SNOOPY 1 -->
 
                     <img
                         class="snoopy"
@@ -1122,9 +784,17 @@ body {
                         alt="Snoopy"
                     >
 
+
+                    <!-- TEXTO 2 -->
+
                     <div class="paragrafo">
+
                         amor a gnt não ta a tanto tempo assim juntos, mas acho q nunca compartilhei tanto algo como compartilho com você, ja faz pelo menos 6 meses q vc faz parte da minha vida, e q não deixo de reparar em você 1 dia sequer, sou muito grato por vc fazer parte da minha vida e não quero q isso acabe nunca.
+
                     </div>
+
+
+                    <!-- SNOOPY 2 -->
 
                     <img
                         class="snoopy"
@@ -1132,9 +802,17 @@ body {
                         alt="Snoopy"
                     >
 
+
+                    <!-- TEXTO 3 -->
+
                     <div class="paragrafo">
+
                         desde q conversamos a primeira vez, ja me apaixonei totalmente.. cada palavra que saia da sua boca, cada gesto, olhar, ja fazia eu querer me aproximar cada vez mais.
+
                     </div>
+
+
+                    <!-- SNOOPY 3 -->
 
                     <img
                         class="snoopy"
@@ -1142,9 +820,17 @@ body {
                         alt="Snoopy"
                     >
 
+
+                    <!-- TEXTO 4 -->
+
                     <div class="paragrafo">
-                        Hoje poder te chamar <span class="destaque">de amor</span>, te abraçar, receber seu carinho, é quase inacreditável, pedi por muito tempo pra Deus algo que iluminasse minha vida e me fizesse uma pessoa melhor, e hoje tendo você ao meu lado fazendo meus dias mais felizes, precebo que Deus me ouviu e me abençoou.
+
+                        Hoje poder te chamar de amor, te abraçar, receber seu carinho, é quase inacreditável, pedi por muito tempo pra Deus algo que iluminasse minha vida e me fizesse uma pessoa melhor, e hoje tendo você ao meu lado fazendo meus dias mais felizes, precebo que Deus me ouviu e me abençoou.
+
                     </div>
+
+
+                    <!-- SNOOPY 4 -->
 
                     <img
                         class="snoopy"
@@ -1152,9 +838,17 @@ body {
                         alt="Snoopy"
                     >
 
+
+                    <!-- TEXTO 5 -->
+
                     <div class="paragrafo">
-                        não tenho palavras pra dizer o quanto eu te amo e o quanto admiro a pessoa que você é. comentei esses dias com você q o <span class="destaque">"eu te amo"</span> estava muito pequeno para oque eu realmente sinto, ent acabei procurando palavras que fossem um pouco mais a fundoo, bomm...
+
+                        não tenho palavras pra dizer o quanto eu te amo e o quanto admiro a pessoa que você é. comentei esses dias com você q o "eu te amo" estava muito pequeno para oque eu realmente sinto, ent acabei procurando palavras que fossem um pouco mais a fundoo, bomm...
+
                     </div>
+
+
+                    <!-- SNOOPY 5 -->
 
                     <img
                         class="snoopy"
@@ -1162,9 +856,17 @@ body {
                         alt="Snoopy"
                     >
 
+
+                    <!-- TEXTO 6 -->
+
                     <div class="paragrafo">
-                        falar que <span class="destaque">"eu te amo"</span> ficou pequeno demais pro tamanho do amor q tenho, o que eu sinto por você é uma coisa inefável e imorredouro, como uma amálgama perfeita que grudou nossas vidas de um jeito indissolúvel. Nosso laço não tem tanto tempo, mas já virou algo eviterno e sempiterno..
+
+                        falar que "eu te amo" ficou pequeno demais pro tamanho do amor q tenho, o que eu sinto por você é uma coisa inefável e imorredouro, como uma amálgama perfeita que grudou nossas vidas de um jeito indissolúvel. Nosso laço não tem tanto tempo, mas já virou algo eviterno e sempiterno..
+
                     </div>
+
+
+                    <!-- SNOOPY 6 -->
 
                     <img
                         class="snoopy"
@@ -1172,15 +874,26 @@ body {
                         alt="Snoopy"
                     >
 
+
+                    <!-- TEXTO 7 -->
+
                     <div class="paragrafo">
-                        acho q é isso amor, to com muita sdd de vc, e <span class="destaque">te amo mto</span>, bjao❤️
+
+                        acho q é isso amor, to com muita sdd de vc, e te amo mto, bjao❤️
+
                     </div>
+
+
+                    <!-- SNOOPY 7 -->
 
                     <img
                         class="snoopy snoopy-final"
                         src="snoopy7.png"
                         alt="Snoopy"
                     >
+
+
+                    <!-- SIGNIFICADOS -->
 
                     <div class="significados">
 
@@ -1226,46 +939,40 @@ body {
 
         </div>
 
+
+        <!-- CORPO -->
+
         <div class="corpo"></div>
+
+
+        <!-- LATERAIS -->
 
         <div class="esquerda"></div>
 
         <div class="direita"></div>
 
+
+        <!-- FRENTE -->
+
         <div class="frente"></div>
+
+
+        <!-- ABA SUPERIOR -->
 
         <div class="aba"></div>
 
+
     </div>
+
 
     <div class="instrucao">
+
         clica aqui soph
+
     </div>
 
+
 </section>
-
-
-<div
-    class="petalas-caindo"
-    id="petalasCaindo">
-
-    <div class="petala-caindo" style="left: 2%; --movimento: 60px; animation-duration: 9s; animation-delay: 0s;"></div>
-    <div class="petala-caindo" style="left: 8%; --movimento: -80px; animation-duration: 10s; animation-delay: 1s;"></div>
-    <div class="petala-caindo" style="left: 14%; --movimento: 70px; animation-duration: 11s; animation-delay: 2s;"></div>
-    <div class="petala-caindo" style="left: 21%; --movimento: -60px; animation-duration: 9.5s; animation-delay: 3s;"></div>
-    <div class="petala-caindo" style="left: 28%; --movimento: 90px; animation-duration: 10.5s; animation-delay: 1.5s;"></div>
-    <div class="petala-caindo" style="left: 35%; --movimento: -75px; animation-duration: 11.5s; animation-delay: 4s;"></div>
-    <div class="petala-caindo" style="left: 42%; --movimento: 65px; animation-duration: 9.8s; animation-delay: 2.5s;"></div>
-    <div class="petala-caindo" style="left: 49%; --movimento: -90px; animation-duration: 10.8s; animation-delay: 5s;"></div>
-    <div class="petala-caindo" style="left: 56%; --movimento: 75px; animation-duration: 11.2s; animation-delay: 1s;"></div>
-    <div class="petala-caindo" style="left: 63%; --movimento: -65px; animation-duration: 9.7s; animation-delay: 3.5s;"></div>
-    <div class="petala-caindo" style="left: 70%; --movimento: 85px; animation-duration: 10.7s; animation-delay: 2s;"></div>
-    <div class="petala-caindo" style="left: 77%; --movimento: -70px; animation-duration: 11.7s; animation-delay: 4.5s;"></div>
-    <div class="petala-caindo" style="left: 84%; --movimento: 60px; animation-duration: 9.3s; animation-delay: 1.8s;"></div>
-    <div class="petala-caindo" style="left: 91%; --movimento: -85px; animation-duration: 10.3s; animation-delay: 5.5s;"></div>
-    <div class="petala-caindo" style="left: 97%; --movimento: 70px; animation-duration: 11.3s; animation-delay: 3.2s;"></div>
-
-</div>
 
 
 <script>
@@ -1275,9 +982,6 @@ const envelope =
 
 const musica =
     document.getElementById("musica");
-
-const petalasCaindo =
-    document.getElementById("petalasCaindo");
 
 
 envelope.addEventListener(
@@ -1290,23 +994,27 @@ envelope.addEventListener(
 
         envelope.classList.add("aberto");
 
+
+        /* =========================
+           MÚSICA
+        ========================= */
+
         musica.currentTime = 0;
 
         musica.play().catch(function() {
             console.log("O navegador bloqueou o áudio.");
         });
 
+
+        /* =========================
+           CONTINUAÇÃO DA CARTA
+        ========================= */
+
         setTimeout(function() {
 
             envelope.classList.add("leitura");
 
         }, 2900);
-
-        setTimeout(function() {
-
-            petalasCaindo.classList.add("ativas");
-
-        }, 4400);
 
     }
 );
