@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -26,6 +27,7 @@ body {
 .inicio {
     width: 100%;
     height: 100vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,11 +69,13 @@ body {
 
 .corpo {
     position: absolute;
+
     inset: 0;
 
     background: #cf3039;
 
     border: 5px solid #741017;
+
     border-radius: 11px;
 
     z-index: 1;
@@ -97,6 +101,7 @@ body {
     left: 10%;
 
     width: 80%;
+
     height: 78%;
 
     bottom: -62%;
@@ -135,7 +140,9 @@ body {
 }
 
 .conteudo {
+
     width: 100%;
+
     min-height: 100%;
 
     padding:
@@ -144,6 +151,7 @@ body {
         80px;
 
     color: white;
+
     text-align: center;
 }
 
@@ -168,7 +176,7 @@ body {
 
 
 /* =========================
-   SNOOPY DA CARTA
+   ANIMAÇÃO DOS SNOOPYS
 ========================= */
 
 .snoopy {
@@ -192,6 +200,24 @@ body {
 
     filter:
         drop-shadow(0 8px 8px rgba(0,0,0,.20));
+
+    animation:
+        snoopyBalancca 3.2s ease-in-out infinite;
+}
+
+@keyframes snoopyBalancca {
+
+    0%, 100% {
+        transform:
+            translateY(-5px)
+            rotate(-1.2deg);
+    }
+
+    50% {
+        transform:
+            translateY(-8px)
+            rotate(1.2deg);
+    }
 }
 
 .snoopy-final {
@@ -206,6 +232,24 @@ body {
         180px;
 
     transform: translateY(-5px);
+
+    animation:
+        snoopyBalanccaFinal 3.4s ease-in-out infinite;
+}
+
+@keyframes snoopyBalanccaFinal {
+
+    0%, 100% {
+        transform:
+            translateY(-5px)
+            rotate(-1deg);
+    }
+
+    50% {
+        transform:
+            translateY(-8px)
+            rotate(1deg);
+    }
 }
 
 
@@ -287,6 +331,7 @@ body {
     height: auto;
 
     left: 50%;
+
     top: 50%;
 
     transform:
@@ -477,6 +522,7 @@ body {
 ========================= */
 
 .envelope.aberto {
+
     animation: none;
 }
 
@@ -509,9 +555,11 @@ body {
     position: fixed;
 
     left: 0;
+
     top: 0;
 
     width: 100vw;
+
     height: 100vh;
 
     transform: none !important;
@@ -528,9 +576,11 @@ body {
     position: absolute;
 
     left: 0;
+
     top: 0;
 
     width: 100%;
+
     height: 100%;
 
     overflow: visible;
@@ -543,9 +593,11 @@ body {
     position: absolute;
 
     left: 0;
+
     top: 0;
 
     width: 100%;
+
     height: 100%;
 
     border: none;
@@ -700,9 +752,6 @@ body {
 
 <section class="inicio">
 
-
-    <!-- ÁUDIO -->
-
     <audio
         id="musica"
         src="raios-da-manha-cortado.mp3"
@@ -710,14 +759,10 @@ body {
         loop>
     </audio>
 
-
     <div
         class="envelope"
         id="envelope"
     >
-
-
-        <!-- SNOOPY DO ENVELOPE -->
 
         <img
             class="snoopy-envelope"
@@ -725,26 +770,15 @@ body {
             alt="Snoopy abraçando um coração"
         >
 
-
-        <!-- ÁREA INTERNA DO ENVELOPE -->
-
         <div class="interno">
 
             <div class="carta">
 
                 <div class="conteudo">
 
-
-                    <!-- TEXTO 1 -->
-
                     <div class="paragrafo">
-
                         é uma coisinha besta mas q eu queria dizer pra você
-
                     </div>
-
-
-                    <!-- SNOOPY 1 -->
 
                     <img
                         class="snoopy"
@@ -752,17 +786,9 @@ body {
                         alt="Snoopy"
                     >
 
-
-                    <!-- TEXTO 2 -->
-
                     <div class="paragrafo">
-
                         amor a gnt não ta a tanto tempo assim juntos, mas acho q nunca compartilhei tanto algo como compartilho com você, ja faz pelo menos 6 meses q vc faz parte da minha vida, e q não deixo de reparar em você 1 dia sequer, sou muito grato por vc fazer parte da minha vida e não quero q isso acabe nunca.
-
                     </div>
-
-
-                    <!-- SNOOPY 2 -->
 
                     <img
                         class="snoopy"
@@ -770,17 +796,9 @@ body {
                         alt="Snoopy"
                     >
 
-
-                    <!-- TEXTO 3 -->
-
                     <div class="paragrafo">
-
                         desde q conversamos a primeira vez, ja me apaixonei totalmente.. cada palavra que saia da sua boca, cada gesto, olhar, ja fazia eu querer me aproximar cada vez mais.
-
                     </div>
-
-
-                    <!-- SNOOPY 3 -->
 
                     <img
                         class="snoopy"
@@ -788,17 +806,9 @@ body {
                         alt="Snoopy"
                     >
 
-
-                    <!-- TEXTO 4 -->
-
                     <div class="paragrafo">
-
                         Hoje poder te chamar de amor, te abraçar, receber seu carinho, é quase inacreditável, pedi por muito tempo pra Deus algo que iluminasse minha vida e me fizesse uma pessoa melhor, e hoje tendo você ao meu lado fazendo meus dias mais felizes, precebo que Deus me ouviu e me abençoou.
-
                     </div>
-
-
-                    <!-- SNOOPY 4 -->
 
                     <img
                         class="snoopy"
@@ -806,17 +816,9 @@ body {
                         alt="Snoopy"
                     >
 
-
-                    <!-- TEXTO 5 -->
-
                     <div class="paragrafo">
-
                         não tenho palavras pra dizer o quanto eu te amo e o quanto admiro a pessoa que você é. comentei esses dias com você q o "eu te amo" estava muito pequeno para oque eu realmente sinto, ent acabei procurando palavras que fossem um pouco mais a fundoo, bomm...
-
                     </div>
-
-
-                    <!-- SNOOPY 5 -->
 
                     <img
                         class="snoopy"
@@ -824,17 +826,9 @@ body {
                         alt="Snoopy"
                     >
 
-
-                    <!-- TEXTO 6 -->
-
                     <div class="paragrafo">
-
                         falar que "eu te amo" ficou pequeno demais pro tamanho do amor q tenho, o que eu sinto por você é uma coisa inefável e imorredouro, como uma amálgama perfeita que grudou nossas vidas de um jeito indissolúvel. Nosso laço não tem tanto tempo, mas já virou algo eviterno e sempiterno..
-
                     </div>
-
-
-                    <!-- SNOOPY 6 -->
 
                     <img
                         class="snoopy"
@@ -842,26 +836,15 @@ body {
                         alt="Snoopy"
                     >
 
-
-                    <!-- TEXTO 7 -->
-
                     <div class="paragrafo">
-
                         acho q é isso amor, to com muita sdd de vc, e te amo mto, bjao❤️
-
                     </div>
-
-
-                    <!-- SNOOPY 7 -->
 
                     <img
                         class="snoopy snoopy-final"
                         src="snoopy7.png"
                         alt="Snoopy"
                     >
-
-
-                    <!-- SIGNIFICADOS -->
 
                     <div class="significados">
 
@@ -907,38 +890,21 @@ body {
 
         </div>
 
-
-        <!-- CORPO -->
-
         <div class="corpo"></div>
-
-
-        <!-- LATERAIS -->
 
         <div class="esquerda"></div>
 
         <div class="direita"></div>
 
-
-        <!-- FRENTE -->
-
         <div class="frente"></div>
-
-
-        <!-- ABA SUPERIOR -->
 
         <div class="aba"></div>
 
-
     </div>
-
 
     <div class="instrucao">
-
         clica aqui soph
-
     </div>
-
 
 </section>
 
@@ -951,7 +917,6 @@ const envelope =
 const musica =
     document.getElementById("musica");
 
-
 envelope.addEventListener(
     "click",
     function() {
@@ -962,21 +927,11 @@ envelope.addEventListener(
 
         envelope.classList.add("aberto");
 
-
-        /* =========================
-           MÚSICA
-        ========================= */
-
         musica.currentTime = 0;
 
         musica.play().catch(function() {
             console.log("O navegador bloqueou o áudio.");
         });
-
-
-        /* =========================
-           CONTINUAÇÃO DA CARTA
-        ========================= */
 
         setTimeout(function() {
 
@@ -991,3 +946,4 @@ envelope.addEventListener(
 
 </body>
 </html>
+```
