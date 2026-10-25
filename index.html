@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -68,7 +69,6 @@ body {
 
 .corpo {
     position: absolute;
-
     inset: 0;
 
     background: #cf3039;
@@ -139,9 +139,7 @@ body {
 }
 
 .conteudo {
-
     width: 100%;
-
     min-height: 100%;
 
     padding:
@@ -150,7 +148,6 @@ body {
         80px;
 
     color: white;
-
     text-align: center;
 }
 
@@ -462,9 +459,6 @@ body {
         transform 1.05s cubic-bezier(.2,.8,.2,1);
 }
 
-
-/* BORDA DA ABA */
-
 .aba::before {
 
     content: "";
@@ -484,9 +478,6 @@ body {
 
     z-index: -1;
 }
-
-
-/* INTERIOR DA ABA */
 
 .aba::after {
 
@@ -517,7 +508,6 @@ body {
 ========================= */
 
 .envelope.aberto {
-
     animation: none;
 }
 
@@ -550,11 +540,9 @@ body {
     position: fixed;
 
     left: 0;
-
     top: 0;
 
     width: 100vw;
-
     height: 100vh;
 
     transform: none !important;
@@ -571,11 +559,9 @@ body {
     position: absolute;
 
     left: 0;
-
     top: 0;
 
     width: 100%;
-
     height: 100%;
 
     overflow: visible;
@@ -588,11 +574,9 @@ body {
     position: absolute;
 
     left: 0;
-
     top: 0;
 
     width: 100%;
-
     height: 100%;
 
     border: none;
@@ -618,7 +602,9 @@ body {
 }
 
 
-/* ESCONDE O ENVELOPE */
+/* =========================
+   ESCONDE O ENVELOPE
+========================= */
 
 .envelope.leitura .corpo,
 .envelope.leitura .esquerda,
@@ -637,7 +623,7 @@ body {
 
 
 /* =========================
-   PETALAS CAINDO
+   PETALAS
 ========================= */
 
 .petalas {
@@ -647,7 +633,6 @@ body {
     inset: 0;
 
     width: 100vw;
-
     height: 100vh;
 
     overflow: hidden;
@@ -663,9 +648,17 @@ body {
 }
 
 .envelope.leitura .petalas {
-
     opacity: 1;
 }
+
+
+/*
+   CADA .petala MOSTRA APENAS
+   1/9 DO petalas.png.
+
+   O PNG É UMA GRADE 3x3.
+   ASSIM APARECE UMA PÉTALA SÓ.
+*/
 
 .petala {
 
@@ -673,24 +666,74 @@ body {
 
     top: -70px;
 
-    width: 38px;
+    width: 42px;
+    height: 42px;
 
-    height: 38px;
+    background-image: url("petalas.png");
 
-    object-fit: contain;
+    background-repeat: no-repeat;
+
+    background-size: 126px 126px;
+
+    /*
+       MOSTRA SOMENTE UM
+       QUADRADO DA GRADE 3x3
+    */
 
     pointer-events: none;
 
     opacity: .95;
 
-    will-change:
-        transform;
+    will-change: transform;
 
     animation:
         quedaPetala
         linear
         forwards;
 }
+
+
+/*
+   9 POSIÇÕES POSSÍVEIS
+   DA GRADE 3x3.
+*/
+
+.petala.pos1 {
+    background-position: 0 0;
+}
+
+.petala.pos2 {
+    background-position: -42px 0;
+}
+
+.petala.pos3 {
+    background-position: -84px 0;
+}
+
+.petala.pos4 {
+    background-position: 0 -42px;
+}
+
+.petala.pos5 {
+    background-position: -42px -42px;
+}
+
+.petala.pos6 {
+    background-position: -84px -42px;
+}
+
+.petala.pos7 {
+    background-position: 0 -84px;
+}
+
+.petala.pos8 {
+    background-position: -42px -84px;
+}
+
+.petala.pos9 {
+    background-position: -84px -84px;
+}
+
 
 @keyframes quedaPetala {
 
@@ -821,9 +864,46 @@ body {
 
     .petala {
 
-        width: 34px;
+        width: 36px;
+        height: 36px;
 
-        height: 34px;
+        background-size: 108px 108px;
+    }
+
+    .petala.pos1 {
+        background-position: 0 0;
+    }
+
+    .petala.pos2 {
+        background-position: -36px 0;
+    }
+
+    .petala.pos3 {
+        background-position: -72px 0;
+    }
+
+    .petala.pos4 {
+        background-position: 0 -36px;
+    }
+
+    .petala.pos5 {
+        background-position: -36px -36px;
+    }
+
+    .petala.pos6 {
+        background-position: -72px -36px;
+    }
+
+    .petala.pos7 {
+        background-position: 0 -72px;
+    }
+
+    .petala.pos8 {
+        background-position: -36px -72px;
+    }
+
+    .petala.pos9 {
+        background-position: -72px -72px;
     }
 }
 
@@ -1089,38 +1169,46 @@ const petalas =
 
 
 /* =========================
-   UMA PÉTALA POR VEZ
+   CRIAR UMA PÉTALA
 ========================= */
 
 function criarPetala() {
 
     const p =
-        document.createElement("img");
+        document.createElement("div");
 
     p.className = "petala";
 
+
     /*
-       ARQUIVO CORRETO:
-       petalas.png
+       ESCOLHE UMA DAS 9 PÉTALAS
+       DA GRADE 3x3.
+       
+       MAS MOSTRA SOMENTE UMA.
     */
 
-    p.src = "petalas.png";
+    const numero =
+        Math.floor(Math.random() * 9) + 1;
 
-    p.alt = "";
+    p.classList.add(
+        "pos" + numero
+    );
+
 
     /*
-       POSIÇÃO ALEATÓRIA NO TOPO
+       POSIÇÃO HORIZONTAL
     */
 
     p.style.left =
         (Math.random() * 100) + "vw";
+
 
     /*
        TAMANHO
     */
 
     const tamanho =
-        34 + Math.random() * 10;
+        36 + Math.random() * 8;
 
     p.style.width =
         tamanho + "px";
@@ -1128,9 +1216,9 @@ function criarPetala() {
     p.style.height =
         tamanho + "px";
 
+
     /*
        VELOCIDADE
-       MAIS DEVAGAR, COMO ESTAVA ANTES
     */
 
     const duracao =
@@ -1139,20 +1227,13 @@ function criarPetala() {
     p.style.animationDuration =
         duracao + "s";
 
-    /*
-       PEQUENA VARIAÇÃO NA ROTAÇÃO
-    */
-
-    p.style.animationDelay =
-        "0s";
 
     petalas.appendChild(p);
 
 
     /*
-       REMOVE A PÉTALA DEPOIS
-       PARA NÃO ACUMULAR MILHARES
-       DE IMAGENS E TRAVAR O SITE
+       REMOVE DEPOIS DA QUEDA
+       PARA NÃO TRAVAR O SITE
     */
 
     setTimeout(function() {
@@ -1164,8 +1245,7 @@ function criarPetala() {
 
 
 /* =========================
-   COMEÇA A SOLTAR PÉTALAS
-   UMA POR VEZ
+   PETALAS UMA POR VEZ
 ========================= */
 
 let intervaloPetalas = null;
@@ -1176,7 +1256,17 @@ function iniciarPetalas() {
         return;
     }
 
+
+    /*
+       PRIMEIRA PÉTALA
+    */
+
     criarPetala();
+
+
+    /*
+       DEPOIS UMA A CADA 0,65s
+    */
 
     intervaloPetalas =
         setInterval(function() {
@@ -1188,7 +1278,7 @@ function iniciarPetalas() {
 
 
 /* =========================
-   ABERTURA
+   ABRIR ENVELOPE
 ========================= */
 
 envelope.addEventListener(
@@ -1204,9 +1294,7 @@ envelope.addEventListener(
         envelope.classList.add("aberto");
 
 
-        /* =========================
-           MÚSICA
-        ========================= */
+        /* MÚSICA */
 
         musica.currentTime = 0;
 
@@ -1219,9 +1307,7 @@ envelope.addEventListener(
         });
 
 
-        /* =========================
-           CARTA
-        ========================= */
+        /* CARTA */
 
         setTimeout(function() {
 
@@ -1238,3 +1324,4 @@ envelope.addEventListener(
 
 </body>
 </html>
+```
