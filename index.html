@@ -111,15 +111,21 @@ body {
 
     bottom: -62%;
 
+    /* NOVO: degradê vermelho + textura delicada de papel */
     background:
         repeating-linear-gradient(
-            45deg,
-            rgba(255,255,255,.035) 0px,
-            rgba(255,255,255,.035) 35px,
-            rgba(0,0,0,.025) 35px,
-            rgba(0,0,0,.025) 70px
+            0deg,
+            rgba(255,255,255,.018) 0px,
+            rgba(255,255,255,.018) 1px,
+            rgba(0,0,0,.012) 1px,
+            rgba(0,0,0,.012) 3px
         ),
-        #b92f39;
+        linear-gradient(
+            135deg,
+            #c93640 0%,
+            #b92f39 45%,
+            #a92833 100%
+        );
 
     border: 2px solid rgba(255,255,255,.28);
 
@@ -181,6 +187,21 @@ body {
 
 
 /* =========================
+   DESTAQUES DO TEXTO
+========================= */
+
+.destaque {
+
+    display: inline;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.22);
+}
+
+
+/* =========================
    SNOOPY DA CARTA
 ========================= */
 
@@ -205,6 +226,44 @@ body {
 
     filter:
         drop-shadow(0 8px 8px rgba(0,0,0,.20));
+
+    /* NOVO: movimento muito leve */
+    animation: snoopyLeve 4.2s ease-in-out infinite;
+}
+
+@keyframes snoopyLeve {
+
+    0%, 100% {
+        transform: translateY(-5px) rotate(-0.4deg);
+    }
+
+    50% {
+        transform: translateY(-9px) rotate(0.4deg);
+    }
+}
+
+.snoopy:nth-of-type(2) {
+    animation-delay: .4s;
+}
+
+.snoopy:nth-of-type(3) {
+    animation-delay: .8s;
+}
+
+.snoopy:nth-of-type(4) {
+    animation-delay: 1.2s;
+}
+
+.snoopy:nth-of-type(5) {
+    animation-delay: 1.6s;
+}
+
+.snoopy:nth-of-type(6) {
+    animation-delay: 2s;
+}
+
+.snoopy:nth-of-type(7) {
+    animation-delay: 2.4s;
 }
 
 .snoopy-final {
@@ -219,6 +278,20 @@ body {
         180px;
 
     transform: translateY(-5px);
+
+    animation:
+        snoopyLeveFinal 4.5s ease-in-out infinite;
+}
+
+@keyframes snoopyLeveFinal {
+
+    0%, 100% {
+        transform: translateY(-5px) rotate(-0.4deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(0.4deg);
+    }
 }
 
 
@@ -579,13 +652,18 @@ body {
 
     background:
         repeating-linear-gradient(
-            45deg,
-            rgba(255,255,255,.035) 0px,
-            rgba(255,255,255,.035) 35px,
-            rgba(0,0,0,.025) 35px,
-            rgba(0,0,0,.025) 70px
+            0deg,
+            rgba(255,255,255,.018) 0px,
+            rgba(255,255,255,.018) 1px,
+            rgba(0,0,0,.012) 1px,
+            rgba(0,0,0,.012) 3px
         ),
-        #b92f39;
+        linear-gradient(
+            135deg,
+            #c93640 0%,
+            #b92f39 45%,
+            #a92833 100%
+        );
 
     transition:
         all 1.5s ease;
@@ -662,9 +740,6 @@ body {
         cairPetala linear infinite;
 }
 
-
-/* VARIAÇÕES DAS PÉTALAS */
-
 .petala-caindo:nth-child(3n + 1) {
     background-position: 0% 0%;
 }
@@ -676,7 +751,6 @@ body {
 .petala-caindo:nth-child(3n + 3) {
     background-position: 100% 100%;
 }
-
 
 @keyframes cairPetala {
 
@@ -924,7 +998,7 @@ body {
 
                     <div class="paragrafo">
 
-                        Hoje poder te chamar de amor, te abraçar, receber seu carinho, é quase inacreditável, pedi por muito tempo pra Deus algo que iluminasse minha vida e me fizesse uma pessoa melhor, e hoje tendo você ao meu lado fazendo meus dias mais felizes, precebo que Deus me ouviu e me abençoou.
+                        Hoje poder te chamar <span class="destaque">de amor</span>, te abraçar, receber seu carinho, é quase inacreditável, pedi por muito tempo pra Deus algo que iluminasse minha vida e me fizesse uma pessoa melhor, e hoje tendo você ao meu lado fazendo meus dias mais felizes, precebo que Deus me ouviu e me abençoou.
 
                     </div>
 
@@ -942,7 +1016,7 @@ body {
 
                     <div class="paragrafo">
 
-                        não tenho palavras pra dizer o quanto eu te amo e o quanto admiro a pessoa que você é. comentei esses dias com você q o "eu te amo" estava muito pequeno para oque eu realmente sinto, ent acabei procurando palavras que fossem um pouco mais a fundoo, bomm...
+                        não tenho palavras pra dizer o quanto eu te amo e o quanto admiro a pessoa que você é. comentei esses dias com você q o <span class="destaque">"eu te amo"</span> estava muito pequeno para oque eu realmente sinto, ent acabei procurando palavras que fossem um pouco mais a fundoo, bomm...
 
                     </div>
 
@@ -960,7 +1034,7 @@ body {
 
                     <div class="paragrafo">
 
-                        falar que "eu te amo" ficou pequeno demais pro tamanho do amor q tenho, o que eu sinto por você é uma coisa inefável e imorredouro, como uma amálgama perfeita que grudou nossas vidas de um jeito indissolúvel. Nosso laço não tem tanto tempo, mas já virou algo eviterno e sempiterno..
+                        falar que <span class="destaque">"eu te amo"</span> ficou pequeno demais pro tamanho do amor q tenho, o que eu sinto por você é uma coisa inefável e imorredouro, como uma amálgama perfeita que grudou nossas vidas de um jeito indissolúvel. Nosso laço não tem tanto tempo, mas já virou algo eviterno e sempiterno..
 
                     </div>
 
@@ -978,7 +1052,7 @@ body {
 
                     <div class="paragrafo">
 
-                        acho q é isso amor, to com muita sdd de vc, e te amo mto, bjao❤️
+                        acho q é isso amor, to com muita sdd de vc, e <span class="destaque">te amo mto</span>, bjao❤️
 
                     </div>
 
@@ -1134,7 +1208,7 @@ envelope.addEventListener(
 
 
         /* =========================
-           ABRE A CARTA
+           CONTINUAÇÃO DA CARTA
         ========================= */
 
         setTimeout(function() {
