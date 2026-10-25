@@ -27,7 +27,6 @@ body {
 .inicio {
     width: 100%;
     height: 100vh;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,19 +44,14 @@ body {
 
 .envelope {
     position: relative;
-
     width: min(88vw, 540px);
     height: min(60vw, 350px);
-
     cursor: pointer;
-
     filter: drop-shadow(0 18px 16px rgba(0,0,0,.30));
-
     animation: flutuar 2.5s ease-in-out infinite;
 }
 
 @keyframes flutuar {
-
     0%, 100% {
         transform: translateY(0) rotate(-1deg);
     }
@@ -69,41 +63,28 @@ body {
 
 .corpo {
     position: absolute;
-
     inset: 0;
-
     background: #cf3039;
-
     border: 5px solid #741017;
-
     border-radius: 11px;
-
     z-index: 1;
 }
 
 .interno {
     position: absolute;
-
     left: 5px;
     right: 5px;
     bottom: 5px;
-
     height: 72%;
-
     overflow: hidden;
-
     z-index: 4;
 }
 
 .carta {
     position: absolute;
-
     left: 10%;
-
     width: 80%;
-
     height: 78%;
-
     bottom: -62%;
 
     background:
@@ -117,7 +98,6 @@ body {
         #b92f39;
 
     border: 2px solid rgba(255,255,255,.28);
-
     border-radius: 10px;
 
     box-shadow:
@@ -140,9 +120,7 @@ body {
 }
 
 .conteudo {
-
     width: 100%;
-
     min-height: 100%;
 
     padding:
@@ -151,12 +129,10 @@ body {
         80px;
 
     color: white;
-
     text-align: center;
 }
 
 .paragrafo {
-
     font-family:
         "Segoe Print",
         "Bradley Hand",
@@ -164,13 +140,9 @@ body {
         cursive;
 
     font-style: italic;
-
     font-size: clamp(25px, 5.2vw, 36px);
-
     line-height: 1.65;
-
     color: white;
-
     margin-bottom: 180px;
 }
 
@@ -180,13 +152,10 @@ body {
 ========================= */
 
 .snoopy {
-
     display: block;
 
     width: min(55vw, 280px);
-
     max-width: 70%;
-
     height: 220px;
 
     margin:
@@ -221,9 +190,7 @@ body {
 }
 
 .snoopy-final {
-
     width: min(55vw, 280px);
-
     height: 220px;
 
     margin:
@@ -254,11 +221,10 @@ body {
 
 
 /* =========================
-   PETALAS CAINDO
+   PETALAS
 ========================= */
 
 .petalas {
-
     position: fixed;
 
     inset: 0;
@@ -278,12 +244,10 @@ body {
 }
 
 .envelope.leitura .petalas {
-
     opacity: 1;
 }
 
 .petala {
-
     position: absolute;
 
     top: -60px;
@@ -300,44 +264,37 @@ body {
     will-change: transform;
 
     animation-name: quedaPetala;
-
     animation-timing-function: linear;
-
     animation-iteration-count: infinite;
 }
 
 @keyframes quedaPetala {
 
     0% {
-
         transform:
             translate3d(0, -70px, 0)
             rotate(0deg);
     }
 
     25% {
-
         transform:
             translate3d(35px, 25vh, 0)
             rotate(90deg);
     }
 
     50% {
-
         transform:
             translate3d(-30px, 50vh, 0)
             rotate(180deg);
     }
 
     75% {
-
         transform:
             translate3d(30px, 75vh, 0)
             rotate(270deg);
     }
 
     100% {
-
         transform:
             translate3d(-20px, 110vh, 0)
             rotate(360deg);
@@ -350,9 +307,7 @@ body {
 ========================= */
 
 .significados {
-
     width: 92%;
-
     margin: 0 auto;
 
     padding: 35px 28px;
@@ -372,7 +327,6 @@ body {
 }
 
 .significados h2 {
-
     font-family:
         "Segoe Print",
         "Bradley Hand",
@@ -380,18 +334,13 @@ body {
         cursive;
 
     font-size: 27px;
-
     font-style: italic;
-
     color: white;
-
     text-align: center;
-
     margin-bottom: 25px;
 }
 
 .significados p {
-
     font-family:
         "Segoe Print",
         "Bradley Hand",
@@ -399,11 +348,8 @@ body {
         cursive;
 
     font-size: 21px;
-
     line-height: 1.6;
-
     color: white;
-
     margin-bottom: 20px;
 }
 
@@ -413,17 +359,14 @@ body {
 ========================= */
 
 .snoopy-envelope {
-
     position: absolute;
 
     z-index: 20;
 
     width: 150px;
-
     height: auto;
 
     left: 50%;
-
     top: 50%;
 
     transform:
@@ -438,14 +381,12 @@ body {
 ========================= */
 
 .esquerda {
-
     position: absolute;
 
     left: 5px;
     bottom: 5px;
 
     width: calc(50% - 5px);
-
     height: 68%;
 
     background: #d9343d;
@@ -467,14 +408,12 @@ body {
 ========================= */
 
 .direita {
-
     position: absolute;
 
     right: 5px;
     bottom: 5px;
 
     width: calc(50% - 5px);
-
     height: 68%;
 
     background: #d9343d;
@@ -496,14 +435,12 @@ body {
 ========================= */
 
 .frente {
-
     position: absolute;
 
     left: 5px;
     bottom: 5px;
 
     width: calc(100% - 10px);
-
     height: 58%;
 
     background: #d9343d;
@@ -528,14 +465,12 @@ body {
 ========================= */
 
 .aba {
-
     position: absolute;
 
     left: 2px;
     top: 2px;
 
     width: calc(100% - 4px);
-
     height: 82%;
 
     background: #e13a43;
@@ -563,11 +498,9 @@ body {
 /* BORDA DA ABA */
 
 .aba::before {
-
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     background: #741017;
@@ -586,7 +519,6 @@ body {
 /* INTERIOR DA ABA */
 
 .aba::after {
-
     content: "";
 
     position: absolute;
@@ -595,7 +527,6 @@ body {
     top: 5px;
 
     width: calc(100% - 10px);
-
     height: calc(100% - 5px);
 
     background: #e13a43;
@@ -614,12 +545,10 @@ body {
 ========================= */
 
 .envelope.aberto {
-
     animation: none;
 }
 
 .envelope.aberto .aba {
-
     transform:
         rotateX(180deg);
 }
@@ -630,7 +559,6 @@ body {
 ========================= */
 
 .envelope.aberto .carta {
-
     bottom: 22%;
 
     transition:
@@ -643,15 +571,12 @@ body {
 ========================= */
 
 .envelope.leitura {
-
     position: fixed;
 
     left: 0;
-
     top: 0;
 
     width: 100vw;
-
     height: 100vh;
 
     transform: none !important;
@@ -664,15 +589,12 @@ body {
 }
 
 .envelope.leitura .interno {
-
     position: absolute;
 
     left: 0;
-
     top: 0;
 
     width: 100%;
-
     height: 100%;
 
     overflow: visible;
@@ -681,21 +603,16 @@ body {
 }
 
 .envelope.leitura .carta {
-
     position: absolute;
 
     left: 0;
-
     top: 0;
 
     width: 100%;
-
     height: 100%;
 
     border: none;
-
     border-radius: 0;
-
     box-shadow: none;
 
     z-index: 200;
@@ -740,19 +657,15 @@ body {
 @media (max-width: 600px) {
 
     .envelope {
-
         width: 90vw;
-
         height: 61vw;
     }
 
     .envelope.aberto .carta {
-
         bottom: 20%;
     }
 
     .conteudo {
-
         padding:
             45px
             7%
@@ -760,20 +673,14 @@ body {
     }
 
     .paragrafo {
-
         font-size: 25px;
-
         line-height: 1.6;
-
         margin-bottom: 180px;
     }
 
     .snoopy {
-
         width: 58vw;
-
         max-width: 58vw;
-
         height: 180px;
 
         margin:
@@ -783,11 +690,8 @@ body {
     }
 
     .snoopy-final {
-
         width: 58vw;
-
         max-width: 58vw;
-
         height: 180px;
 
         margin:
@@ -797,16 +701,13 @@ body {
     }
 
     .significados p {
-
         font-size: 19px;
     }
 
     .petala {
-
         width: 36px;
         height: 36px;
     }
-
 }
 
 </style>
@@ -830,7 +731,6 @@ body {
         class="envelope"
         id="envelope"
     >
-
 
         <!-- SNOOPY DO ENVELOPE -->
 
@@ -1052,7 +952,6 @@ body {
 
         <div class="aba"></div>
 
-
     </div>
 
 </section>
@@ -1071,7 +970,7 @@ const petalas =
 
 
 /* =========================
-   CRIA AS PETALAS
+   CRIA AS PÉTALAS
 ========================= */
 
 function criarPetalas() {
@@ -1089,7 +988,8 @@ function criarPetalas() {
 
         p.className = "petala";
 
-        p.src = "petala.png";
+        /* NOME CORRETO DO ARQUIVO */
+        p.src = "petalas.png";
 
         p.alt = "";
 
